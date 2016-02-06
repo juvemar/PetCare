@@ -1,6 +1,7 @@
 ﻿namespace PetCare.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
     using System.Threading.Tasks;
@@ -12,12 +13,21 @@
 
     public class User : IdentityUser
     {
+        private ICollection<Pet> pets;
+
+        public User()
+        {
+            this.pets = new HashSet<Pet>();
+        }
+
         [Required]
         [MaxLength(50)]
+        [MinLength(2)]
         public string FirstName { get; set; }
 
         [Required]
         [MaxLength(50)]
+        [MinLength(2)]
         public string LastName { get; set; }
 
         public DateTime DateOfBirth { get; set; }
@@ -33,6 +43,12 @@
         public override string PhoneNumber { get; set; }
 
         public string SergeryLocation { get; set; }
+
+        public virtual ICollection<Pet> Pets
+        {
+            get { return this.pets; }
+            set { this.pets = value; }
+        }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)
         {
