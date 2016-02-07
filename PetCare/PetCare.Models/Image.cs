@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PetCare.Models
+﻿namespace PetCare.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class Image
     {
         [Key]

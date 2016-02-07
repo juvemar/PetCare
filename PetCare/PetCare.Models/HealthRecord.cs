@@ -2,7 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     public class HealthRecord
     {
         private ICollection<VetVisit> vetVisits;
@@ -15,8 +17,10 @@
 
         public Guid Id { get; set; }
 
+        [Required]
         public double Weight { get; set; }
 
+        [Required]
         public double Height { get; set; }
 
         public Guid PersonalVetId { get; set; }

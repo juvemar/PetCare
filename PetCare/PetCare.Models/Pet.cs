@@ -3,9 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     using Common;
-    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Pet
     {
         private ICollection<Event> events;
@@ -37,7 +38,7 @@
 
         public virtual User Owner { get; set; }
 
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
 
         public virtual Image Image { get; set; }
 
