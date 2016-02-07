@@ -12,6 +12,7 @@ using PetCare.Web.Models;
 using PetCare.Models;
 using System.Collections.Generic;
 using PetCare.Common;
+using System.IO;
 
 namespace PetCare.Web.Controllers
 {
@@ -154,7 +155,25 @@ namespace PetCare.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email, DateOfBirth = model.DateOfBirth, FirstName = model.FirstName, LastName = model.LastName };
+                var user = new User
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    DateOfBirth = model.DateOfBirth,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PicturePath = model.PicturePath
+                };
+
+                foreach (string file in Request.Files)
+                {
+                    HttpPostedFileBase hpf = Request.Files[file];
+                    var fileName = Path.GetFileName(file);
+                    var path = Path.Combine(Server.MapPath("~/UserImages/"), fileName);
+                    hpf.SaveAs(path);
+                }
+
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

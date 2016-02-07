@@ -82,6 +82,8 @@ namespace PetCare.Web.Models
         [Display(Name = "Date of birth")]
         public DateTime? DateOfBirth { get; set; }
 
+        public string PicturePath { get; set; }
+
         public int? ForumPoints { get; set; }
 
         public int? GenderType { get; set; }

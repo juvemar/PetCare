@@ -37,6 +37,10 @@
 
         public virtual User Owner { get; set; }
 
+        public int ImageId { get; set; }
+
+        public virtual Image Image { get; set; }
+
         public Guid HealthRecordId { get; set; }
 
         [ForeignKey("HealthRecordId")]

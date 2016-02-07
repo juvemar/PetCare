@@ -1,15 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using PetCare.Web.Models;
-
-namespace PetCare.Web.Controllers
+﻿namespace PetCare.Web.Controllers
 {
+    using System.Linq;
+    using System.IO;
+    using System.Threading.Tasks;
+    using System.Web;
+    using System.Web.Mvc;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+    using PetCare.Web.Models;
+
     [Authorize]
     public class ManageController : Controller
     {
@@ -24,6 +24,14 @@ namespace PetCare.Web.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
+        }
+
+        [HttpGet]
+        public ActionResult Image(string userName)
+        {
+            var dir = Server.MapPath("~/App_Data/Images");
+            var path = Path.Combine(dir, userName + ".jpg");
+            return base.File(path, "image/jpeg");
         }
 
         public ApplicationSignInManager SignInManager

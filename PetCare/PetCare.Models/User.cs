@@ -37,12 +37,18 @@
         //[Required]
         public int GenderType { get; set; }
 
+        public string PicturePath { get; set; }
+
         [Required]
         public override string Email { get; set; }
 
         public override string PhoneNumber { get; set; }
 
         public string SergeryLocation { get; set; }
+
+        public int ImageId { get; set; }
+
+        public virtual Image Image { get; set; }
 
         public virtual ICollection<Pet> Pets
         {
