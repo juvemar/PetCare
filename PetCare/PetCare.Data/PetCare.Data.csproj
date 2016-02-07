@@ -57,11 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPetCareDbContext.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PetCareDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PetCare.Models\PetCare.Models.csproj">
+      <Project>{fa0b23ce-0cf7-4ed2-a377-f67f43ded1de}</Project>
+      <Name>PetCare.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

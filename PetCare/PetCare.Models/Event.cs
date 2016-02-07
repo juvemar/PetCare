@@ -23,11 +23,7 @@
 
         public string Address { get; set; }
 
-        public int PetId { get; set; }
-
-        public virtual Pet Pet { get; set; }
-
-        public ICollection<Pet> Pets
+        public virtual ICollection<Pet> Pets
         {
             get { return this.pets; }
             set { this.pets = value; }

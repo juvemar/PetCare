@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using Common;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     public class Pet
     {
         private ICollection<Event> events;
@@ -25,18 +25,21 @@
 
         public Gender Gender { get; set; }
 
+        [Required]
         public DateTime DateOfBirth { get; set; }
 
         public string BirthPlace { get; set; }
 
+        [Required]
         public string Species { get; set; }
 
-        public int OwnerId { get; set; }
+        public Guid OwnerId { get; set; }
 
         public virtual User Owner { get; set; }
 
-        public int HealthRecordId { get; set; }
+        public Guid HealthRecordId { get; set; }
 
+        [ForeignKey("HealthRecordId")]
         public virtual HealthRecord HealthRecord { get; set; }
 
         public virtual ICollection<Event> Events

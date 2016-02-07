@@ -9,15 +9,15 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    using Common;
-
     public class User : IdentityUser
     {
         private ICollection<Pet> pets;
+        private ICollection<VetVisit> vetVisits;
 
         public User()
         {
             this.pets = new HashSet<Pet>();
+            this.vetVisits = new HashSet<VetVisit>();
         }
 
         [Required]
@@ -30,12 +30,12 @@
         [MinLength(2)]
         public string LastName { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         public int ForumPoints { get; set; }
 
-        [Required]
-        public Gender Gender { get; set; }
+        //[Required]
+        public int GenderType { get; set; }
 
         [Required]
         public override string Email { get; set; }
@@ -48,6 +48,12 @@
         {
             get { return this.pets; }
             set { this.pets = value; }
+        }
+
+        public virtual ICollection<VetVisit> VetVisits
+        {
+            get { return this.vetVisits; }
+            set { this.vetVisits = value; }
         }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)

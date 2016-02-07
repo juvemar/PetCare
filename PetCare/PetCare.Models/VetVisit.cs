@@ -15,11 +15,11 @@
 
         public string Description { get; set; }
 
-        public int VetId { get; set; }
+        public Guid VetId { get; set; }
 
         public virtual User Vet { get; set; }
 
-        public int HealthRecordId { get; set; }
+        public Guid HealthRecordId { get; set; }
 
         public virtual HealthRecord HealthRecord { get; set; }
     }

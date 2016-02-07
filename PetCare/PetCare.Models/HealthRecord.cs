@@ -2,7 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     public class HealthRecord
     {
         private ICollection<VetVisit> vetVisits;
@@ -19,13 +19,14 @@
 
         public double Height { get; set; }
 
-        public int PersonalVetId { get; set; }
+        public Guid PersonalVetId { get; set; }
 
         public virtual User PersonalVet { get; set; }
 
-        public int PetId { get; set; }
+        //public Guid PetId { get; set; }
 
-        public virtual Pet Pet { get; set; }
+        //[ForeignKey("PetId")]
+        //public virtual Pet Pet { get; set; }
 
         public virtual ICollection<VetVisit> VetVisits
         {

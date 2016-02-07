@@ -1,5 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using CompareAttribute = System.Web.Mvc.CompareAttribute;
+using System.Web.Mvc;
+
+using PetCare.Common;
 
 namespace PetCare.Web.Models
 {
@@ -65,6 +70,29 @@ namespace PetCare.Web.Models
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [Display(Name = "First name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [Display(Name = "Last name")]
+        public string LastName { get; set; }
+
+        [Display(Name = "Date of birth")]
+        public DateTime? DateOfBirth { get; set; }
+
+        public int? ForumPoints { get; set; }
+
+        public int? GenderType { get; set; }
+
+        public IEnumerable<SelectListItem> GenderOptions { get; set; }
+
+        public string PhoneNumber { get; set; }
+
+        public string SergeryLocation { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -79,6 +107,30 @@ namespace PetCare.Web.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public IEnumerable<SelectListItem> LoadGenders()
+        {
+            var genders = new List<SelectListItem>();
+
+            genders.Add(new SelectListItem
+            {
+                Text = Gender.Female.ToString(),
+                Value = ((int)Gender.Female).ToString()
+            });
+            genders.Add(new SelectListItem
+            {
+                Text = Gender.Male.ToString(),
+                Value = ((int)Gender.Male).ToString()
+            });
+            genders.Add(new SelectListItem
+            {
+                Text = Gender.Other.ToString(),
+                Value = ((int)Gender.Other).ToString(),
+                Selected = true
+            });
+
+            return genders;
+        }
     }
 
     public class ResetPasswordViewModel
