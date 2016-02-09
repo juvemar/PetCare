@@ -1,13 +1,10 @@
-﻿using PetCare.Data;
-using PetCare.Data.Migrations;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
-
-namespace PetCare.Web
+﻿namespace PetCare.Web
 {
+    using System.Data.Entity;
+
+    using PetCare.Data;
+    using PetCare.Data.Migrations;
+
     public class DatabaseConfig
     {
         public static void Initialize()
@@ -16,4 +13,4 @@ namespace PetCare.Web
             PetCareDbContext.Create().Database.Initialize(true);
         }
     }
-}   
+}

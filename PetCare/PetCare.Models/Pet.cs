@@ -3,9 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    using Common;
 
     public class Pet
     {
@@ -13,18 +10,17 @@
 
         public Pet()
         {
-            this.Id = Guid.NewGuid();
+            //this.Id = Guid.NewGuid();
             this.events = new HashSet<Event>();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        [MaxLength(30)]
-        [MinLength(2)]
+        [StringLength(30, MinimumLength = 2)]
         public string Name { get; set; }
 
-        public Gender Gender { get; set; }
+        public string Gender { get; set; }
 
         [Required]
         public DateTime DateOfBirth { get; set; }
@@ -34,7 +30,7 @@
         [Required]
         public string Species { get; set; }
 
-        public Guid OwnerId { get; set; }
+        public string OwnerId { get; set; }
 
         public virtual User Owner { get; set; }
 
@@ -42,9 +38,9 @@
 
         public virtual Image Image { get; set; }
 
-        public Guid HealthRecordId { get; set; }
+        public int? HealthRecordId { get; set; }
 
-        [ForeignKey("HealthRecordId")]
+        //[ForeignKey("HealthRecordId")]
         public virtual HealthRecord HealthRecord { get; set; }
 
         public virtual ICollection<Event> Events

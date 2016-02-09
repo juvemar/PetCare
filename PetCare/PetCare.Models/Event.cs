@@ -10,11 +10,11 @@
 
         public Event()
         {
-            this.Id = Guid.NewGuid();
+            //this.Id = Guid.NewGuid();
             this.pets = new HashSet<Pet>();
         }
 
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(100)]

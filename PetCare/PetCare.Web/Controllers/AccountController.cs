@@ -1,21 +1,19 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using PetCare.Web.Models;
-using PetCare.Models;
-using System.Collections.Generic;
-using PetCare.Common;
-using System.IO;
-
-namespace PetCare.Web.Controllers
+﻿namespace PetCare.Web.Controllers
 {
+    using System.IO;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
+    using Microsoft.Owin.Security;
+
+    using PetCare.Common;
+    using PetCare.Models;
+    using PetCare.Web.Models;
+
     [Authorize]
     public class AccountController : Controller
     {
@@ -155,24 +153,33 @@ namespace PetCare.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User
-                {
-                    UserName = model.Email,
-                    Email = model.Email,
-                    DateOfBirth = model.DateOfBirth,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    PicturePath = model.PicturePath
-                };
+                Image image = null;
 
-                foreach (string file in Request.Files)
+                if (model.ProfilePicture != null)
                 {
-                    HttpPostedFileBase hpf = Request.Files[file];
-                    var fileName = Path.GetFileName(file);
-                    var path = Path.Combine(Server.MapPath("~/UserImages/"), fileName);
-                    hpf.SaveAs(path);
+                    using (var memory = new MemoryStream())
+                    {
+                        model.ProfilePicture.InputStream.CopyTo(memory);
+                        var content = memory.GetBuffer();
+
+                        image = new Image
+                        {
+                            Content = content,
+                            Extension = model.ProfilePicture.FileName.Split(new[] { '.' }).Last()
+                        };
+                    }
                 }
 
+                var user = new User
+                {
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNumber = model.PhoneNumber,
+                    SergeryLocation = model.SergeryLocation,
+                    Image = image
+                };
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

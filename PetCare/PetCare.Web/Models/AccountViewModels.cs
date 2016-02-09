@@ -5,6 +5,7 @@ using CompareAttribute = System.Web.Mvc.CompareAttribute;
 using System.Web.Mvc;
 
 using PetCare.Common;
+using System.Web;
 
 namespace PetCare.Web.Models
 {
@@ -69,20 +70,22 @@ namespace PetCare.Web.Models
 
     public class RegisterViewModel
     {
+        public HttpPostedFileBase ProfilePicture { get; set; }
+
         [Required]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
+        [Required]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         [Display(Name = "First name")]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
         [Display(Name = "Last name")]
         public string LastName { get; set; }
-
-        [Display(Name = "Date of birth")]
-        public DateTime? DateOfBirth { get; set; }
-
-        public string PicturePath { get; set; }
 
         public int? ForumPoints { get; set; }
 
@@ -90,6 +93,9 @@ namespace PetCare.Web.Models
 
         public IEnumerable<SelectListItem> GenderOptions { get; set; }
 
+        [Display(Name = "Phone Number (+359)")]
+        [StringLength(10, MinimumLength = 6, ErrorMessage = "The field Phone Number must be between 6 and 10 digits.")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "The field Phone Number must consist only digits.")]
         public string PhoneNumber { get; set; }
 
         public string SergeryLocation { get; set; }

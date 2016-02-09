@@ -21,18 +21,18 @@
         }
 
         [Required]
-        [MaxLength(50)]
-        [MinLength(2)]
+        [StringLength(25, MinimumLength = 3)]
+        public override string UserName { get; set; }
+
+        [Required]
+        [StringLength(20, MinimumLength = 2)]
         public string FirstName { get; set; }
 
         [Required]
-        [MaxLength(50)]
-        [MinLength(2)]
+        [StringLength(20, MinimumLength = 2)]
         public string LastName { get; set; }
 
-        public DateTime? DateOfBirth { get; set; }
-
-        public int ForumPoints { get; set; }
+        public int? ForumPoints { get; set; }
 
         //[Required]
         public int GenderType { get; set; }
@@ -46,7 +46,7 @@
 
         public string SergeryLocation { get; set; }
 
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
 
         public virtual Image Image { get; set; }
 

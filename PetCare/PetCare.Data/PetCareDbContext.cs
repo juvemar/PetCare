@@ -5,7 +5,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
 
     using PetCare.Models;
-
+    using System.Data.Entity.ModelConfiguration.Conventions;
     public class PetCareDbContext : IdentityDbContext<User>, IPetCareDbContext
     {
         public PetCareDbContext()
@@ -20,6 +20,8 @@
         public virtual IDbSet<HealthRecord> HealthRecords { get; set; }
 
         public virtual IDbSet<VetVisit> VetVisits { get; set; }
+
+        public virtual IDbSet<Image> Images { get; set; }
 
         public override IDbSet<User> Users { get; set; }
 
@@ -37,6 +39,20 @@
             modelBuilder.Entity<Event>()
     .HasMany(t => t.Pets)
     .WithMany(t => t.Events);
+
+            modelBuilder.Entity<Pet>()
+    .HasRequired(a => a.HealthRecord)
+    .WithMany()
+    .HasForeignKey(a => a.HealthRecordId);
+
+            modelBuilder.Entity<HealthRecord>()
+                .HasOptional(b => b.Pet)
+                .WithMany()
+                .HasForeignKey(b => b.PetId);
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<OneToOneConstraintIntroductionConvention>();
 
             base.OnModelCreating(modelBuilder);
         }
