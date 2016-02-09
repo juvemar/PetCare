@@ -178,7 +178,7 @@
                     LastName = model.LastName,
                     PhoneNumber = model.PhoneNumber,
                     SergeryLocation = model.SergeryLocation,
-                    Image = image
+                    ProfilePicture = image
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);

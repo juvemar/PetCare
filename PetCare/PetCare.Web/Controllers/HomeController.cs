@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace PetCare.Web.Controllers
+﻿namespace PetCare.Web.Controllers
 {
+    using System.Web.Mvc;
+
+    using PetCare.Services.Contracts;
+
     public class HomeController : Controller
     {
+        private IUsersService users;
+
+        public HomeController(IUsersService users)
+            : base()
+        {
+            this.users = users;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -25,6 +31,13 @@ namespace PetCare.Web.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public int? GetUserPictureId(string id)
+        {
+            var userPic = this.users.GetById(id).ProfilePictureId;
+
+            return userPic;
         }
     }
 }

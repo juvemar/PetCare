@@ -20,9 +20,9 @@
             this.vetVisits = new HashSet<VetVisit>();
         }
 
-        [Required]
-        [StringLength(25, MinimumLength = 3)]
-        public override string UserName { get; set; }
+        //[Required]
+        //[StringLength(25, MinimumLength = 3)]
+        //public override string UserName { get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 2)]
@@ -37,18 +37,16 @@
         //[Required]
         public int GenderType { get; set; }
 
-        public string PicturePath { get; set; }
+        //[Required]
+        //public override string Email { get; set; }
 
-        [Required]
-        public override string Email { get; set; }
-
-        public override string PhoneNumber { get; set; }
+        //public override string PhoneNumber { get; set; }
 
         public string SergeryLocation { get; set; }
 
-        public int? ImageId { get; set; }
+        public int? ProfilePictureId { get; set; }
 
-        public virtual Image Image { get; set; }
+        public virtual Image ProfilePicture { get; set; }
 
         public virtual ICollection<Pet> Pets
         {

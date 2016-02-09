@@ -26,3 +26,9 @@ textarea {
     list-style-type: none !important;
     font-size: 15px;
 }
+
+.centered-profile-image{
+    width:48px;
+    height:48px;
+    margin-top:3%;
+}

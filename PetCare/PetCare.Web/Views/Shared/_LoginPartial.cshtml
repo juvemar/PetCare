@@ -1,4 +1,6 @@
 ﻿@using Microsoft.AspNet.Identity
+@using PetCare.Web.Controllers;
+
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -6,12 +8,21 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
+            @{var pictureExists = ((HomeController)this.ViewContext.Controller).GetUserPictureId(this.User.Identity.GetUserId());
+            }
             <li>
-                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                @Html.ActionLink(string.Format("Hello, {0}!", User.Identity.GetUserName()), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
             </li>
-            @*<li>
-                @Html.Action("Image", "Manage", new { userName = User.Identity.GetUserName() })
-            </li>*@
+            <li>
+                @if (pictureExists > 0)
+                {
+                    <img src="@Url.Action("GetImage", "Image", new { id = pictureExists })" alt="@this.User.Identity.GetUserName()" class="centered-profile-image" />
+                }
+                else
+                {
+                    <img src="https://image.freepik.com/free-icon/sea-lion-mammal-animal-shape_318-63131.jpg" class="centered-profile-image" />
+                }
+            </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
         </ul>
     }
