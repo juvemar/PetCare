@@ -13,7 +13,7 @@
     using PetCare.Common;
     using PetCare.Models;
     using PetCare.Web.Models;
-
+    using Models.Account;
     [Authorize]
     public class AccountController : Controller
     {

@@ -228,7 +228,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Account\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Models\Account\ExternalLoginListViewModel.cs" />
+    <Compile Include="Models\Account\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\Account\ForgotViewModel.cs" />
+    <Compile Include="Models\Account\LoginViewModel.cs" />
+    <Compile Include="Models\Account\RegisterViewModel.cs" />
+    <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\Account\SendCodeViewModel.cs" />
+    <Compile Include="Models\Account\VerifyCodeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1114,7 +1122,6 @@
   <ItemGroup>
     <Folder Include="App_Data\PetImages\" />
     <Folder Include="App_Data\UserImages\" />
-    <Folder Include="Models\Account\" />
     <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
