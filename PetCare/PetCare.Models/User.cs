@@ -20,10 +20,6 @@
             this.vetVisits = new HashSet<VetVisit>();
         }
 
-        //[Required]
-        //[StringLength(25, MinimumLength = 3)]
-        //public override string UserName { get; set; }
-
         [Required]
         [StringLength(20, MinimumLength = 2)]
         public string FirstName { get; set; }
@@ -34,13 +30,7 @@
 
         public int? ForumPoints { get; set; }
 
-        //[Required]
-        public int GenderType { get; set; }
-
-        //[Required]
-        //public override string Email { get; set; }
-
-        //public override string PhoneNumber { get; set; }
+        public string GenderType { get; set; }
 
         public string SergeryLocation { get; set; }
 

@@ -2049,8 +2049,8 @@ fieldset[disabled] .btn {
 }
 
 .btn-default {
-  color: #333333;
-  background-color: #ffffff;
+  color: white;
+  background-color: #333333;
   border-color: #cccccc;
 }
 
@@ -2060,7 +2060,7 @@ fieldset[disabled] .btn {
 .btn-default.active,
 .open .dropdown-toggle.btn-default {
   color: #333333;
-  background-color: #ebebeb;
+  background-color: #777777;
   border-color: #adadad;
 }
 
@@ -2255,7 +2255,7 @@ fieldset[disabled] .btn-success.active {
 
 .btn-info {
   color: #ffffff;
-  background-color: #5bc0de;
+  background-color: #ff0027;
   border-color: #46b8da;
 }
 
@@ -2265,7 +2265,7 @@ fieldset[disabled] .btn-success.active {
 .btn-info.active,
 .open .dropdown-toggle.btn-info {
   color: #ffffff;
-  background-color: #39b3d7;
+  background-color: #d32c2c;
   border-color: #269abc;
 }
 

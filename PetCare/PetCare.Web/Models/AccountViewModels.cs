@@ -55,9 +55,8 @@ namespace PetCare.Web.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -71,6 +70,8 @@ namespace PetCare.Web.Models
     public class RegisterViewModel
     {
         public HttpPostedFileBase ProfilePicture { get; set; }
+
+        public bool IsVet { get; set; }
 
         [Required]
         [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
@@ -89,9 +90,7 @@ namespace PetCare.Web.Models
 
         public int? ForumPoints { get; set; }
 
-        public int? GenderType { get; set; }
-
-        public IEnumerable<SelectListItem> GenderOptions { get; set; }
+        public string Gender { get; set; }
 
         [Display(Name = "Phone Number (+359)")]
         [StringLength(10, MinimumLength = 6, ErrorMessage = "The field Phone Number must be between 6 and 10 digits.")]
@@ -115,30 +114,6 @@ namespace PetCare.Web.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-        public IEnumerable<SelectListItem> LoadGenders()
-        {
-            var genders = new List<SelectListItem>();
-
-            genders.Add(new SelectListItem
-            {
-                Text = Gender.Female.ToString(),
-                Value = ((int)Gender.Female).ToString()
-            });
-            genders.Add(new SelectListItem
-            {
-                Text = Gender.Male.ToString(),
-                Value = ((int)Gender.Male).ToString()
-            });
-            genders.Add(new SelectListItem
-            {
-                Text = Gender.Other.ToString(),
-                Value = ((int)Gender.Other).ToString(),
-                Selected = true
-            });
-
-            return genders;
-        }
     }
 
     public class ResetPasswordViewModel

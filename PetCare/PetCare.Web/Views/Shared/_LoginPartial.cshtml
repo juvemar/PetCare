@@ -8,7 +8,8 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            @{var pictureExists = ((HomeController)this.ViewContext.Controller).GetUserPictureId(this.User.Identity.GetUserId());
+            @{
+                var pictureExists = ((HomeController)this.ViewContext.Controller).GetUserPictureId(this.User.Identity.GetUserId());
             }
             <li>
                 @Html.ActionLink(string.Format("Hello, {0}!", User.Identity.GetUserName()), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
