@@ -3,7 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web;
 
-    public class EditUserProfileModel
+    public class EditUserProfileViewModel
     {
         public HttpPostedFileBase ProfilePicture { get; set; }
         

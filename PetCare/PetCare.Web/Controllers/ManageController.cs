@@ -79,7 +79,7 @@
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult EditUserProfile(EditUserProfileModel model)
+        public ActionResult EditUserProfile(EditUserProfileViewModel model)
         {
             if (ModelState.IsValid)
             {
