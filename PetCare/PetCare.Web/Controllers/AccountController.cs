@@ -10,21 +10,25 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
 
-    using PetCare.Common;
-    using PetCare.Models;
-    using PetCare.Web.Models;
     using Models.Account;
+    using PetCare.Models;
+    using Services.Contracts;
+
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
+        private IUsersService users;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
+        public AccountController(IUsersService users)
+            : base(users)
         {
+            this.users = users;
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUsersService users)
+            : base(users)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -206,7 +210,7 @@
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]

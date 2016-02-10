@@ -30,7 +30,7 @@
 
         public int? ForumPoints { get; set; }
 
-        public string GenderType { get; set; }
+        public string Gender { get; set; }
 
         public string SergeryLocation { get; set; }
 

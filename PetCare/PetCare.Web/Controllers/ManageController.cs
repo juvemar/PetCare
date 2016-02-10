@@ -5,22 +5,31 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-    using PetCare.Web.Models;
 
+    using PetCare.Web.Models;
+    using Services.Contracts;
+    using Models.Account;
+    using PetCare.Models;
+    using Models.Manage;
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
+        private IUsersService users;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public ManageController()
+        public ManageController(IUsersService users)
+            : base(users)
         {
+            this.users = users;
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IUsersService users)
+            : base(users)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -40,9 +49,9 @@
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -57,6 +66,61 @@
                 _userManager = value;
             }
         }
+        //
+        // GET: /Account/EditUserProfile
+        [AllowAnonymous]
+        public ActionResult EditUserProfile()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/EditUserProfile
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditUserProfile(EditUserProfileModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Image image = null;
+
+                if (model.ProfilePicture != null)
+                {
+                    using (var memory = new MemoryStream())
+                    {
+                        model.ProfilePicture.InputStream.CopyTo(memory);
+                        var content = memory.GetBuffer();
+
+                        image = new Image
+                        {
+                            Content = content,
+                            Extension = model.ProfilePicture.FileName.Split(new[] { '.' }).Last()
+                        };
+                    }
+                }
+
+                string username = this.User.Identity.Name;
+
+                User user = this.users.GetByUsername(username);
+
+                user.UserName = model.UserName == null ? string.Empty : model.UserName;
+                user.FirstName = model.FirstName == null ? string.Empty : model.FirstName;
+                user.LastName = model.LastName == null ? string.Empty : model.LastName;
+                user.Email = model.Email == null ? string.Empty : model.Email;
+                user.Gender = model.Gender == null ? string.Empty : model.Gender;
+                user.PhoneNumber = model.PhoneNumber == null ? string.Empty : model.PhoneNumber;
+                user.ProfilePicture = image == null ? null : image;
+
+                this.users.UpdateUser(user.Id, user.UserName, user.FirstName, user.LastName, user.Email, user.Gender, user.PhoneNumber, user.ProfilePicture);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
 
         //
         // GET: /Manage/Index
@@ -339,7 +403,7 @@
             base.Dispose(disposing);
         }
 
-#region Helpers
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
@@ -390,6 +454,6 @@
             Error
         }
 
-#endregion
+        #endregion
     }
 }

@@ -1,18 +1,14 @@
-﻿using PetCare.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace PetCare.Web.Controllers
+﻿namespace PetCare.Web.Controllers
 {
-    public class ImageController : Controller
+    using PetCare.Services.Contracts;
+    using System.Web.Mvc;
+
+    public class ImageController : BaseController
     {
         private IImagesService images;
 
-        public ImageController(IImagesService images)
-            :base()
+        public ImageController(IImagesService images, IUsersService users)
+            :base(users)
         {
             this.images = images;
         }

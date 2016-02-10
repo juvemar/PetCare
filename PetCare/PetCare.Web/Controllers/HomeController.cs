@@ -4,14 +4,12 @@
 
     using PetCare.Services.Contracts;
 
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private IUsersService users;
-
         public HomeController(IUsersService users)
-            : base()
+            : base(users)
         {
-            this.users = users;
+
         }
 
         public ActionResult Index()
@@ -31,13 +29,6 @@
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        public int? GetUserPictureId(string id)
-        {
-            var userPic = this.users.GetById(id).ProfilePictureId;
-
-            return userPic;
         }
     }
 }

@@ -30,15 +30,19 @@
             return this.users.All().Where(u => u.UserName == username).FirstOrDefault();
         }
 
-        //public void UpdateUser(string id, string username, string firstname, string lastname, string image)
-        //{
-        //    var currentUsr = this.users.GetById(id);
-        //    currentUsr.UserName = username;
-        //    currentUsr.Firstname = firstname;
-        //    currentUsr.Lastname = lastname;
-        //    currentUsr.PicturePath = image;
-        //    this.users.Update(currentUsr);
-        //    this.users.SaveChanges();
-        //}
+        public void UpdateUser(string id, string username, string firstName, string lastName, string email, string gender, string phoneNumber, Image image)
+        {
+            var currentUser = this.users.GetById(id);
+            currentUser.UserName = username == null ? currentUser.UserName : username;
+            currentUser.FirstName = firstName == string.Empty ? currentUser.FirstName : firstName;
+            currentUser.LastName = lastName == string.Empty ? currentUser.LastName : lastName;
+            currentUser.Email = email == string.Empty ? currentUser.Email : email;
+            currentUser.Gender = gender == string.Empty ? currentUser.Gender : gender;
+            currentUser.PhoneNumber = phoneNumber == string.Empty ? currentUser.PhoneNumber : phoneNumber;
+            currentUser.ProfilePicture = image == null ? currentUser.ProfilePicture : image;
+
+            this.users.Update(currentUser);
+            this.users.SaveChanges();
+        }
     }
 }

@@ -11,6 +11,6 @@
 
         User GetByUsername(string username);
 
-        //void UpdateUser(string id, string username, string firstname, string lastname, string image);
+        void UpdateUser(string id, string username, string firstName, string lastName, string email, string gender, string phoneNumber, Image image);
     }
 }
