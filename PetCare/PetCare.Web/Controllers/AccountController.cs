@@ -9,6 +9,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
+    using AutoMapper.QueryableExtensions;
 
     using Models.Account;
     using PetCare.Models;
@@ -56,6 +57,20 @@
             {
                 _userManager = value;
             }
+        }
+
+        //
+        // GET: /Account/UserDetails
+        public ActionResult UserDetails()
+        {
+            var currentUser = this.users
+                .GetByUsername(this.User.Identity.Name)
+                .ProjectTo<UserDetailsViewModel>()
+                .FirstOrDefault();
+
+            
+
+            return View(currentUser);
         }
 
         //
@@ -182,7 +197,8 @@
                     LastName = model.LastName,
                     PhoneNumber = model.PhoneNumber,
                     SergeryLocation = model.SergeryLocation,
-                    ProfilePicture = image
+                    ProfilePicture = image,
+                    Gender = model.Gender
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);
@@ -210,7 +226,7 @@
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-        
+
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]

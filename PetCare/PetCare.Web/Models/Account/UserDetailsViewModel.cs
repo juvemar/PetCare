@@ -1,8 +1,7 @@
 ﻿namespace PetCare.Web.Models.Account
 {
-    using System;
     using System.Collections.Generic;
-    using System.Web;
+    using System.ComponentModel.DataAnnotations;
 
     using AutoMapper;
 
@@ -11,11 +10,9 @@
 
     public class UserDetailsViewModel : IMapFrom<User>, IHaveCustomMappings
     {
-        public HttpPostedFileBase ProfilePicture { get; set; }
+        public int? ProfilePictureId { get; set; }
 
-        //public List<Pet> Pets { get; set; }
-
-        public bool IsVet { get; set; }
+        public List<Pet> Pets { get; set; }
 
         public string UserName { get; set; }
 
@@ -23,17 +20,22 @@
 
         public string LastName { get; set; }
 
+        [Display(Name = "Gender")]
         public string Gender { get; set; }
 
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
+        [Display(Name = "Sergery Location")]
         public string SergeryLocation { get; set; }
 
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
-            throw new NotImplementedException();
+            configuration.CreateMap<User, UserDetailsViewModel>("UserDetails")
+                 .ForMember(m => m.ProfilePictureId, opts => opts.MapFrom(m => m.ProfilePictureId));
         }
     }
 }

@@ -16,6 +16,11 @@
 
         public int? GetUserPictureId(string id)
         {
+            if (!this.User.Identity.IsAuthenticated)
+            {
+                return -1;
+            }
+
             var userPic = this.users.GetById(id).ProfilePictureId;
 
             return userPic;

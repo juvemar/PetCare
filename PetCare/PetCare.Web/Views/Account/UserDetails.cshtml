@@ -1,6 +1,50 @@
-﻿@Model PetCare.Web.Models.Account.UserDetailsViewModel
+﻿@model PetCare.Web.Models.Account.UserDetailsViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container">
+    <div class="text-center">
+        <h1>@Html.DisplayTextFor(m => m.UserName)'s Profile</h1>
+    </div>
+    <div class="row marginTopDiv">
+        <div class="col-md-5 text-center img-thumbnail">
+            <img src="@Url.Action("GetImage", "Image", new { id = Model.ProfilePictureId })" alt="Model.UserName" class="img-responsive img-rounded" />
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-6 jumbotron">
+            <div style="font-weight:bolder">
+                <strong>Name: </strong>
+                @Html.DisplayTextFor(m => m.FirstName) @Html.DisplayTextFor(m => m.LastName)</h2>
+            </div>
+            <p>
+                @Html.LabelFor(m => m.Gender):
+                @Html.DisplayTextFor(m => m.Gender)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.Email):
+                @Html.DisplayTextFor(m => m.Email)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.PhoneNumber):
+                @Html.DisplayTextFor(m => m.PhoneNumber)
+            </p>
+            @if (User.IsInRole("vet"))
+            {
+                <p>
+                    @Html.LabelFor(m => m.SergeryLocation):
+                    <a href="http://maps.google.com/?q=@Model.SergeryLocation" target="_blank">@Html.DisplayTextFor(m => m.SergeryLocation)</a>
+                </p>
+            }
+        </div>
+    </div>
+    <div class="text-center">
+        @*TODO: Foreach pets*@
+    </div>
+    <div class="text-center">
+        @Html.ActionLink("Edit Profile", "EditUserProfile", "Manage", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-default" })
+    </div>
+</div>

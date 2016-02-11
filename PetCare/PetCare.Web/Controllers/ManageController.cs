@@ -9,12 +9,14 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
+    using AutoMapper.QueryableExtensions;
 
+    using Models.Account;
+    using Models.Manage;
+    using PetCare.Models;
     using PetCare.Web.Models;
     using Services.Contracts;
-    using Models.Account;
-    using PetCare.Models;
-    using Models.Manage;
+
     [Authorize]
     public class ManageController : BaseController
     {
@@ -66,9 +68,9 @@
                 _userManager = value;
             }
         }
+
         //
         // GET: /Account/EditUserProfile
-        [AllowAnonymous]
         public ActionResult EditUserProfile()
         {
             return View();
@@ -77,7 +79,6 @@
         //
         // POST: /Account/EditUserProfile
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult EditUserProfile(EditUserProfileViewModel model)
         {
@@ -102,7 +103,7 @@
 
                 string username = this.User.Identity.Name;
 
-                User user = this.users.GetByUsername(username);
+                User user = this.users.GetByUsername(username).FirstOrDefault();
 
                 user.UserName = model.UserName == null ? string.Empty : model.UserName;
                 user.FirstName = model.FirstName == null ? string.Empty : model.FirstName;

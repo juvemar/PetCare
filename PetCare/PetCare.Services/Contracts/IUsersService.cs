@@ -9,7 +9,7 @@
 
         User GetById(string id);
 
-        User GetByUsername(string username);
+        IQueryable<User> GetByUsername(string username);
 
         void UpdateUser(string id, string username, string firstName, string lastName, string email, string gender, string phoneNumber, Image image);
     }

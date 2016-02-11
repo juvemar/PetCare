@@ -5,7 +5,7 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h3>Change your account settings</h3>
+    <h3 class="text-center">Change your account settings</h3>
     <hr />
     <div class="form-group">
         @if (Model.HasPassword)
@@ -20,7 +20,6 @@
                 @Html.ActionLink("Create", "SetPassword")
             </h3>
         }
-
     </div>
 
     <h3>

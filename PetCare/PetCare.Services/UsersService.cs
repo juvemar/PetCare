@@ -25,9 +25,9 @@
             return this.users.GetById(id);
         }
 
-        public User GetByUsername(string username)
+        public IQueryable<User> GetByUsername(string username)
         {
-            return this.users.All().Where(u => u.UserName == username).FirstOrDefault();
+            return this.users.All().Where(u => u.UserName == username).AsQueryable();
         }
 
         public void UpdateUser(string id, string username, string firstName, string lastName, string email, string gender, string phoneNumber, Image image)
