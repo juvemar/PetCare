@@ -1,6 +1,6 @@
 Aardwolf	Proteles cristatus
 Admiral, indian red	Vanessa indica
-Adouri (unidentified)	unavailable
+Adouri (unidentified)	
 African black crake	Limnocorax flavirostra
 African buffalo	Snycerus caffer
 African bush squirrel	Paraxerus cepapi
@@ -8,7 +8,7 @@ African clawless otter	Aonyx capensis
 African darter	Anhinga rufa
 African elephant	Loxodonta africana
 African fish eagle	Haliaetus vocifer
-African ground squirrel (unidentified)	Xerus sp.
+African ground squirrel	Xerus sp.
 African jacana	Actophilornis africanus
 African lion	Panthera leo
 African lynx	Felis caracal
@@ -43,7 +43,7 @@ American racer	Coluber constrictor
 American woodcock	Scolopax minor
 Anaconda (unidentified)	Eunectes sp.
 Andean goose	Chloephaga melanoptera
-Ant (unidentified)	unavailable
+Ant (unidentified)	
 Anteater, australian spiny	Tachyglossus aculeatus
 Anteater, giant	Myrmecophaga tridactyla
 Antechinus, brown	Antechinus flavipes
@@ -81,7 +81,6 @@ Australian sea lion	Neophoca cinerea
 Australian spiny anteater	Tachyglossus aculeatus
 Avocet, pied	Recurvirostra avosetta
 Azara's zorro	Pseudalopex gymnocercus
-B	top
 Baboon, chacma	Papio ursinus
 Baboon, gelada	Theropithecus gelada
 Baboon, olive	Papio cynocephalus
@@ -128,7 +127,7 @@ Bengal vulture	Gyps bengalensis
 Bennett's wallaby	Macropus rufogriseus
 Bent-toed gecko	Cyrtodactylus louisiadensis
 Bettong, brush-tailed	Bettongia penicillata
-Bird (unidentified)	unavailable
+Bird (unidentified)	
 Bird, bare-faced go away	Lorythaixoides concolor
 Bird, black-throated butcher	Cracticus nigroagularis
 Bird, magnificent frigate	Fregata magnificans
@@ -238,11 +237,10 @@ Bushpig	Potamochoerus porcus
 Bustard, denham's	Neotis denhami
 Bustard, kori	Choriotis kori
 Bustard, stanley	Neotis denhami
-Butterfly (unidentified)	unavailable
+Butterfly (unidentified)	
 Butterfly, canadian tiger swallowtail	Papilio canadensis
 Butterfly, tropical buckeye	Junonia genoveua
 Buttermilk snake	Coluber constrictor
-C	top
 Caiman, spectacled	Caiman crocodilus
 California sea lion	Zalophus californicus
 Camel, dromedary	Camelus dromedarius
@@ -264,7 +262,7 @@ Capuchin, weeper	Cebus nigrivittatus
 Capuchin, white-fronted	Cebus albifrons
 Capybara	Hydrochoerus hydrochaeris
 Caracal	Felis caracal
-Caracara (unidentified)	unavailable
+Caracara (unidentified)
 Caracara, yellow-headed	Milvago chimachima
 Cardinal, black-throated	Paroaria gularis
 Cardinal, red-capped	Paroaria gularis
@@ -297,7 +295,7 @@ Chimpanzee	Pan troglodytes
 Chipmunk, least	Eutamias minimus
 Chital	Axis axis
 Chuckwalla	Sauromalus obesus
-Civet (unidentified)	unavailable
+Civet (unidentified)	
 Civet cat	Bassariscus astutus
 Civet, common palm	Paradoxurus hermaphroditus
 Civet, small-toothed palm	Arctogalidia trivirgata
@@ -357,7 +355,7 @@ Coot, red-knobbed	Fulica cristata
 Coqui francolin	Francolinus coqui
 Coqui partridge	Francolinus coqui
 Corella, long-billed	Cacatua tenuirostris
-Cormorant (unidentified)	unavailable
+Cormorant (unidentified)	
 Cormorant, flightless	Nannopterum harrisi
 Cormorant, great	Phalacrocorax carbo
 Cormorant, javanese	Phalacrocorax niger
@@ -370,7 +368,7 @@ Cottonmouth	Agkistrodon piscivorus
 Cougar	Felis concolor
 Cow, scottish highland	Bos taurus
 Coyote	Canis latrans
-Crab (unidentified)	unavailable
+Crab (unidentified)	
 Crab, red lava	Graspus graspus
 Crab, sally lightfoot	Graspus graspus
 Crab-eating fox	Dusicyon thous
@@ -400,7 +398,6 @@ Cuis	Microcavia australis
 Curlew, black	Haematopus ater
 Currasow (unidentified)	Crax sp.
 Curve-billed thrasher	Toxostoma curvirostre
-D	top
 Dabchick	Tachybaptus ruficollis
 Dama wallaby	Macropus eugenii
 Dark-winged trumpeter	Psophia viridis
@@ -458,7 +455,6 @@ Duiker, gray	Sylvicapra grimma
 Dunnart, fat-tailed	Smithopsis crassicaudata
 Dusky gull	Larus fuliginosus
 Dusky rattlesnake	Crotalus triseriatus
-E	top
 Eagle owl (unidentified)	Bubo sp.
 Eagle, african fish	Haliaetus vocifer
 Eagle, bald	Haliaeetus leucocephalus
@@ -508,7 +504,6 @@ European shelduck	Tadorna tadorna
 European spoonbill	Platalea leucordia
 European stork	Ciconia ciconia
 European wild cat	Felis silvestris lybica
-F	top
 Fairy penguin	Eudyptula minor
 Falcon, peregrine	Falco peregrinus
 Falcon, prairie	Falco mexicanus
@@ -528,7 +523,7 @@ Flicker, campo	Colaptes campestroides
 Flicker, field	Colaptes campestroides
 Flightless cormorant	Nannopterum harrisi
 Flycatcher, tyrant	Myiarchus tuberculifer
-Flying fox (unidentified)	unavailable
+Flying fox (unidentified)	
 Fork-tailed drongo	Dicrurus adsimilis
 Four-horned antelope	Tetracerus quadricornis
 Four-spotted skimmer	Libellula quadrimaculata
@@ -552,7 +547,6 @@ Frilled lizard	Chlamydosaurus kingii
 Fringe-eared oryx	Oryx gazella callotis
 Frog (unidentified)	Rana sp.
 Frogmouth, tawny	Podargus strigoides
-G	top
 Galah	Eolophus roseicapillus
 Galapagos albatross	Diomedea irrorata
 Galapagos dove	Zenaida galapagoensis
@@ -566,7 +560,7 @@ Gaur	Bos frontalis
 Gazelle, grant's	Gazella granti
 Gazelle, thomson's	Gazella thompsonii
 Gazer, sun	Cordylus giganteus
-Gecko (unidentified)	unavailable
+Gecko (unidentified)	
 Gecko, barking	Phylurus milli
 Gecko, bent-toed	Cyrtodactylus louisiadensis
 Gecko, ring-tailed	Cyrtodactylus louisiadensis
@@ -656,7 +650,7 @@ Grouse, sage	Centrocercus urophasianus
 Guanaco	Lama guanicoe
 Guerza	Colobus guerza
 Gull, dusky	Larus fuliginosus
-Gull, herring	unavailable
+Gull, herring	
 Gull, kelp	Larus dominicanus
 Gull, lava	Larus fuliginosus
 Gull, pacific	Gabianus pacificus
@@ -664,7 +658,6 @@ Gull, silver	Larus novaehollandiae
 Gull, southern black-backed	Larus dominicanus
 Gull, swallow-tail	Creagrus furcatus
 Gulls (unidentified)	Larus sp.
-H	top
 Hanuman langur	Semnopithecus entellus
 Harbor seal	Phoca vitulina
 Hare, arctic	Lepus arcticus
@@ -689,7 +682,7 @@ Heron, grey	Ardea cinerea
 Heron, little	Butorides striatus
 Heron, striated	Butorides striatus
 Heron, yellow-crowned night	Nyctanassa violacea
-Herring gull	unavailable
+Herring gull	
 Hippopotamus	Hippopotamus amphibius
 Hoary marmot	Marmota caligata
 Hoffman's sloth	Choloepus hoffmani
@@ -712,7 +705,6 @@ Hyena, brown	Hyaena brunnea
 Hyena, spotted	Crocuta crocuta
 Hyena, striped	Hyaena hyaena
 Hyrax	Dendrohyrax brucel
-I	top
 Ibex	Capra ibex
 Ibis, glossy	Plegadis falcinellus
 Ibis, puna	Plegadis ridgwayi
@@ -731,7 +723,6 @@ Indian red admiral	Vanessa indica
 Indian star tortoise	Geochelone elegans
 Indian tree pie	Dendrocitta vagabunda
 Insect, stick	Leprocaulinus vipera
-J	top
 Jabiru stork	Ephippiorhynchus mycteria
 Jacana, african	Actophilornis africanus
 Jackal, asiatic	Canis aureus
@@ -748,7 +739,6 @@ Javan gold-spotted mongoose	Herpestes javanicus
 Javanese cormorant	Phalacrocorax niger
 Jungle cat	Felis chaus
 Jungle kangaroo	Macropus agilis
-K	top
 Kaffir cat	Felis silvestris lybica
 Kafue flats lechwe	Kobus leche robertsi
 Kalahari scrub robin	Certotrichas paena
@@ -777,7 +767,6 @@ Kongoni	Alcelaphus buselaphus cokii
 Kookaburra, laughing	Dacelo novaeguineae
 Kori bustard	Choriotis kori
 Kudu, greater	Tragelaphus strepsiceros
-L	top
 Land iguana	Conolophus subcristatus
 Langur, common	Semnopithecus entellus
 Langur, gray	Semnopithecus entellus
@@ -829,7 +818,7 @@ Little brown dove	Streptopelia senegalensis
 Little cormorant	Phalacrocorax niger
 Little grebe	Tachybaptus ruficollis
 Little heron	Butorides striatus
-Lizard (unidentified)	unavailable
+Lizard (unidentified)	
 Lizard, blue-tongued	Tiliqua scincoides
 Lizard, collared	Crotaphytus collaris
 Lizard, desert spiny	Sceloporus magister
@@ -852,7 +841,6 @@ Loris, slender	Loris tardigratus
 Lory, rainbow	Trichoglossus haematodus moluccanus
 Lourie, grey	Lorythaixoides concolor
 Lynx, african	Felis caracal
-M	top
 Macaque, bonnet	Macaca radiata
 Macaque, japanese	Macaca fuscata
 Macaque, pig-tailed	Macaca nemestrina
@@ -872,7 +860,7 @@ Magpie, black-backed	Gymnorhina tibicen
 Malabar squirrel	Ratufa indica
 Malachite kingfisher	Corythornis cristata
 Malagasy ground boa	Acrantophis madagascariensis
-Malay squirrel (unidentified)	unavailable
+Malay squirrel (unidentified)	
 Mallard	Anas platyrhynchos
 Malleefowl	Leipoa ocellata
 Manatee	Trichechus inunguis
@@ -919,12 +907,11 @@ Mountain goat	Oreamnos americanus
 Mountain lion	Felis concolor
 Mourning collared dove	Streptopelia decipiens
 Mouse, four-striped grass	Rhabdomys pumilio
-Mudskipper (unidentified)	unavailable
+Mudskipper (unidentified)	
 Mule deer	Odocoileus hemionus
 Musk ox	Ovibos moschatus
 Mynah, common	Acridotheres tristis
 Mynah, indian	Acridotheres tristis
-N	top
 Native cat	Dasyurus viverrinus
 Nelson ground squirrel	Ammospermophilus nelsoni
 Neotropic cormorant	Phalacrocorax brasilianus
@@ -945,9 +932,8 @@ Numbat	Myrmecobius fasciatus
 Nutcracker, clark's	Nucifraga columbiana
 Nuthatch, red-breasted	Sitta canadensis
 Nyala	Tragelaphus angasi
-O	top
 Ocelot	Felis pardalis
-Old world fruit bat (unidentified)	unavailable
+Old world fruit bat (unidentified)	
 Olive baboon	Papio cynocephalus
 Onager	Equus hemionus
 Openbill stork	Anastomus oscitans
@@ -979,10 +965,9 @@ Owl, snowy	Nyctea scandiaca
 Owl, white-browed	Ninox superciliaris
 Ox, musk	Ovibos moschatus
 Oystercatcher, blackish	Haematopus ater
-P	top
 Paca	Agouti paca
 Pacific gull	Gabianus pacificus
-Paddy heron (unidentified)	unavailable
+Paddy heron (unidentified)	
 Pademelon, red-legged	Thylogale stigmatica
 Painted stork	Mycteria leucocephala
 Pale white-eye	Zosterops pallidus
@@ -1034,7 +1019,7 @@ Plains zebra	Equus burchelli
 Platypus	Ornithorhynchus anatinus
 Plover, blacksmith	Vanellus armatus
 Plover, three-banded	Charadrius tricollaris
-Pocket gopher (unidentified)	unavailable
+Pocket gopher (unidentified)	
 Polar bear	Ursus maritimus
 Polecat, african	Ictonyx striatus
 Porcupine, african	Hystrix cristata
@@ -1050,7 +1035,7 @@ Possum, ring-tailed	Pseudocheirus peregrinus
 Possum, western pygmy	Cercatetus concinnus
 Potoroo	Potorous tridactylus
 Prairie falcon	Falco mexicanus
-Praying mantis (unidentified)	unavailable
+Praying mantis (unidentified)	
 Prehensile-tailed porcupine	Coendou prehensilis
 Pronghorn	Antilocapra americana
 Puffin, horned	Fratercula corniculata
@@ -1061,13 +1046,11 @@ Puna ibis	Plegadis ridgwayi
 Purple grenadier	Uraeginthus granatina
 Purple moorhen	Porphyrio porphyrio
 Pygmy possum	Acrobates pygmaeus
-Python (unidentified)	unavailable
+Python (unidentified)	
 Python, carpet	Morelia spilotes variegata
-Q	top
 Quail, gambel's	Callipepla gambelii
 Quoll, eastern	Dasyurus viverrinus
 Quoll, spotted-tailed	Dasyurus maculatus
-R	top
 Rabbit, eastern cottontail	Sylvilagus floridanus
 Raccoon dog	Nyctereutes procyonoides
 Raccoon, common	Procyon lotor
@@ -1115,7 +1098,7 @@ Red-tailed hawk	Buteo jamaicensis
 Red-tailed phascogale	Phascogale calura
 Red-tailed wambenger	Phascogale calura
 Red-winged blackbird	Agelaius phoeniceus
-Red-winged hawk (unidentified)	unavailable
+Red-winged hawk (unidentified)	
 Reedbuck, bohor	Redunca redunca
 Reindeer	Rangifer tarandus
 Rhea, common	Rhea americana
@@ -1151,7 +1134,6 @@ Royal tern	Thalasseus maximus
 Rufous tree pie	Dendrocitta vagabunda
 Rufous-collared sparrow	Zonotrichia capensis
 Russian dragonfly	Libellula quadrimaculata
-S	top
 Sable antelope	Hippotragus niger
 Sacred ibis	Threskionis aethiopicus
 Saddle-billed stork	Ephipplorhynchus senegalensis
@@ -1168,13 +1150,13 @@ Sarus crane	Grus antigone
 Savanna baboon	Papio cynocephalus
 Savanna fox	Dusicyon thous
 Savannah deer	Mazama gouazoubira
-Savannah deer (unidentified)	unavailable
+Savannah deer (unidentified)	
 Scaly-breasted lorikeet	Trichoglossus chlorolepidotus
 Scarlet macaw	Ara macao
 Scottish highland cow	Bos taurus
 Screamer, crested	Chauna torquata
 Screamer, southern	Chauna torquata
-Sea birds (unidentified)	unavailable
+Sea birds (unidentified)	
 Seal, common	Phoca vitulina
 Seal, harbor	Phoca vitulina
 Seal, northern elephant	Mirounga angustirostris
@@ -1332,7 +1314,6 @@ Swallow-tail gull	Creagrus furcatus
 Swamp deer	Cervus duvauceli
 Swan, black	Cygnus atratus
 Swan, trumpeter	Cygnus buccinator
-T	top
 Tailless tenrec	Tenrec ecaudatus
 Tamandua, southern	Tamandua tetradactyla
 Tammar wallaby	Macropus eugenii
@@ -1390,10 +1371,8 @@ Two-banded monitor	Varanus salvator
 Two-toed sloth	Choloepus hoffmani
 Two-toed tree sloth	Choloepus hoffmani
 Tyrant flycatcher	Myiarchus tuberculifer
-U	top
 Uinta ground squirrel	Spermophilus armatus
 Urial	Ovis orientalis
-V	top
 Verreaux's sifaka	Propithecus verreauxi
 Vervet monkey	Cercopithecus aethiops
 Vicuna	Vicugna vicugna
@@ -1411,7 +1390,6 @@ Vulture, oriental white-backed	Gyps bengalensis
 Vulture, turkey	Cathartes aura
 Vulture, white-headed	Aegypius occipitalis
 Vulture, white-rumped	Gyps bengalensis
-W	top
 Wagtail, african pied	Motacilla aguimp
 Wallaby, agile	Macropus agilis
 Wallaby, bennett's	Macropus rufogriseus
@@ -1501,7 +1479,6 @@ Woodrat (unidentified)	Neotoma sp.
 Woolly-necked stork	Ciconia episcopus
 Worm snake (unidentified)	Carphophis sp.
 Woylie	Bettongia penicillata
-Y	top
 Yak	Bos mutus
 Yellow baboon	Papio cynocephalus
 Yellow mongoose	Cynictis penicillata
@@ -1514,7 +1491,6 @@ Yellow-headed caracara	Milvago chimachima
 Yellow-necked spurfowl	Francolinus leucoscepus
 Yellow-rumped siskin	Carduelis uropygialis
 Yellow-throated sandgrouse	Pterocles gutturalis
-Z	top
 Zebra, common	Equus burchelli
 Zebra, plains	Equus burchelli
 Zorilla	Ictonyx striatus

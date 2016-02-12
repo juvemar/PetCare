@@ -1140,6 +1140,8 @@
     <Content Include="Views\Shared\EditorTemplates\PhoneNumberInputForm.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ProfilePictureInputForm.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SergeryLocationInputForm.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\GenderInputForm.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SpeciesInputForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

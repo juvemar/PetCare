@@ -1,11 +1,12 @@
 ﻿namespace PetCare.Data
 {
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
     using Microsoft.AspNet.Identity.EntityFramework;
 
     using PetCare.Models;
-    using System.Data.Entity.ModelConfiguration.Conventions;
+
     public class PetCareDbContext : IdentityDbContext<User>, IPetCareDbContext
     {
         public PetCareDbContext()
@@ -14,6 +15,8 @@
         }
 
         public virtual IDbSet<Pet> Pets { get; set; }
+
+        public virtual IDbSet<Species> Species { get; set; }
 
         public virtual IDbSet<Event> Events { get; set; }
 

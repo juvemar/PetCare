@@ -18,6 +18,7 @@
         public string Name { get; set; }
 
         [Display(Name = "Gender")]
+        [UIHint("GenderInputForm")]
         public Gender Gender { get; set; }
 
         [Required]

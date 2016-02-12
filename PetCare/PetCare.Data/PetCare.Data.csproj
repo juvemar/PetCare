@@ -69,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PetCare.Common\PetCare.Common.csproj">
+      <Project>{49719f5c-a9a3-478b-af39-8c3d0061f250}</Project>
+      <Name>PetCare.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PetCare.Models\PetCare.Models.csproj">
       <Project>{fa0b23ce-0cf7-4ed2-a377-f67f43ded1de}</Project>
       <Name>PetCare.Models</Name>

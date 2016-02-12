@@ -27,8 +27,10 @@
 
         public string BirthPlace { get; set; }
 
+        public int SpeciesId { get; set; }
+
         [Required]
-        public string Species { get; set; }
+        public virtual Species Species { get; set; }
 
         public string OwnerId { get; set; }
 

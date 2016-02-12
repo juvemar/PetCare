@@ -3,10 +3,9 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web;
 
-    using Common;
-
     public class EditUserProfileViewModel
     {
+        [UIHint("ProfilePictureInputForm")]
         public HttpPostedFileBase ProfilePicture { get; set; }
         
         [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
@@ -24,7 +23,8 @@
         [UIHint("LastNameInputForm")]
         public string LastName { get; set; }
 
-        public Gender Gender { get; set; }
+        [UIHint("GenderInputForm")]
+        public string Gender { get; set; }
 
         [Display(Name = "Phone Number (+359)")]
         [StringLength(10, MinimumLength = 6, ErrorMessage = "The field Phone Number must be between 6 and 10 digits.")]

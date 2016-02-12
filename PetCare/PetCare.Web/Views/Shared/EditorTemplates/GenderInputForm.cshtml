@@ -1,0 +1,29 @@
+﻿@using PetCare.Common
+
+@model object
+
+@{
+            var genders = new List<SelectListItem>();
+
+            genders.Add(new SelectListItem
+            {
+                Text = Gender.Female.ToString(),
+                Value = ((int)Gender.Female).ToString()
+            });
+            genders.Add(new SelectListItem
+            {
+                Text = Gender.Male.ToString(),
+                Value = ((int)Gender.Male).ToString()
+            });
+            genders.Add(new SelectListItem
+            {
+                Text = Gender.Other.ToString(),
+                Value = ((int)Gender.Other).ToString()
+            });
+}
+<div class="form-group">
+    @Html.LabelFor(m => m, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.DropDownListFor(m => m, @genders, new { @class = "col-md-2 form-control" })
+    </div>
+</div>

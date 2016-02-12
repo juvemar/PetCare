@@ -68,8 +68,6 @@
                 .ProjectTo<UserDetailsViewModel>()
                 .FirstOrDefault();
 
-            
-
             return View(currentUser);
         }
 

@@ -6,7 +6,7 @@ namespace PetCare.Data.Migrations
     using Microsoft.AspNet.Identity.EntityFramework;
 
     using Models;
-
+    using Common;
     public sealed class Configuration : DbMigrationsConfiguration<PetCareDbContext>
     {
         public Configuration()
@@ -50,6 +50,23 @@ namespace PetCare.Data.Migrations
                 {
                     userManager.AddToRole(user.Id, "admin");
                 }
+            }
+
+            this.RecordSpecies(context);
+
+            context.SaveChanges();
+        }
+
+        private void RecordSpecies(PetCareDbContext context)
+        {
+            var speciesReader = new ReadSpeciesData();
+            var species = speciesReader.ReadSpecies();
+
+            foreach (var item in species)
+            {
+                var newSpecies = new Species();
+                newSpecies.Value = item;
+                context.Species.Add(newSpecies);
             }
         }
     }
