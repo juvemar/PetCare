@@ -1136,6 +1136,7 @@
     <Content Include="Views\Shared\EditorTemplates\FirstNameInputForm.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\LastNameInputForm.cshtml" />
     <Content Include="Views\Pet\AddPet.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailInputForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
