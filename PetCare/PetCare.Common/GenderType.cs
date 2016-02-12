@@ -1,6 +1,6 @@
 ﻿namespace PetCare.Common
 {
-    public enum Gender
+    public enum GenderType
     {
         Female = 0,
         Male = 1,

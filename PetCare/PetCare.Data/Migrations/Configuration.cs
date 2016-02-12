@@ -59,7 +59,7 @@ namespace PetCare.Data.Migrations
 
         private void RecordSpecies(PetCareDbContext context)
         {
-            var speciesReader = new ReadSpeciesData();
+            var speciesReader = new LoadSpecies();
             var species = speciesReader.ReadSpecies();
 
             foreach (var item in species)

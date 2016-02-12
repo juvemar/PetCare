@@ -4,7 +4,7 @@
 
     using Models.Pet;
     using Services.Contracts;
-
+    using Common;
     public class PetController : BaseController
     {
         public PetController(IUsersService users)

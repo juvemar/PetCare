@@ -3,15 +3,19 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Web;
 
     using AutoMapper;
 
     using PetCare.Common;
     using PetCare.Models;
     using PetCare.Web.Infrastructure.Mapping;
-
+    using System.Web.Mvc;
     public class AddPetViewModel : IMapFrom<Pet>, IHaveCustomMappings
     {
+        [UIHint("ProfilePictureInputForm")]
+        public HttpPostedFileBase ProfilePicture { get; set; }
+
         [Required]
         [StringLength(30, MinimumLength = 2)]
         [Display(Name = "Name")]
@@ -19,7 +23,7 @@
 
         [Display(Name = "Gender")]
         [UIHint("GenderInputForm")]
-        public Gender Gender { get; set; }
+        public GenderType Gender { get; set; }
 
         [Required]
         [Display(Name = "Date of Birth")]
@@ -34,18 +38,17 @@
 
         public string OwnerId { get; set; }
 
-        public int? ImageId { get; set; }
-
         public int? HealthRecordId { get; set; }
 
         public virtual ICollection<Event> Events { get; set; }
+
+        public List<SelectListItem> SpeciesList { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<AddPetViewModel, Pet>("AddPet")
                 .ForMember(m => m.OwnerId, opts => opts.MapFrom(m => m.OwnerId))
-                .ForMember(m => m.HealthRecordId, opts => opts.MapFrom(m => m.HealthRecordId))
-                .ForMember(m => m.ImageId, opts => opts.MapFrom(m => m.ImageId));
+                .ForMember(m => m.HealthRecordId, opts => opts.MapFrom(m => m.HealthRecordId));
         }
     }
 }

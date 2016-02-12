@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,10 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assemblies.cs" />
-    <Compile Include="Gender.cs" />
+    <Compile Include="GenderType.cs" />
     <Compile Include="GlobalConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReadSpeciesData.cs" />
+    <Compile Include="LoadSpecies.cs" />
+    <Compile Include="SpeciesType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
