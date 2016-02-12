@@ -1,0 +1,11 @@
+﻿@model object
+
+<div class="form-group">
+    @Html.LabelFor(m => m, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        <span class="btn btn-info btn-file">
+            Browse Picture
+            @Html.TextBoxFor(m => m, new { type = "file", @class = "form-control" })
+        </span>
+    </div>
+</div>
