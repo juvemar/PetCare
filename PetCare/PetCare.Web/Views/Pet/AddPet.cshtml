@@ -1,0 +1,84 @@
+﻿@using PetCare.Common;
+@model PetCare.Web.Models.Pet.AddPetViewModel
+
+@using (Html.BeginForm("AddPet", "Pet", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Add a new Pet</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            </div>
+        </div>
+        @{
+            var genders = new List<SelectListItem>
+                ();
+
+            genders.Add(new SelectListItem
+            {
+                Text = Gender.Female.ToString(),
+                Value = ((int)Gender.Female).ToString()
+            });
+            genders.Add(new SelectListItem
+            {
+                Text = Gender.Male.ToString(),
+                Value = ((int)Gender.Male).ToString()
+            });
+            genders.Add(new SelectListItem
+            {
+                Text = Gender.Other.ToString(),
+                Value = ((int)Gender.Other).ToString()
+            });
+        }
+        <div class="form-group">
+            @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Gender, @genders, new { @class = "col-md-2 form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateOfBirth, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.BirthPlace, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.BirthPlace, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.BirthPlace, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Species, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.Species, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.Species, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.ImageId, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.ImageId, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Pet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+            }
+
+<div class="text-right">
+    Change back button!!!!!!!!!!!!!!!!!!!!!
+    @Html.ActionLink("Back to Pets", "Index", null, new { @class = "btn btn-warning" })
+</div>
