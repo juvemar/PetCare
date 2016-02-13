@@ -38,17 +38,38 @@
                     <a href="http://maps.google.com/?q=@Model.SergeryLocation" target="_blank">@Html.DisplayTextFor(m => m.SergeryLocation)</a>
                 </p>
             }
+            <div>
+                @if (Model.Pets.Count != 0)
+                {
+                    if (User.Identity.Name == Model.UserName)
+                    {
+                        <h2>
+                            Your pets:
+                        </h2>
+                    }
+                    else
+                    {
+                        <h2>
+                            @Model.UserName's pets:
+                        </h2>
+                    }
+                }
+
+                @foreach (var item in Model.Pets)
+                {
+                    <h3>
+                        @Html.ActionLink(item.Name, "PetDetails", "Pet", new { id = item.Id }, new { style = "color:#009999" })
+                    </h3>
+                }
+            </div>
         </div>
     </div>
-    <div class="text-center">
-        @foreach (var item in Model.Pets)
-        {
-            @Html.ActionLink(item.Name, "PetDetails", "Pet", new { id = item.Id }, new { @class = "btn btn-default" })
-        }
-    </div>
+
+    <br />
+
     @if (Model.UserName == User.Identity.Name)
     {
-        <div class="text-center">
+        <div class="text-right">
             @Html.ActionLink("Edit Profile", "EditUserProfile", "Manage", null, new { @class = "btn btn-info" })
             @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-default" })
         </div>

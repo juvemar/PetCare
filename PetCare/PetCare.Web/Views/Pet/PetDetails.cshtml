@@ -29,25 +29,18 @@
                 @Html.DisplayTextFor(m => m.Species)
             </p>
             <p>
-                @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId }, new { /* id = Model.PrimaryKey */ })
+                @if (Model.HealthRecordId != 0)
+                {   
+                    @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId }, new { /* id = Model.PrimaryKey */ })
+                }
+                else
+                {
+                    @Html.ActionLink("Create Health Record", "CreateHealthRecord", "HealthRecord")
+                }
             </p>
         </div>
     </div>
 
-    <div>
-        <h4>PetDetailsViewModel</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.HealthRecordId)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.HealthRecordId)
-            </dd>
-
-        </dl>
-    </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })*@
     </p>
