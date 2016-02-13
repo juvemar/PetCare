@@ -36,7 +36,7 @@
         public string SergeryLocation { get; set; }
 
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail")]
         [UIHint("EmailInputForm")]
         public string Email { get; set; }
     }

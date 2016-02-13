@@ -251,6 +251,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pet\AddPetViewModel.cs" />
+    <Compile Include="Models\Pet\PetDetailsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1142,11 +1143,10 @@
     <Content Include="Views\Shared\EditorTemplates\SergeryLocationInputForm.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\GenderInputForm.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SpeciesInputForm.cshtml" />
+    <Content Include="Views\Pet\PetDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

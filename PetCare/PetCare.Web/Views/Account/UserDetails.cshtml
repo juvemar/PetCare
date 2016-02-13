@@ -41,10 +41,16 @@
         </div>
     </div>
     <div class="text-center">
-        @*TODO: Foreach pets*@
+        @foreach (var item in Model.Pets)
+        {
+            @Html.ActionLink(item.Name, "PetDetails", "Pet", new { id = item.Id }, new { @class = "btn btn-default" })
+        }
     </div>
-    <div class="text-center">
-        @Html.ActionLink("Edit Profile", "EditUserProfile", "Manage", null, new { @class = "btn btn-info" })
-        @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-default" })
-    </div>
+    @if (Model.UserName == User.Identity.Name)
+    {
+        <div class="text-center">
+            @Html.ActionLink("Edit Profile", "EditUserProfile", "Manage", null, new { @class = "btn btn-info" })
+            @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-default" })
+        </div>
+    }
 </div>

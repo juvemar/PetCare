@@ -16,8 +16,6 @@
 
         public virtual IDbSet<Pet> Pets { get; set; }
 
-        public virtual IDbSet<Species> Species { get; set; }
-
         public virtual IDbSet<Event> Events { get; set; }
 
         public virtual IDbSet<HealthRecord> HealthRecords { get; set; }
@@ -42,20 +40,9 @@
             modelBuilder.Entity<Event>()
     .HasMany(t => t.Pets)
     .WithMany(t => t.Events);
-
-            modelBuilder.Entity<Pet>()
-    .HasRequired(a => a.HealthRecord)
-    .WithMany()
-    .HasForeignKey(a => a.HealthRecordId);
-
-            modelBuilder.Entity<HealthRecord>()
-                .HasOptional(b => b.Pet)
-                .WithMany()
-                .HasForeignKey(b => b.PetId);
-
+            
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-            modelBuilder.Conventions.Remove<OneToOneConstraintIntroductionConvention>();
 
             base.OnModelCreating(modelBuilder);
         }

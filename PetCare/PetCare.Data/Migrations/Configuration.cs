@@ -52,22 +52,7 @@ namespace PetCare.Data.Migrations
                 }
             }
 
-            this.RecordSpecies(context);
-
             context.SaveChanges();
-        }
-
-        private void RecordSpecies(PetCareDbContext context)
-        {
-            var speciesReader = new LoadSpecies();
-            var species = speciesReader.ReadSpecies();
-
-            foreach (var item in species)
-            {
-                var newSpecies = new Species();
-                newSpecies.Value = item;
-                context.Species.Add(newSpecies);
-            }
         }
     }
 }

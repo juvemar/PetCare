@@ -1,2 +1,24 @@
-﻿@model object
+﻿@using PetCare.Common
 
+@model object
+
+@{
+            var list = LoadSpecies.ReadSpecies();
+
+            var species = new string[8];
+            for (int i = 0; i < 8; i++)
+            {
+                species[i] = list[i];
+            }
+}
+
+<div class="form-group">
+    @Html.LabelFor(m => m, new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @(Html.Kendo().AutoCompleteFor(m => m)
+                .Name("Species")
+                .HtmlAttributes(new { @class = "form-control col-md-2" })
+                .Placeholder("Start writing..")
+                .BindTo(@species))
+    </div>
+</div>

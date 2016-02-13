@@ -3,11 +3,11 @@
     using System;
     using System.Collections.Generic;
 
-    public class LoadSpecies
+    public static class LoadSpecies
     {
-        private List<string> species;
+        private static List<string> species;
 
-        public List<string> ReadSpecies()
+        public static List<string> ReadSpecies()
         {
             species = new List<string>();
 

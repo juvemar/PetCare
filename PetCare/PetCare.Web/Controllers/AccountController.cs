@@ -65,10 +65,21 @@
         {
             var currentUser = this.users
                 .GetByUsername(this.User.Identity.Name)
+                .FirstOrDefault();
+
+            var pets = currentUser.Pets;
+
+            var userData = this.users
+                .GetByUsername(this.User.Identity.Name)
                 .ProjectTo<UserDetailsViewModel>()
                 .FirstOrDefault();
 
-            return View(currentUser);
+            //foreach (var pet in pets)
+            //{
+            //    userData.Pets.Add(pet);
+            //}
+
+            return View(userData);
         }
 
         //

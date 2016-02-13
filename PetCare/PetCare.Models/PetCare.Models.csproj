@@ -60,7 +60,6 @@
     <Compile Include="Event.cs" />
     <Compile Include="HealthRecord.cs" />
     <Compile Include="Image.cs" />
-    <Compile Include="Species.cs" />
     <Compile Include="VetVisit.cs" />
     <Compile Include="Pet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

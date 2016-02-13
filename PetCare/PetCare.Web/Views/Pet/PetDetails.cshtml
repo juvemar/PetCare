@@ -1,0 +1,53 @@
+﻿@model PetCare.Web.Models.Pet.PetDetailsViewModel
+
+
+<div class="container">
+    <div class="text-center">
+        <h1>@Html.DisplayTextFor(m => m.Name)'s Profile</h1>
+    </div>
+    <div class="row marginTopDiv">
+        <div class="col-md-5 text-center img-thumbnail">
+            <img src="@Url.Action("GetImage", "Image", new { id = Model.ImageId })" alt="Model.UserName" class="img-responsive img-rounded" />
+        </div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-6 jumbotron">
+            <p>
+                @Html.LabelFor(m => m.Gender):
+                @Html.DisplayTextFor(m => m.Gender)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.BirthPlace):
+                @Html.DisplayTextFor(m => m.BirthPlace)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.DateOfBirth):
+                @String.Format("{0:dd/MM/yyyy}", Model.DateOfBirth)
+            </p>
+            <p>
+                @Html.LabelFor(m => m.Species):
+                @Html.DisplayTextFor(m => m.Species)
+            </p>
+            <p>
+                @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId }, new { /* id = Model.PrimaryKey */ })
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <h4>PetDetailsViewModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.HealthRecordId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HealthRecordId)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })
+    </p>

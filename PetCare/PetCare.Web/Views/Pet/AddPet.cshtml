@@ -1,4 +1,4 @@
-﻿@using PetCare.Common;
+﻿@using PetCare.Common
 @model PetCare.Web.Models.Pet.AddPetViewModel
 
 @using (Html.BeginForm("AddPet", "Pet", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
@@ -13,29 +13,11 @@
             @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name" })
             </div>
         </div>
-        @Html.EditorFor(m => m.Gender)
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateOfBirth, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
-                @Html.TextBoxFor(model => model.DateOfBirth, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.BirthPlace, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.ValidationMessageFor(model => model.BirthPlace, "", new { @class = "text-danger" })
-                @Html.TextBoxFor(model => model.BirthPlace, new { @class = "form-control" })
-            </div>
-        </div>
-
         @{
-            var loader = new LoadSpecies();
-            var list = new List<string>();
-            list = loader.ReadSpecies();
+            var list = LoadSpecies.ReadSpecies();
 
             var species = new string[8];
             for (int i = 0; i < 8; i++)
@@ -45,7 +27,7 @@
         }
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Species, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(m => m.Species, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @(Html.Kendo().AutoCompleteFor(m => m.Species)
                 .Name("Species")
@@ -55,7 +37,31 @@
             </div>
         </div>
 
+        @Html.EditorFor(m => m.Gender)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BirthPlace, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.BirthPlace, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.BirthPlace, new { @class = "form-control", placeholder = "Place of Birth" })
+            </div>
+        </div>
+
         @Html.EditorFor(m => m.ProfilePicture)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateOfBirth, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
+              .Name("DateOfBirth")
+              .Value(DateTime.Today)
+              .Max(DateTime.Today)
+              .Culture("US")
+              .Format("yyyy-MM-dd")
+              .HtmlAttributes(new { @class = "form-control" }))
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Add Pet" class="btn btn-default" />
@@ -63,6 +69,7 @@
         </div>
     </div>
             }
+
 
 <div class="text-right">
     Change back button!!!!!!!!!!!!!!!!!!!!!

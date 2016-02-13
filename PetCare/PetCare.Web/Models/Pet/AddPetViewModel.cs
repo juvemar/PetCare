@@ -10,7 +10,7 @@
     using PetCare.Common;
     using PetCare.Models;
     using PetCare.Web.Infrastructure.Mapping;
-    using System.Web.Mvc;
+
     public class AddPetViewModel : IMapFrom<Pet>, IHaveCustomMappings
     {
         [UIHint("ProfilePictureInputForm")]
@@ -27,6 +27,7 @@
 
         [Required]
         [Display(Name = "Date of Birth")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Town of Birth")]
@@ -34,21 +35,17 @@
 
         [Required]
         [Display(Name = "Species")]
+        [UIHint("SpeciesInputForm")]
         public string Species { get; set; }
 
         public string OwnerId { get; set; }
 
-        public int? HealthRecordId { get; set; }
-
         public virtual ICollection<Event> Events { get; set; }
-
-        public List<SelectListItem> SpeciesList { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<AddPetViewModel, Pet>("AddPet")
-                .ForMember(m => m.OwnerId, opts => opts.MapFrom(m => m.OwnerId))
-                .ForMember(m => m.HealthRecordId, opts => opts.MapFrom(m => m.HealthRecordId));
+                .ForMember(m => m.OwnerId, opts => opts.MapFrom(m => m.OwnerId));
         }
     }
 }

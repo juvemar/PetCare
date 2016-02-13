@@ -27,10 +27,7 @@
 
         public string BirthPlace { get; set; }
 
-        public int SpeciesId { get; set; }
-
-        [Required]
-        public virtual Species Species { get; set; }
+        public string Species { get; set; }
 
         public string OwnerId { get; set; }
 
@@ -40,9 +37,8 @@
 
         public virtual Image Image { get; set; }
 
-        public int? HealthRecordId { get; set; }
-
-        //[ForeignKey("HealthRecordId")]
+        public int HealthRecordId { get; set; }
+        
         public virtual HealthRecord HealthRecord { get; set; }
 
         public virtual ICollection<Event> Events
