@@ -7,23 +7,34 @@
 
     public class HealthRecordController : BaseController
     {
-        public HealthRecordController(IUsersService users)
-            :base(users)
-        {
+        private IHealthRecordsService records;
 
+        public HealthRecordController(IUsersService users, IHealthRecordsService records)
+            : base(users)
+        {
+            this.records = records;
         }
 
-        // GET: HealthRecord
         public ActionResult CreateHealthRecord()
         {
             return View();
         }
 
-        // GET: 
         [HttpPost]
-        public ActionResult CreateHealthRecord(CreateHealthRecordViewModel model)
+        public ActionResult CreateHealthRecord(int id, CreateHealthRecordViewModel model)
         {
-            return View(model);
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var dataModel = AutoMapper.Mapper.Map<CreateHealthRecordViewModel, PetCare.Models.HealthRecord>(model);
+
+            dataModel.PetId = id;
+
+            this.records.Add(dataModel);
+
+            return RedirectToAction("PetDetails", "Pet", new { id = id });
         }
     }
 }

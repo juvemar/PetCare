@@ -10,11 +10,11 @@
     public class CreateHealthRecordViewModel : IMapFrom<HealthRecord>, IHaveCustomMappings
     {
         [Required]
-        [Display(Name ="Weight")]
+        [Display(Name ="Weight (in kilograms)")]
         public double Weight { get; set; }
 
         [Required]
-        [Display(Name = "Height")]
+        [Display(Name = "Height (in centimeters)")]
         public double Height { get; set; }
 
         public string FurColor { get; set; }

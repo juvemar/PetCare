@@ -31,11 +31,11 @@
             <p>
                 @if (Model.HealthRecordId != 0)
                 {   
-                    @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId }, new { /* id = Model.PrimaryKey */ })
+                    @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId })
                 }
                 else
                 {
-                    @Html.ActionLink("Create Health Record", "CreateHealthRecord", "HealthRecord")
+                    @Html.ActionLink("Create Health Record", "CreateHealthRecord", "HealthRecord", new { id = Model.Id}, new { })
                 }
             </p>
         </div>

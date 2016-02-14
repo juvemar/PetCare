@@ -29,6 +29,7 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Add Pet", "AddPet", "Pet")</li>
+                        <li>@Html.ActionLink("My Pets", "ListMyPets", "Pet")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

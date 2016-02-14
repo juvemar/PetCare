@@ -1,14 +1,17 @@
 ﻿namespace PetCare.Web.Models.Pet
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     using AutoMapper;
     using Infrastructure.Mapping;
 
     using PetCare.Models;
-    using System.ComponentModel.DataAnnotations;
+
     public class PetDetailsViewModel : IMapFrom<Pet>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public string Gender { get; set; }

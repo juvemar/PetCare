@@ -5,7 +5,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>CreateHealthRecordViewModel</h4>
+        <h4>Create Health Record</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -46,6 +46,6 @@
     </div>
 }
 
-<div>
+<div class="text-right">
     @Html.ActionLink("Back", "PetDetails", "Pet", null, new { @class="btn btn-warning"} )
 </div>
