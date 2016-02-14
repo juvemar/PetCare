@@ -240,6 +240,7 @@
     <Compile Include="Infrastructure\Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Models\Account\UserDetailsViewModel.cs" />
+    <Compile Include="Models\Pet\ListPetsViewModel.cs" />
     <Compile Include="Models\VetVisit\AddVetVisitViewModel.cs" />
     <Compile Include="Models\HealthRecord\CreateHealthRecordViewModel.cs" />
     <Compile Include="Models\HealthRecord\HealthRecordDetails.cs" />
