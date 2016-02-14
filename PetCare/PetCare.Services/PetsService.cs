@@ -1,6 +1,5 @@
 ﻿namespace PetCare.Services
 {
-    using System;
     using System.Linq;
 
     using Contracts;
@@ -30,6 +29,15 @@
         public IQueryable<Pet> GetById(int id)
         {
             return this.pets.All().Where(x => x.Id == id).AsQueryable();
+        }
+
+        public void UpdatePet(int id)
+        {
+            var currentPet = this.pets.GetById(id);
+            currentPet.HealthRecordId = id;
+
+            this.pets.Update(currentPet);
+            this.pets.SaveChanges();
         }
     }
 }

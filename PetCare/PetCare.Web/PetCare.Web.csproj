@@ -240,6 +240,7 @@
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Models\Account\UserDetailsViewModel.cs" />
     <Compile Include="Models\HealthRecord\CreateHealthRecordViewModel.cs" />
+    <Compile Include="Models\HealthRecord\HealthRecordDetails.cs" />
     <Compile Include="Models\Manage\EditUserProfileViewModel.cs" />
     <Compile Include="Models\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\Account\ExternalLoginListViewModel.cs" />
@@ -1147,6 +1148,7 @@
     <Content Include="Views\Shared\EditorTemplates\SpeciesInputForm.cshtml" />
     <Content Include="Views\Pet\PetDetails.cshtml" />
     <Content Include="Views\HealthRecord\CreateHealthRecord.cshtml" />
+    <Content Include="Views\HealthRecord\HealthRecordDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

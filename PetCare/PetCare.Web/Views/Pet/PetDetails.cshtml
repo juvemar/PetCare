@@ -31,7 +31,7 @@
             <p>
                 @if (Model.HealthRecordId != 0)
                 {   
-                    @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId })
+                    @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId }, null)
                 }
                 else
                 {

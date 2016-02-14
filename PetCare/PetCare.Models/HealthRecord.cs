@@ -1,6 +1,5 @@
 ﻿namespace PetCare.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -22,6 +21,10 @@
 
         [Required]
         public double Height { get; set; }
+
+        public string FurColor { get; set; }
+
+        public string Coat { get; set; }
 
         public virtual Pet Pet { get; set; }
 

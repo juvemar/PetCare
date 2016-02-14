@@ -10,5 +10,7 @@
         IQueryable<Pet> GetById(int id);
 
         void Add(Pet pet);
+
+        void UpdatePet(int id);
     }
 }

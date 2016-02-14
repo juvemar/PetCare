@@ -1,0 +1,43 @@
+﻿@model PetCare.Web.Models.HealthRecord.HealthRecordDetails
+
+<h2 class="text-center">@Model.PetName's Health Record</h2>
+<hr />
+<div>
+    <p>
+        @Html.LabelFor(model => model.Weight, new { style = "font-size:22px" })
+        <strong>@Html.DisplayTextFor(model => model.Weight)</strong>
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Height, new { style = "font-size:22px" })
+        <strong>@Html.DisplayTextFor(model => model.Height)</strong>
+    </p>
+    <p>
+        @Html.LabelFor(model => model.FurColor, new { style = "font-size:22px" })
+        <strong>@Html.DisplayTextFor(model => model.FurColor)</strong>
+    </p>
+    <p>
+        @Html.LabelFor(model => model.Coat, new { style = "font-size:22px" })
+        <strong>@Html.DisplayTextFor(model => model.Coat)</strong>
+    </p>
+
+    @Model.PetName's Upcoming Vet Visits:
+    @foreach (var vetVisit in Model.UpcomingVetVisits)
+    {
+        <div>
+            @Html.ActionLink(@vetVisit.Description + " - " + @vetVisit.DateTime, "VetVisitDetails", "Vet", new { id = Model.PetId }, new { @class = "btn btn-info" })
+        </div>
+    }
+
+    @Model.PetName's Vet History:
+    @foreach (var vetVisit in Model.PassedVetVisits)
+    {
+        <div>
+            @Html.ActionLink(@vetVisit.Description + " - " + @vetVisit.DateTime, "VetVisitDetails", "Vet", new { id = Model.PetId }, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>
+
+<div class="text-right">
+    @Html.ActionLink("Edit", "EditHealthRecord", new { id = Model.PetId }, new { @class = "btn btn-info" })
+    @Html.ActionLink("Back to Pet", "PetDetails", "Pet", new { id = Model.PetId }, new { @class = "btn btn-warning" })
+</div>
