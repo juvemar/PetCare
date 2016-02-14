@@ -74,5 +74,14 @@
 
             return this.View(pet);
         }
+
+        public ActionResult ListMyPets()
+        {
+            var currentUser = this.users.GetByUsername(User.Identity.Name).FirstOrDefault();
+
+            var myPets = this.pets.GetAll().Where(p => p.OwnerId == currentUser.Id).ToList();
+
+            return this.View(myPets);
+        }
     }
 }

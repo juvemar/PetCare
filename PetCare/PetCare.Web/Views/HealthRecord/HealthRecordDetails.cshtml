@@ -20,7 +20,7 @@
         <strong>@Html.DisplayTextFor(model => model.Coat)</strong>
     </p>
 
-    @Model.PetName's Upcoming Vet Visits:
+    <h3>@Model.PetName's Upcoming Vet Visits:</h3>
     @foreach (var vetVisit in Model.UpcomingVetVisits)
     {
         <div>
@@ -28,16 +28,27 @@
         </div>
     }
 
-    @Model.PetName's Vet History:
+    <br />
+    <hr />
+    <br />
+
+    <h3> @Model.PetName's Vet History:</h3>
     @foreach (var vetVisit in Model.PassedVetVisits)
     {
         <div>
             @Html.ActionLink(@vetVisit.Description + " - " + @vetVisit.DateTime, "VetVisitDetails", "Vet", new { id = Model.PetId }, new { @class = "btn btn-info" })
         </div>
     }
+    <br />
+
 </div>
 
-<div class="text-right">
-    @Html.ActionLink("Edit", "EditHealthRecord", new { id = Model.PetId }, new { @class = "btn btn-info" })
-    @Html.ActionLink("Back to Pet", "PetDetails", "Pet", new { id = Model.PetId }, new { @class = "btn btn-warning" })
+<div class="row">
+    <div class="col-md-6">
+        @Html.ActionLink("Add Vet Visit", "AddVetVisit", "VetVisit", new { id = Model.PetId }, new { @class = "btn btn-default" })
+    </div>
+    <div class="col-md-6text-right">
+        @Html.ActionLink("Edit", "EditHealthRecord", new { id = Model.PetId }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Back to Pet", "PetDetails", "Pet", new { id = Model.PetId }, new { @class = "btn btn-warning" })
+    </div>
 </div>

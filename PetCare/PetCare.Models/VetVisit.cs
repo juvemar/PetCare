@@ -5,11 +5,6 @@
 
     public class VetVisit
     {
-        public VetVisit()
-        {
-            //this.Id = Guid.NewGuid();
-        }
-
         public int Id { get; set; }
 
         [Required]
