@@ -1,12 +1,13 @@
 ﻿namespace PetCare.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
 
     using Models.VetVisit;
     using PetCare.Services.Contracts;
-    using System.Collections.Generic;
-    using System;
+
     public class VetVisitController : BaseController
     {
         private IUsersService users;
@@ -41,6 +42,14 @@
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddVetVisit(AddVetVisitViewModel model)
+        {
+            
+
+            return View();
         }
 
         public ActionResult GetVetHours(int vetId, DateTime date)

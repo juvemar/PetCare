@@ -1,18 +1,19 @@
 ﻿@model PetCare.Web.Models.VetVisit.AddVetVisitViewModel
 
-@using (Html.BeginForm("AddVetVisit", "VetVisit", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("AddVetVisit", "VetVisit", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
         <h3 class="text-center">Schedule a vet visit</h3>
+
         <hr />
 
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", id = "description" } })
             </div>
         </div>
 
@@ -20,7 +21,7 @@
             @Html.LabelFor(model => model.VetId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.ValidationMessageFor(model => model.VetId, "", new { @class = "text-danger" })
-                @Html.DropDownListFor(model => model.VetId, Model.Vets, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.VetId, Model.Vets, new { @class = "form-control", id = "vetId" })
             </div>
         </div>
 
@@ -29,7 +30,7 @@
             @Html.LabelFor(model => model.DateTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @(Html.Kendo().DatePickerFor(m => m.DateTime)
-              .Name("freeHours")
+              .Name("pickDay")
               .Value(DateTime.Today)
               .Max(DateTime.Today)
               .Culture("US")
@@ -37,6 +38,8 @@
               .HtmlAttributes(new { @class = "form-control" }))
             </div>
         </div>
+
+        <div id="available-hours"></div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
