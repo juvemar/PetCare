@@ -258,6 +258,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pet\AddPetViewModel.cs" />
     <Compile Include="Models\Pet\PetDetailsViewModel.cs" />
+    <Compile Include="Models\VetVisit\VetFreeHoursViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -993,6 +994,7 @@
     <Content Include="Scripts\Account\register.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\VetVisit\ajaxGetVetHours.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

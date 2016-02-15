@@ -67,17 +67,17 @@
                 .GetByUsername(this.User.Identity.Name)
                 .FirstOrDefault();
 
-            var pets = currentUser.Pets;
-
             var userData = this.users
                 .GetByUsername(this.User.Identity.Name)
                 .ProjectTo<UserDetailsViewModel>()
                 .FirstOrDefault();
 
-            //foreach (var pet in pets)
-            //{
-            //    userData.Pets.Add(pet);
-            //}
+            userData.Gender = userData.Gender;
+
+            var pets = userData.Pets
+                .OrderBy(p => p.Name)
+                .ToList();
+            userData.Pets = pets;
 
             return View(userData);
         }

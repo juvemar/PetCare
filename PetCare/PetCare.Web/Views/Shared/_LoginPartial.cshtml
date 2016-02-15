@@ -12,7 +12,7 @@
                 var pictureExists = ((BaseController)this.ViewContext.Controller).GetUserPictureId(this.User.Identity.GetUserId());
             }
             <li>
-                @Html.ActionLink(string.Format("Hello, ", User.Identity.GetUserName()), "UserDetails", "Account", routeValues: null, htmlAttributes: new { title = "Account" })
+                @Html.ActionLink(string.Format("Hello, " + User.Identity.Name, User.Identity.GetUserName()), "UserDetails", "Account", routeValues: null, htmlAttributes: new { title = "Account" })
             </li>
             <li>
                 @if (pictureExists > 0)

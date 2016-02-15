@@ -24,6 +24,8 @@
 
         public virtual IDbSet<Image> Images { get; set; }
 
+        public virtual IDbSet<VetBusyHour> VetBusyHours { get; set; }
+
         public override IDbSet<User> Users { get; set; }
 
         public static PetCareDbContext Create()
@@ -33,14 +35,14 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Pet>()
-    .HasMany(t => t.Events)
-    .WithMany(t => t.Pets);
+    //        modelBuilder.Entity<Pet>()
+    //.HasMany(t => t.Events)
+    //.WithMany(t => t.Pets);
 
-            modelBuilder.Entity<Event>()
-    .HasMany(t => t.Pets)
-    .WithMany(t => t.Events);
-            
+    //        modelBuilder.Entity<Event>()
+    //.HasMany(t => t.Pets)
+    //.WithMany(t => t.Events);
+
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 

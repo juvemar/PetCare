@@ -109,11 +109,10 @@
                 user.FirstName = model.FirstName == null ? string.Empty : model.FirstName;
                 user.LastName = model.LastName == null ? string.Empty : model.LastName;
                 user.Email = model.Email == null ? string.Empty : model.Email;
-                user.Gender = model.Gender == null ? string.Empty : model.Gender;
                 user.PhoneNumber = model.PhoneNumber == null ? string.Empty : model.PhoneNumber;
                 user.ProfilePicture = image == null ? null : image;
 
-                this.users.UpdateUser(user.Id, user.UserName, user.FirstName, user.LastName, user.Email, user.Gender, user.PhoneNumber, user.ProfilePicture);
+                this.users.UpdateUser(user.Id, user.UserName, user.FirstName, user.LastName, user.Email, user.PhoneNumber, user.ProfilePicture);
 
                 return RedirectToAction("Index", "Home");
             }

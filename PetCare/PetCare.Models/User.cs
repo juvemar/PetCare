@@ -1,6 +1,5 @@
 ﻿namespace PetCare.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
@@ -9,15 +8,19 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
+    using Common;
+
     public class User : IdentityUser
     {
         private ICollection<Pet> pets;
         private ICollection<VetVisit> vetVisits;
+        private ICollection<VetBusyHour> vetBusyHours;
 
         public User()
         {
             this.pets = new HashSet<Pet>();
             this.vetVisits = new HashSet<VetVisit>();
+            this.vetBusyHours = new HashSet<VetBusyHour>();
         }
 
         [Required]
@@ -30,7 +33,7 @@
 
         public int? ForumPoints { get; set; }
 
-        public string Gender { get; set; }
+        public GenderType Gender { get; set; }
 
         public string SergeryLocation { get; set; }
 
@@ -48,6 +51,12 @@
         {
             get { return this.vetVisits; }
             set { this.vetVisits = value; }
+        }
+
+        public virtual ICollection<VetBusyHour> VetBusyHours
+        {
+            get { return this.vetBusyHours; }
+            set { this.vetBusyHours = value; }
         }
 
         public ClaimsIdentity GenerateUserIdentity(UserManager<User> manager)

@@ -23,9 +23,6 @@
         [UIHint("LastNameInputForm")]
         public string LastName { get; set; }
 
-        [UIHint("GenderInputForm")]
-        public string Gender { get; set; }
-
         [Display(Name = "Phone Number (+359)")]
         [StringLength(10, MinimumLength = 6, ErrorMessage = "The field Phone Number must be between 6 and 10 digits.")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "The field Phone Number must consist only digits.")]

@@ -102,6 +102,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PetCare.Common\PetCare.Common.csproj">
+      <Project>{49719f5c-a9a3-478b-af39-8c3d0061f250}</Project>
+      <Name>PetCare.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PetCare.Data\PetCare.Data.csproj">
       <Project>{53ed2f27-b9a3-4fff-893d-bb46b0252ead}</Project>
       <Name>PetCare.Data</Name>

@@ -5,7 +5,7 @@
     using Data.Repositories;
     using PetCare.Models;
     using PetCare.Services.Contracts;
-
+    using Common;
     public class UsersService : IUsersService
     {
         private IRepository<User> users;
@@ -30,14 +30,13 @@
             return this.users.All().Where(u => u.UserName == username).AsQueryable();
         }
 
-        public void UpdateUser(string id, string username, string firstName, string lastName, string email, string gender, string phoneNumber, Image image)
+        public void UpdateUser(string id, string username, string firstName, string lastName, string email, string phoneNumber, Image image)
         {
             var currentUser = this.users.GetById(id);
             currentUser.UserName = username == null ? currentUser.UserName : username;
             currentUser.FirstName = firstName == string.Empty ? currentUser.FirstName : firstName;
             currentUser.LastName = lastName == string.Empty ? currentUser.LastName : lastName;
             currentUser.Email = email == string.Empty ? currentUser.Email : email;
-            currentUser.Gender = gender == string.Empty ? currentUser.Gender : gender;
             currentUser.PhoneNumber = phoneNumber == string.Empty ? currentUser.PhoneNumber : phoneNumber;
             currentUser.ProfilePicture = image == null ? currentUser.ProfilePicture : image;
 

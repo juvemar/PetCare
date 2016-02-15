@@ -6,6 +6,7 @@
     using Models.VetVisit;
     using PetCare.Services.Contracts;
     using System.Collections.Generic;
+    using System;
     public class VetVisitController : BaseController
     {
         private IUsersService users;
@@ -40,6 +41,13 @@
             }
 
             return View(model);
+        }
+
+        public ActionResult GetVetHours(int vetId, DateTime date)
+        {
+
+
+            return PartialView();
         }
     }
 }

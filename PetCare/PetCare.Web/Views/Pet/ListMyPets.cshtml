@@ -1,69 +1,22 @@
-﻿@model IEnumerable<PetCare.Web.Models.Pet.PetDetailsViewModel>
+﻿@model IEnumerable<PetCare.Web.Models.Pet.ListPetsViewModel>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BirthPlace)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Species)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OwnerId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HealthRecordId)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthPlace)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Species)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HealthRecordId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<br />
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="col-md-2 text-center">
+            @if (item.ImageId != null)
+            {
+                <img src="@Url.Action("GetImage", "Image", new { id = item.ImageId })" alt="@item.Name" class="img-responsive img-rounded" style="height:150px; width:150px" />
+            }
+            else
+            {
+                <img src="https://image.freepik.com/free-icon/sea-lion-mammal-animal-shape_318-63131.jpg" class="img-responsive img-rounded" style="height:150px; width:150px"/>
+            }
+        </div>
+        <div class="col-md-2" style="padding-top:3%">
+            <h2>@Html.ActionLink(item.Name, "PetDetails", new { id = item.Id }, new { })</h2>
+        </div>
+    </div>
+    <br />
 }
-
-</table>

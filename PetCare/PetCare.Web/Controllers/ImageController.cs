@@ -1,7 +1,8 @@
 ﻿namespace PetCare.Web.Controllers
 {
-    using PetCare.Services.Contracts;
     using System.Web.Mvc;
+
+    using PetCare.Services.Contracts;
 
     public class ImageController : BaseController
     {

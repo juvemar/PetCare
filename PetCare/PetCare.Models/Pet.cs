@@ -10,7 +10,6 @@
 
         public Pet()
         {
-            //this.Id = Guid.NewGuid();
             this.events = new HashSet<Event>();
         }
 
