@@ -9,34 +9,36 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
-                @Html.EditorFor(model => model.Weight, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.Weight, new { @class = "form-control" })
             </div>
         </div>
 
+        @Html.HiddenFor(m => m.PetId)
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Height, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
-                @Html.EditorFor(model => model.Height, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.Height, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FurColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FurColor, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.ValidationMessageFor(model => model.FurColor, "", new { @class = "text-danger" })
-                @Html.EditorFor(model => model.FurColor, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.FurColor, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Coat, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Coat, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.ValidationMessageFor(model => model.Coat, "", new { @class = "text-danger" })
-                @Html.EditorFor(model => model.Coat, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.Coat, new { @class = "form-control" })
             </div>
         </div>
 

@@ -54,7 +54,7 @@
                 .ProjectTo<HealthRecordDetails>()
                 .FirstOrDefault();
 
-            record.PetName = this.pets.GetById(id).FirstOrDefault().Name;
+            //record.PetName = this.pets.GetById(id).FirstOrDefault().Name;
 
             var getAllVisits = this.vetVisits.GetAll().Where(v => v.HealthRecordId == id);
             record.PassedVetVisits = getAllVisits.Where(v => v.DateTime < DateTime.UtcNow).ToList();
@@ -66,7 +66,10 @@
         [HttpGet]
         public ActionResult EditHealthRecord(int id)
         {
-            return View();
+            var model = new CreateHealthRecordViewModel();
+            model.PetId = id;
+
+            return View(model);
         }
 
         [HttpPost]
@@ -81,7 +84,7 @@
 
             this.records.UpdateRecord(dataModel, model.PetId);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("HealthRecordDetails", new { id = model.PetId });
         }
     }
 }

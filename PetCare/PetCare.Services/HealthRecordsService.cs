@@ -35,9 +35,15 @@
 
         public void UpdateRecord(HealthRecord record, int id)
         {
-            var currentRecord = this.GetById(id);
+            var currentRecord = this.GetById(id).FirstOrDefault();
 
+            currentRecord.Coat = record.Coat == null ? currentRecord.Coat : record.Coat;
+            currentRecord.FurColor = record.FurColor == null ? currentRecord.FurColor : record.FurColor;
+            currentRecord.Height = record.Height == 0 ? currentRecord.Height : record.Height;
+            currentRecord.Weight = record.Weight == 0 ? currentRecord.Weight : record.Weight;
 
+            this.records.Update(currentRecord);
+            this.records.SaveChanges();
         }
     }
 }
