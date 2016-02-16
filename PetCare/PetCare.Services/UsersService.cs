@@ -40,24 +40,6 @@
             currentUser.PhoneNumber = user.PhoneNumber == null ? currentUser.PhoneNumber : user.PhoneNumber;
             currentUser.ProfilePicture = user.ProfilePicture == null ? currentUser.ProfilePicture : user.ProfilePicture;
 
-            if (currentUser.VetBusyHours.Count != user.VetBusyHours.Count)
-            {
-                currentUser.VetBusyHours.Clear();
-                foreach (var hour in user.VetBusyHours)
-                {
-                    currentUser.VetBusyHours.Add(hour);
-                }
-            }
-
-            if (currentUser.VetVisits.Count != user.VetVisits.Count)
-            {
-                currentUser.VetVisits.Clear();
-                foreach (var visit in user.VetVisits)
-                {
-                    currentUser.VetVisits.Add(visit);
-                }
-            }
-
             this.users.Update(currentUser);
             this.users.SaveChanges();
         }

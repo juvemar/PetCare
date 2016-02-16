@@ -6,8 +6,9 @@
     using System.Web.Mvc;
 
     using Models.VetVisit;
-    using PetCare.Services.Contracts;
     using PetCare.Models;
+    using PetCare.Services.Contracts;
+
     public class VetVisitController : BaseController
     {
         private IUsersService users;
@@ -64,7 +65,6 @@
 
             var dataModel = AutoMapper.Mapper.Map<AddVetVisitViewModel, PetCare.Models.VetVisit>(model);
 
-            var currentVet = this.users.GetById(vetId);
             var busyHour = new VetBusyHour()
             {
                 Date = date,
@@ -74,12 +74,8 @@
             this.hours.Add(busyHour);
             this.visits.Add(dataModel);
 
-            //currentVet.VetBusyHours.Add(busyHour);
-            //currentVet.VetVisits.Add(dataModel);
-
-            //this.users.UpdateUser(currentVet, vetId);
-
             return RedirectToAction("HealthRecordDetails", "HealthRecord", new { id = healthRecordId });
+            //return Json(Url.Action("HealthRecordDetails", "HealthRecord", new { id = healthRecordId }));
         }
     }
 }

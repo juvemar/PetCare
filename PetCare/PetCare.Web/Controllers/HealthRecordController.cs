@@ -55,10 +55,33 @@
                 .FirstOrDefault();
 
             record.PetName = this.pets.GetById(id).FirstOrDefault().Name;
-            record.PassedVetVisits = this.vetVisits.GetAll().Where(v => v.DateTime < DateTime.Now);
-            record.UpcomingVetVisits = this.vetVisits.GetAll().Where(v => v.DateTime > DateTime.Now);
+
+            var getAllVisits = this.vetVisits.GetAll().Where(v => v.HealthRecordId == id);
+            record.PassedVetVisits = getAllVisits.Where(v => v.DateTime < DateTime.UtcNow).ToList();
+            record.UpcomingVetVisits = getAllVisits.Where(v => v.DateTime > DateTime.UtcNow).OrderBy(v => v.DateTime).ToList();
 
             return View(record);
+        }
+
+        [HttpGet]
+        public ActionResult EditHealthRecord(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditHealthRecord(CreateHealthRecordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var dataModel = AutoMapper.Mapper.Map<CreateHealthRecordViewModel, PetCare.Models.HealthRecord>(model);
+
+            this.records.UpdateRecord(dataModel, model.PetId);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

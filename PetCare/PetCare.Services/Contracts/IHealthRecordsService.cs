@@ -11,5 +11,7 @@
         IQueryable<HealthRecord> GetById(int id);
 
         void Add(HealthRecord record);
+
+        void UpdateRecord(HealthRecord record, int id);
     }
 }

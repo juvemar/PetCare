@@ -32,5 +32,12 @@
         {
             return this.records.All().Where(x => x.PetId == id).AsQueryable();
         }
+
+        public void UpdateRecord(HealthRecord record, int id)
+        {
+            var currentRecord = this.GetById(id);
+
+
+        }
     }
 }

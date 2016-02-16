@@ -1,19 +1,22 @@
 ﻿@model IEnumerable<PetCare.Web.Models.VetFreeHour.VetFreeHourViewModel>
 
-
 <h2 class="text-center">@Model.FirstOrDefault().VetName's Available Hours for @Model.FirstOrDefault().Date.Date.ToShortDateString()</h2>
 <br />
 
 @foreach (var item in Model)
 {
-    <div class="row">
-        <div class="col-md-4">
-            @Html.Label(@item.Date.ToString(), new { @class = "control-label" })
+    using (Html.BeginForm("AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description, healthRecordId = item.HealthRecordId }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label(@item.Date.ToString(), new { @class = "control-label" })
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-default" value="Book an appointment" />
+                @*@Ajax.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description, healthRecordId = item.HealthRecordId }, new AjaxOptions() { HttpMethod = "POST" }, new { @class = "btn btn-warning" })*@
+                @*@Html.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description, healthRecordId = item.HealthRecordId }, new { @class = "btn btn-warning" })*@
+            </div>
         </div>
-        <div class="col-md-2">
-            @Ajax.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description, healthRecordId = item.HealthRecordId }, new AjaxOptions() { HttpMethod = "POST" }, new { @class = "btn btn-warning" })
-            @*@Html.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description }, new { @class = "btn btn-warning" })*@
-        </div>
-    </div>
-    <br />
+        <br />
+    }
 }

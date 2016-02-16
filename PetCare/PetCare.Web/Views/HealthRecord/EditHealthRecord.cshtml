@@ -1,0 +1,53 @@
+﻿@model PetCare.Web.Models.HealthRecord.CreateHealthRecordViewModel
+
+@using (Html.BeginForm("EditHealthRecord", "HealthRecord", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h3 class="text-center">Edit Health Record</h3>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Weight, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Height, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Height, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FurColor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.FurColor, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.FurColor, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Coat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.Coat, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Coat, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.PetId }, new { @class = "btn btn-warning" })
+</div>
