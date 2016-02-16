@@ -13,11 +13,14 @@
     console.log(data);
 
     if ($('#vetId').val().trim() != '' && $('#description').val().trim() != '') {
+        $("#LoadingImage").show();
+
         $.ajax({
             type: "GET",
             url: "/VetBusyHour/VetAvailableHours",
             data: data,
             success: function (view) {
+                $("#LoadingImage").hide();
                 $("#available-hours").html(view);
             },
             error: function (errorData) { onError(errorData); }
