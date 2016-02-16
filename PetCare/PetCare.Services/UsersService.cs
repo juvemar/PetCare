@@ -5,7 +5,7 @@
     using Data.Repositories;
     using PetCare.Models;
     using PetCare.Services.Contracts;
-    using Common;
+
     public class UsersService : IUsersService
     {
         private IRepository<User> users;
@@ -30,15 +30,33 @@
             return this.users.All().Where(u => u.UserName == username).AsQueryable();
         }
 
-        public void UpdateUser(string id, string username, string firstName, string lastName, string email, string phoneNumber, Image image)
+        public void UpdateUser(User user, string id)
         {
             var currentUser = this.users.GetById(id);
-            currentUser.UserName = username == null ? currentUser.UserName : username;
-            currentUser.FirstName = firstName == string.Empty ? currentUser.FirstName : firstName;
-            currentUser.LastName = lastName == string.Empty ? currentUser.LastName : lastName;
-            currentUser.Email = email == string.Empty ? currentUser.Email : email;
-            currentUser.PhoneNumber = phoneNumber == string.Empty ? currentUser.PhoneNumber : phoneNumber;
-            currentUser.ProfilePicture = image == null ? currentUser.ProfilePicture : image;
+            currentUser.UserName = user.UserName == null ? currentUser.UserName : user.UserName;
+            currentUser.FirstName = user.FirstName == null ? currentUser.FirstName : user.FirstName;
+            currentUser.LastName = user.LastName == null ? currentUser.LastName : user.LastName;
+            currentUser.Email = user.Email == null ? currentUser.Email : user.Email;
+            currentUser.PhoneNumber = user.PhoneNumber == null ? currentUser.PhoneNumber : user.PhoneNumber;
+            currentUser.ProfilePicture = user.ProfilePicture == null ? currentUser.ProfilePicture : user.ProfilePicture;
+
+            if (currentUser.VetBusyHours.Count != user.VetBusyHours.Count)
+            {
+                currentUser.VetBusyHours.Clear();
+                foreach (var hour in user.VetBusyHours)
+                {
+                    currentUser.VetBusyHours.Add(hour);
+                }
+            }
+
+            if (currentUser.VetVisits.Count != user.VetVisits.Count)
+            {
+                currentUser.VetVisits.Clear();
+                foreach (var visit in user.VetVisits)
+                {
+                    currentUser.VetVisits.Add(visit);
+                }
+            }
 
             this.users.Update(currentUser);
             this.users.SaveChanges();

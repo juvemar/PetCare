@@ -8,6 +8,8 @@
 
     public class VetFreeHourViewModel : IMapFrom<PetCare.Models.VetBusyHour>, IHaveCustomMappings
     {
+        public int HealthRecordId { get; set; }
+
         public string Description { get; set; }
 
         public string VetName { get; set; }

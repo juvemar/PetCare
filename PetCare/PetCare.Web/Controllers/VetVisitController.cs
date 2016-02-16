@@ -7,25 +7,31 @@
 
     using Models.VetVisit;
     using PetCare.Services.Contracts;
-
+    using PetCare.Models;
     public class VetVisitController : BaseController
     {
         private IUsersService users;
+        private IVetBusyHoursService hours;
+        private IVetVisitsService visits;
 
-        public VetVisitController(IUsersService users)
+        public VetVisitController(IUsersService users, IVetBusyHoursService hours, IVetVisitsService visits)
             : base(users)
         {
             this.users = users;
+            this.hours = hours;
+            this.visits = visits;
         }
 
+        [Authorize]
         [HttpGet]
         public ActionResult VetVisitDetails()
         {
             return View();
         }
 
+        [Authorize]
         [HttpGet]
-        public ActionResult AddVetVisit(int id)
+        public ActionResult AddVetVisit()
         {
             var model = new AddVetVisitViewModel();
             var vets = this.users.GetAll().Where(x => x.SergeryLocation != null).ToList();
@@ -44,19 +50,36 @@
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
-        public ActionResult AddVetVisit(AddVetVisitViewModel model)
+        public ActionResult AddVetVisit(string vetId, DateTime date, string description, int healthRecordId)
         {
-            
+            var model = new AddVetVisitViewModel()
+            {
+                VetId = vetId,
+                DateTime = date,
+                Description = description
+            };
 
-            return View();
-        }
+            var dataModel = AutoMapper.Mapper.Map<AddVetVisitViewModel, PetCare.Models.VetVisit>(model);
+            dataModel.HealthRecordId = healthRecordId;
 
-        public ActionResult GetVetHours(int vetId, DateTime date)
-        {
+            var currentVet = this.users.GetById(vetId);
+            var busyHour = new VetBusyHour()
+            {
+                Date = date,
+                VetId = vetId
+            };
 
+            this.hours.Add(busyHour);
+            this.visits.Add(dataModel);
 
-            return PartialView();
+            currentVet.VetBusyHours.Add(busyHour);
+            currentVet.VetVisits.Add(dataModel);
+
+            this.users.UpdateUser(currentVet, vetId);
+
+            return RedirectToAction("HealthRecordDetails", "HealthRecord", new { id = healthRecordId });
         }
     }
 }

@@ -69,59 +69,49 @@
             }
         }
 
-        //
         // GET: /Account/EditUserProfile
         public ActionResult EditUserProfile()
         {
             return View();
         }
 
-        //
         // POST: /Account/EditUserProfile
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditUserProfile(EditUserProfileViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                Image image = null;
-
-                if (model.ProfilePicture != null)
-                {
-                    using (var memory = new MemoryStream())
-                    {
-                        model.ProfilePicture.InputStream.CopyTo(memory);
-                        var content = memory.GetBuffer();
-
-                        image = new Image
-                        {
-                            Content = content,
-                            Extension = model.ProfilePicture.FileName.Split(new[] { '.' }).Last()
-                        };
-                    }
-                }
-
-                string username = this.User.Identity.Name;
-
-                User user = this.users.GetByUsername(username).FirstOrDefault();
-
-                user.UserName = model.UserName == null ? string.Empty : model.UserName;
-                user.FirstName = model.FirstName == null ? string.Empty : model.FirstName;
-                user.LastName = model.LastName == null ? string.Empty : model.LastName;
-                user.Email = model.Email == null ? string.Empty : model.Email;
-                user.PhoneNumber = model.PhoneNumber == null ? string.Empty : model.PhoneNumber;
-                user.ProfilePicture = image == null ? null : image;
-
-                this.users.UpdateUser(user.Id, user.UserName, user.FirstName, user.LastName, user.Email, user.PhoneNumber, user.ProfilePicture);
-
-                return RedirectToAction("Index", "Home");
+                return View(model);
             }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            Image image = null;
+
+            if (model.Picture != null)
+            {
+                using (var memory = new MemoryStream())
+                {
+                    model.Picture.InputStream.CopyTo(memory);
+                    var content = memory.GetBuffer();
+
+                    image = new Image
+                    {
+                        Content = content,
+                        Extension = model.Picture.FileName.Split(new[] { '.' }).Last()
+                    };
+                }
+            }
+
+            var dataModel = AutoMapper.Mapper.Map<EditUserProfileViewModel, PetCare.Models.User>(model);
+
+            string username = this.User.Identity.Name;
+            User user = this.users.GetByUsername(username).FirstOrDefault();
+            
+            this.users.UpdateUser(dataModel, user.Id);
+
+            return RedirectToAction("Index", "Home");
         }
-
-
+        
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)

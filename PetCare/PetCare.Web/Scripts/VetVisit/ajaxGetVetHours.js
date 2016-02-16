@@ -3,7 +3,8 @@
     var data = {
         date :  $(this).val(),
         vetId: $('#vetId').val(),
-        description: $('#description').val()
+        description: $('#description').val(),
+        healthRecordId: $('#healthRecordId').val()
     };
     console.log(data);
     $.ajax({

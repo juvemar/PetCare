@@ -1,12 +1,17 @@
 ﻿namespace PetCare.Web.Models.Manage
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
 
-    public class EditUserProfileViewModel
+    using AutoMapper;
+    using Infrastructure.Mapping;
+    using System.Collections.Generic;
+    using VetVisit;
+    public class EditUserProfileViewModel : IMapFrom<PetCare.Models.User>
     {
         [UIHint("ProfilePictureInputForm")]
-        public HttpPostedFileBase ProfilePicture { get; set; }
+        public HttpPostedFileBase Picture { get; set; }
         
         [StringLength(25, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         [Display(Name = "UserName")]
@@ -27,7 +32,7 @@
         [StringLength(10, MinimumLength = 6, ErrorMessage = "The field Phone Number must be between 6 and 10 digits.")]
         [RegularExpression("^[0-9]*$", ErrorMessage = "The field Phone Number must consist only digits.")]
         [UIHint("PhoneNumberInputForm")]
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } 
 
         [UIHint("SergeryLocationInputForm")]
         public string SergeryLocation { get; set; }
@@ -36,5 +41,7 @@
         [Display(Name = "E-mail")]
         [UIHint("EmailInputForm")]
         public string Email { get; set; }
+
+        //public List<VetVisitDetailsViewModel> VetVisits { get; set; }
     }
 }

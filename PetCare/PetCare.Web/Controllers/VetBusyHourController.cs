@@ -5,9 +5,8 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    using Models.VetVisit;
-    using Services.Contracts;
     using Common;
+    using Services.Contracts;
     using Models.VetFreeHour;
 
     public class VetBusyHourController : BaseController
@@ -22,8 +21,10 @@
             this.hours = hours;
         }
 
+        [Authorize]
         [ActionName("VetAvailableHours")]
-        public ActionResult GetVetAvailableHours(string vetId, DateTime date, string description)
+        [HttpGet]
+        public ActionResult GetVetAvailableHours(string vetId, DateTime date, string description, string healthRecordId)
         {
             var availableHours = new List<VetFreeHourViewModel>();
 
@@ -34,7 +35,7 @@
             var workingHour = date.Date + firstWorkingHour;
             for (int i = 0; i < GlobalConstants.VetHoursPerDay; i++)
             {
-                if (allHours.Contains(workingHour))
+                if (allHours.Contains(workingHour) || workingHour < DateTime.Now + new TimeSpan(2, 0, 0))
                 {
                     continue;
                 }
@@ -44,7 +45,8 @@
                     Date = workingHour,
                     VetId = vetId,
                     VetName = currentVet.FirstName + " " + currentVet.LastName,
-                    Description = description
+                    Description = description,
+                    HealthRecordId = int.Parse(healthRecordId)
                 });
 
                 workingHour += new TimeSpan(0, 30, 0);

@@ -14,7 +14,8 @@
             @Html.Label(@item.Date.ToString(), new { @class = "control-label" })
         </div>
         <div class="col-md-2">
-            @Html.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description }, new { @class = "btn btn-warning" })
+            @Ajax.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description, healthRecordId = item.healthRecordId }, new AjaxOptions() { HttpMethod = "POST" }, new { @class = "btn btn-warning" })
+            @*@Html.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description }, new { @class = "btn btn-warning" })*@
         </div>
     </div>
     <br />

@@ -32,6 +32,7 @@
         }
 
         // POST: Pet/AddPet
+        [Authorize]
         [HttpPost]
         public ActionResult AddPet(AddPetViewModel model)
         {
@@ -80,6 +81,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult ListMyPets()
         {
             var currentUser = this.users.GetByUsername(User.Identity.Name).FirstOrDefault();
