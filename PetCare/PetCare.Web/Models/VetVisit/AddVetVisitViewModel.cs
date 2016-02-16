@@ -26,7 +26,7 @@
         public List<SelectListItem> Vets { get; set; }
 
         [Required]
-        [HiddenInput(DisplayValue = false)]
+        //[HiddenInput(DisplayValue = false)]
         public int HealthRecordId { get; set; }
 
         public void CreateMappings(IConfiguration configuration)

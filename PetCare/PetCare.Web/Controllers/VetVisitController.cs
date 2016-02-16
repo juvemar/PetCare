@@ -31,13 +31,13 @@
 
         [Authorize]
         [HttpGet]
-        public ActionResult AddVetVisit()
+        public ActionResult AddVetVisit(int id)
         {
             var model = new AddVetVisitViewModel();
+            model.HealthRecordId = id;
+
             var vets = this.users.GetAll().Where(x => x.SergeryLocation != null).ToList();
-
             model.Vets = new List<SelectListItem>();
-
             foreach (var vet in vets)
             {
                 model.Vets.Add(new SelectListItem
@@ -58,11 +58,11 @@
             {
                 VetId = vetId,
                 DateTime = date,
-                Description = description
+                Description = description,
+                HealthRecordId = healthRecordId
             };
 
             var dataModel = AutoMapper.Mapper.Map<AddVetVisitViewModel, PetCare.Models.VetVisit>(model);
-            dataModel.HealthRecordId = healthRecordId;
 
             var currentVet = this.users.GetById(vetId);
             var busyHour = new VetBusyHour()
@@ -74,10 +74,10 @@
             this.hours.Add(busyHour);
             this.visits.Add(dataModel);
 
-            currentVet.VetBusyHours.Add(busyHour);
-            currentVet.VetVisits.Add(dataModel);
+            //currentVet.VetBusyHours.Add(busyHour);
+            //currentVet.VetVisits.Add(dataModel);
 
-            this.users.UpdateUser(currentVet, vetId);
+            //this.users.UpdateUser(currentVet, vetId);
 
             return RedirectToAction("HealthRecordDetails", "HealthRecord", new { id = healthRecordId });
         }

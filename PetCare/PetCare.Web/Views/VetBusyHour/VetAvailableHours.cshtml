@@ -1,8 +1,5 @@
 ﻿@model IEnumerable<PetCare.Web.Models.VetFreeHour.VetFreeHourViewModel>
 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 <h2 class="text-center">@Model.FirstOrDefault().VetName's Available Hours for @Model.FirstOrDefault().Date.Date.ToShortDateString()</h2>
 <br />
@@ -14,7 +11,7 @@
             @Html.Label(@item.Date.ToString(), new { @class = "control-label" })
         </div>
         <div class="col-md-2">
-            @Ajax.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description, healthRecordId = item.healthRecordId }, new AjaxOptions() { HttpMethod = "POST" }, new { @class = "btn btn-warning" })
+            @Ajax.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description, healthRecordId = item.HealthRecordId }, new AjaxOptions() { HttpMethod = "POST" }, new { @class = "btn btn-warning" })
             @*@Html.ActionLink("Book an appointment", "AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description }, new { @class = "btn btn-warning" })*@
         </div>
     </div>

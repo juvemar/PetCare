@@ -35,8 +35,9 @@
             var workingHour = date.Date + firstWorkingHour;
             for (int i = 0; i < GlobalConstants.VetHoursPerDay; i++)
             {
-                if (allHours.Contains(workingHour) || workingHour < DateTime.Now + new TimeSpan(2, 0, 0))
+                if (allHours.Contains(workingHour) || workingHour < DateTime.UtcNow + new TimeSpan(2, 0, 0))
                 {
+                    workingHour += new TimeSpan(0, 30, 0);
                     continue;
                 }
 

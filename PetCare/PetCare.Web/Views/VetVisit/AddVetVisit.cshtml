@@ -9,10 +9,10 @@
 
         <hr />
 
-        @Html.EditorFor(m => m.HealthRecordId, new { id = "healthRecordId" })
+        @Html.HiddenFor(m => m.HealthRecordId, new { id = "healthRecordId" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 @Html.TextAreaFor(model => model.Description, new { @class = "form-control", id = "description" })
@@ -20,10 +20,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.VetId, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.VetId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.ValidationMessageFor(model => model.VetId, "", new { @class = "text-danger" })
-                @Html.DropDownListFor(model => model.VetId, Model.Vets, new { @class = "form-control", id = "vetId" })
+                @Html.DropDownListFor(model => model.VetId, Model.Vets, "Choose a Vet", new { @class = "form-control", id = "vetId" })
             </div>
         </div>
 
