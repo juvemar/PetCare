@@ -3,12 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Claims;
     using System.Web.Mvc;
 
     using Models.VetVisit;
     using PetCare.Models;
     using PetCare.Services.Contracts;
-
+    using System.Web.Security;
     public class VetVisitController : BaseController
     {
         private IUsersService users;
@@ -36,7 +37,8 @@
         {
             var model = new AddVetVisitViewModel();
             model.HealthRecordId = id;
-
+            
+            // TODO: Add IsVet to User
             var vets = this.users.GetAll().Where(x => x.SergeryLocation != null).ToList();
             model.Vets = new List<SelectListItem>();
             foreach (var vet in vets)
@@ -75,7 +77,6 @@
             this.visits.Add(dataModel);
 
             return RedirectToAction("HealthRecordDetails", "HealthRecord", new { id = healthRecordId });
-            //return Json(Url.Action("HealthRecordDetails", "HealthRecord", new { id = healthRecordId }));
         }
     }
 }

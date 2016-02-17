@@ -1,6 +1,12 @@
-﻿$(document).on('change', '#pickDay', function (e) {
-    console.log(e);
+﻿$("#vetId").change(function () {
+    if ($('#vetId').val() != '') {
+        $('#datePickerView').show();
+    } else {
+        $('#datePickerView').hide();
+    }
+})
 
+$(document).on('change', '#pickDay', function (e) {
     e.preventDefault();
 
     var data = {
@@ -9,8 +15,6 @@
         description: $('#description').val(),
         healthRecordId: $('#healthRecordId').val()
     };
-
-    console.log(data);
 
     if ($('#vetId').val().trim() != '' && $('#description').val().trim() != '') {
         $("#LoadingImage").show();

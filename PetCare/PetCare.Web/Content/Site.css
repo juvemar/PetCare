@@ -24,7 +24,7 @@ textarea {
 
 .btn-nextvisit{
   color: black;
-  background-color: limegreen;
+  background-color: dodgerblue;
   border-color: #cccccc;
 }
 
@@ -34,7 +34,7 @@ textarea {
 .btn-nextvisit.active,
 .open .dropdown-toggle.btn-nextvisit {
   color: white;
-  background-color: darkgreen;
+  background-color: deepskyblue;
   border-color: #adadad;
 }
 

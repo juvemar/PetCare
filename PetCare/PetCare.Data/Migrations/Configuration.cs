@@ -34,6 +34,11 @@ namespace PetCare.Data.Migrations
                 roleManager.Create(new IdentityRole("vet"));
             }
 
+            if (!roleManager.RoleExists("user"))
+            {
+                roleManager.Create(new IdentityRole("user"));
+            }
+
             var user = new User
             {
                 UserName = "admin",

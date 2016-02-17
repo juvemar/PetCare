@@ -36,7 +36,7 @@
             @foreach (var vetVisit in Model.PassedVetVisits)
             {
                 <div>
-                    @Html.ActionLink(@vetVisit.Description + " - " + @vetVisit.DateTime, "VetVisitDetails", "VetVisit", new { id = Model.PetId }, new { @class = "btn btn-info", style = "width:70%" })
+                    @Html.ActionLink(@vetVisit.Description + " - " + @vetVisit.DateTime, "VetVisitDetails", "VetVisit", new { id = Model.PetId }, new { @class = "btn btn-lastvisit", style = "width:70%" })
                 </div>
             }
         </div>

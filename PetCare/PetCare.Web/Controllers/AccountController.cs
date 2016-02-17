@@ -225,6 +225,10 @@
                     {
                         UserManager.AddToRole(user.Id, "vet");
                     }
+                    else
+                    {
+                        UserManager.AddToRole(user.Id, "user");
+                    }
 
                     return RedirectToAction("Index", "Home");
                 }
