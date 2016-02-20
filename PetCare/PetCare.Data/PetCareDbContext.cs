@@ -26,6 +26,10 @@
 
         public virtual IDbSet<VetBusyHour> VetBusyHours { get; set; }
 
+        public virtual IDbSet<Notification> Notifications { get; set; }
+
+        public virtual IDbSet<Room> Rooms { get; set; }
+
         public override IDbSet<User> Users { get; set; }
 
         public static PetCareDbContext Create()

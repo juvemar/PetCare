@@ -6,8 +6,8 @@
     using System.Web.Mvc;
 
     using Common;
-    using Services.Contracts;
     using Models.VetFreeHour;
+    using Services.Contracts;
 
     public class VetBusyHourController : BaseController
     {

@@ -207,7 +207,8 @@
                     PhoneNumber = model.PhoneNumber,
                     SergeryLocation = model.SergeryLocation,
                     ProfilePicture = image,
-                    Gender = model.Gender
+                    Gender = model.Gender,
+                    IsVet = model.IsVet
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);

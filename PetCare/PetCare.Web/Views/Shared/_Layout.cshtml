@@ -44,8 +44,14 @@
         </footer>
     </div>
 
+    @Scripts.Render("~/bundles/hub")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendo")
     @RenderSection("scripts", required: false)
+
+    @section Scripts {
+        <script src="~/Scripts/Hub/notifier.js"></script>
+    }
+
 </body>
 </html>

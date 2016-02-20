@@ -88,6 +88,7 @@
     <Compile Include="Contracts\IHealthRecordsService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\IPetsService.cs" />
+    <Compile Include="Contracts\IRoomsService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Contracts\IVetBusyHoursService.cs" />
     <Compile Include="Contracts\IVetVisitsService.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="ImagesService.cs" />
     <Compile Include="PetsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomsService.cs" />
     <Compile Include="UsersService.cs" />
     <Compile Include="VetBusyHoursService.cs" />
     <Compile Include="VetVisitsService.cs" />

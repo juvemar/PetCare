@@ -31,6 +31,8 @@
         [StringLength(20, MinimumLength = 2)]
         public string LastName { get; set; }
 
+        public bool IsVet { get; set; }
+
         public int? ForumPoints { get; set; }
 
         public GenderType Gender { get; set; }
@@ -40,6 +42,8 @@
         public int? ProfilePictureId { get; set; }
 
         public virtual Image ProfilePicture { get; set; }
+
+        public virtual Room Room { get; set; }
 
         public virtual ICollection<Pet> Pets
         {

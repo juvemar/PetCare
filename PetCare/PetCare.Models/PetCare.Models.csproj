@@ -60,6 +60,8 @@
     <Compile Include="Event.cs" />
     <Compile Include="HealthRecord.cs" />
     <Compile Include="Image.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="Room.cs" />
     <Compile Include="VetBusyHour.cs" />
     <Compile Include="VetVisit.cs" />
     <Compile Include="Pet.cs" />
