@@ -1,24 +1,19 @@
 ﻿namespace PetCare.Web.Hubs
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.AspNet.SignalR;
+    using Microsoft.AspNet.SignalR.Hubs;
 
     using PetCare.Models;
     using Services.Contracts;
-    using System.Linq;
 
     public class NotifierHub : Hub
     {
         private IUsersService users;
         private IRoomsService rooms;
-
-        public NotifierHub(IUsersService users, IRoomsService rooms)
-        {
-            this.users = users;
-            this.rooms = rooms;
-        }
-
+        
         public override Task OnConnected()
         {
             var currentUser = this.users.GetByUsername(Context.User.Identity.Name).FirstOrDefault();
@@ -39,6 +34,7 @@
             return base.OnConnected();
         }
 
+        [HubMethodName("sendMessage")]
         public void SendMessage(string message)
         {
             var msg = string.Format("{0}: {1}", Context.ConnectionId, message);

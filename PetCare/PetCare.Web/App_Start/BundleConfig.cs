@@ -30,9 +30,8 @@ namespace PetCare.Web
             bundles.Add(new ScriptBundle("~/bundles/jqueryUnobtrusive").Include(
                         "~/Scripts/jquery.unobtrusive*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/hub").Include(
-                    "~/Scripts/jquery.signalR-2.2.0.js",
-                    "~/signalr/hubs"));
+            bundles.Add(new ScriptBundle("~/bundles/signalR").Include(
+                    "~/Scripts/jquery.signalR-2.2.0.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.

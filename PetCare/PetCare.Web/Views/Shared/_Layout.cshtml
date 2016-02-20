@@ -9,7 +9,6 @@
     @Scripts.Render("~/bundles/jqueryUnobtrusive")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/kendo")
-    @RenderSection("styles", required: false)
     @Styles.Render("~/Content/custom")
 
 </head>
@@ -44,14 +43,30 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/hub")
+    @Scripts.Render("~/bundles/signalR")
+    <script src="~/signalr/hubs" type="text/javascript"></script>
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendo")
+
+    <script>
+        var notifier = $.connection.notifierHub;
+
+        notifier.client.startit = new function () { };
+
+        $.connection.hub.start().done(function () {
+            console.log("Success");
+            console.log(notifier);
+            notifier.server.sendMessage("ASD");
+        }).fail(function (error) {
+            console.log('Invocation of start failed. Error: ' + error)
+        });
+
+    </script>
+
+    @*<script src="~/Scripts/Hub/notifier.js"></script>*@
+
     @RenderSection("scripts", required: false)
 
-    @section Scripts {
-        <script src="~/Scripts/Hub/notifier.js"></script>
-    }
 
 </body>
 </html>
