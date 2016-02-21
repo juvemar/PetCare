@@ -1,16 +1,15 @@
-﻿@model IEnumerable<PetCare.Web.Models.VetVisit.AddVetVisitViewModel>
+﻿@model IEnumerable<PetCare.Web.Models.VetFreeHour.VetFreeHourViewModel>
 
 <hr />
-<h2 class="text-center">@Model.FirstOrDefault().VetName's Available Hours for @Model.FirstOrDefault().DateTime.Date.ToShortDateString()</h2>
+<h2 class="text-center">@Model.FirstOrDefault().VetName's Available Hours for @Model.FirstOrDefault().Date.Date.ToShortDateString()</h2>
 <br />
-
 @foreach (var item in Model)
 {
-    using (Html.BeginForm("AddVetVisit", "VetVisit", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    using (Html.BeginForm("AddVetVisit", "VetVisit", new { vetId = item.VetId, date = item.Date, description = item.Description, healthRecordId = item.HealthRecordId }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         <div class="row">
             <div class="col-md-4">
-                @Html.Label(@item.DateTime.ToString("yyyy-MM-dd HH:mm"), new { @class = "control-label" })
+                @Html.Label(@item.Date.ToString("yyyy-MM-dd HH:mm"), new { @class = "control-label" })
             </div>
             <div class="col-md-2">
                 <input type="submit" class="btn btn-default" value="Book an appointment" />

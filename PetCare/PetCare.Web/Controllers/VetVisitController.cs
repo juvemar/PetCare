@@ -5,10 +5,12 @@
     using System.Linq;
     using System.Web.Mvc;
 
+    using AutoMapper.QueryableExtensions;
+
     using Models.VetVisit;
     using PetCare.Models;
     using PetCare.Services.Contracts;
-    using Models.VetFreeHour;
+
     public class VetVisitController : BaseController
     {
         private IUsersService users;
@@ -21,13 +23,6 @@
             this.users = users;
             this.hours = hours;
             this.visits = visits;
-        }
-
-        [Authorize]
-        [HttpGet]
-        public ActionResult VetVisitDetails()
-        {
-            return View();
         }
 
         [Authorize]
@@ -53,28 +48,39 @@
 
         [Authorize]
         [HttpPost]
-        public ActionResult AddVetVisit(AddVetVisitViewModel model)
+        public ActionResult AddVetVisit(string vetId, DateTime date, string description, int healthRecordId)
         {
-            //var model = new AddVetVisitViewModel()
-            //{
-            //    VetId = model.VetId,
-            //    DateTime = model.DateTime,
-            //    Description = model.Description,
-            //    HealthRecordId = model.HealthRecordId
-            //};
+            var model = new AddVetVisitViewModel()
+            {
+                VetId = vetId,
+                DateTime = date,
+                Description = description,
+                HealthRecordId = healthRecordId
+            };
 
             var dataModel = AutoMapper.Mapper.Map<AddVetVisitViewModel, PetCare.Models.VetVisit>(model);
 
             var busyHour = new VetBusyHour()
             {
-                Date = model.DateTime,
-                VetId = model.VetId
+                Date = date,
+                VetId = vetId
             };
 
             this.hours.Add(busyHour);
             this.visits.Add(dataModel);
 
-            return RedirectToAction("HealthRecordDetails", "HealthRecord", new { id = model.HealthRecordId });
+            return RedirectToAction("HealthRecordDetails", "HealthRecord", new { id = healthRecordId });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult VetVisitDetails(int id)
+        {
+            var vetVisit = this.visits.GetById(id)
+                    .ProjectTo<VetVisitDetailsViewModel>()
+                    .FirstOrDefault();
+
+            return this.View(vetVisit);
         }
     }
 }

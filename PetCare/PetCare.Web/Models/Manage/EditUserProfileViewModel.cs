@@ -41,7 +41,5 @@
         [Display(Name = "E-mail")]
         [UIHint("EmailInputForm")]
         public string Email { get; set; }
-
-        //public List<VetVisitDetailsViewModel> VetVisits { get; set; }
     }
 }
