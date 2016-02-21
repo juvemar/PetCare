@@ -34,7 +34,7 @@
         public void UpdatePet(int id)
         {
             var currentPet = this.vetVisits.GetById(id);
-            currentPet.HealthRecordId = id;
+            currentPet.PetId = id;
 
             this.vetVisits.Update(currentPet);
             this.vetVisits.SaveChanges();

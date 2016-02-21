@@ -8,7 +8,7 @@
     using Models.VetVisit;
     using PetCare.Models;
     using PetCare.Services.Contracts;
-
+    using Models.VetFreeHour;
     public class VetVisitController : BaseController
     {
         private IUsersService users;
@@ -53,28 +53,28 @@
 
         [Authorize]
         [HttpPost]
-        public ActionResult AddVetVisit(string vetId, DateTime date, string description, int healthRecordId)
+        public ActionResult AddVetVisit(AddVetVisitViewModel model)
         {
-            var model = new AddVetVisitViewModel()
-            {
-                VetId = vetId,
-                DateTime = date,
-                Description = description,
-                HealthRecordId = healthRecordId
-            };
+            //var model = new AddVetVisitViewModel()
+            //{
+            //    VetId = model.VetId,
+            //    DateTime = model.DateTime,
+            //    Description = model.Description,
+            //    HealthRecordId = model.HealthRecordId
+            //};
 
             var dataModel = AutoMapper.Mapper.Map<AddVetVisitViewModel, PetCare.Models.VetVisit>(model);
 
             var busyHour = new VetBusyHour()
             {
-                Date = date,
-                VetId = vetId
+                Date = model.DateTime,
+                VetId = model.VetId
             };
 
             this.hours.Add(busyHour);
             this.visits.Add(dataModel);
 
-            return RedirectToAction("HealthRecordDetails", "HealthRecord", new { id = healthRecordId });
+            return RedirectToAction("HealthRecordDetails", "HealthRecord", new { id = model.HealthRecordId });
         }
     }
 }

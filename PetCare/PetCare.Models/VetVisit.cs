@@ -17,8 +17,8 @@
 
         public virtual User Vet { get; set; }
 
-        public int HealthRecordId { get; set; }
+        public int PetId { get; set; }
 
-        public virtual HealthRecord HealthRecord { get; set; }
+        public virtual HealthRecord Pet { get; set; }
     }
 }

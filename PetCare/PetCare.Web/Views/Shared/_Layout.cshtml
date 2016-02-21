@@ -48,20 +48,18 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendo")
 
-    <script>
+    @*<script>
         var notifier = $.connection.notifierHub;
-
-        notifier.client.startit = new function () { };
 
         $.connection.hub.start().done(function () {
             console.log("Success");
             console.log(notifier);
-            notifier.server.sendMessage("ASD");
+            notifier.server.onConnectedCall();
         }).fail(function (error) {
             console.log('Invocation of start failed. Error: ' + error)
         });
 
-    </script>
+    </script>*@
 
     @*<script src="~/Scripts/Hub/notifier.js"></script>*@
 

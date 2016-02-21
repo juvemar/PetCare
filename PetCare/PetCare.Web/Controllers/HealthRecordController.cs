@@ -56,7 +56,7 @@
 
             //record.PetName = this.pets.GetById(id).FirstOrDefault().Name;
 
-            var getAllVisits = this.vetVisits.GetAll().Where(v => v.HealthRecordId == id);
+            var getAllVisits = this.vetVisits.GetAll().Where(v => v.PetId == id);
             record.PassedVetVisits = getAllVisits.Where(v => v.DateTime < DateTime.UtcNow).ToList();
             record.UpcomingVetVisits = getAllVisits.Where(v => v.DateTime > DateTime.UtcNow).OrderBy(v => v.DateTime).ToList();
 

@@ -15,6 +15,8 @@
         [Required]
         public DateTime DateTime { get; set; }
 
+        public string VetName { get; set; }
+
         [StringLength(500)]
         [Required]
         public string Description { get; set; }
@@ -32,7 +34,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<AddVetVisitViewModel, VetVisit>("CreateHealthRecord")
-                   .ForMember(m => m.HealthRecordId, opts => opts.MapFrom(m => m.HealthRecordId))
+                   .ForMember(m => m.PetId, opts => opts.MapFrom(m => m.HealthRecordId))
                    .ForMember(m => m.VetId, opts => opts.MapFrom(m => m.VetId));
         }
     }

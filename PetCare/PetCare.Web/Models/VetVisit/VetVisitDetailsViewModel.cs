@@ -20,7 +20,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<PetCare.Models.VetVisit, AddVetVisitViewModel>("VetVisitDetails")
-                   .ForMember(m => m.HealthRecordId, opts => opts.MapFrom(m => m.HealthRecordId))
+                   .ForMember(m => m.HealthRecordId, opts => opts.MapFrom(m => m.PetId))
                    .ForMember(m => m.VetId, opts => opts.MapFrom(m => m.VetId));
         }
     }
