@@ -1188,6 +1188,7 @@
     <Content Include="Views\Pet\ListMyPets.cshtml" />
     <Content Include="Views\VetBusyHour\VetAvailableHours.cshtml" />
     <Content Include="Views\HealthRecord\EditHealthRecord.cshtml" />
+    <Content Include="Views\VetVisit\VetVisitDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,7 +7,7 @@
 
     public class NotificationViewModel : IMapFrom<Notification>
     {
-        public int Id { get; set; }
+        public int VetVisitId { get; set; }
 
         public string Message { get; set; }
 
@@ -16,7 +16,5 @@
         public DateTime DateTime { get; set; }
 
         public User User { get; set; }
-
-        public int VetVisitId { get; set; }
     }
 }

@@ -76,6 +76,8 @@
         [HttpGet]
         public ActionResult VetVisitDetails(int id)
         {
+            var visit = this.visits.GetById(id).FirstOrDefault();
+
             var vetVisit = this.visits.GetById(id)
                     .ProjectTo<VetVisitDetailsViewModel>()
                     .FirstOrDefault();

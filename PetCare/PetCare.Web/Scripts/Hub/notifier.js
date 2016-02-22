@@ -15,6 +15,7 @@
         $('#notification-item').css('color', 'lightgreen');
         $('#notification-item').text(" " + notifications.length);
         notifications.forEach(appendNotificationItems);
+        showOrUpdateSuccessMessage("You have " + notifications.length + " new comming events!", true);
     };
 
     var ids = [];
@@ -31,10 +32,20 @@
     })
 
     function appendNotificationItems(element, index, array) {
-        $('#notifications-list').append('<li><a href="VetVisit/VetVisitDetails/' + element.Id + '">' + element.Message + '</a></li>');
+        $('#notifications-list').append('<li><a href="VetVisit/VetVisitDetails/' + element.VetVisitId + '">' + element.Message + '</a></li>');
     }
 
     function extractIds(element, index, array) {
-        ids.push(element.Id);
+        ids.push(element.VetVisitId);
+    }
+
+    var n;
+    function showOrUpdateSuccessMessage(message, timeout) {
+        if (n == null) {
+            n = noty({ text: message, type: 'success', timeout: timeout, maxVisible: 1 });
+        }
+        else {
+            n.setText(message);
+        }
     }
 })

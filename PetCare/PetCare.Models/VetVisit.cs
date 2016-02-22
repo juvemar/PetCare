@@ -20,5 +20,9 @@
         public int PetId { get; set; }
 
         public virtual HealthRecord Pet { get; set; }
+
+        public int NotificationId { get; set; }
+
+        public virtual Notification Notification { get; set; }
     }
 }
