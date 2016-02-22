@@ -2,8 +2,21 @@
 {
     using System;
 
-    public class VetBusyHour
+    public class VetBusyHour : IDeletableEntity, IAuditInfo
     {
+        public VetBusyHour()
+        {
+            this.CreatedOn = DateTime.UtcNow;
+        }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
         public int Id { get; set; }
 
         public DateTime Date { get; set; }

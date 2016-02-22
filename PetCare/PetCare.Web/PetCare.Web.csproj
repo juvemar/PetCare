@@ -234,6 +234,10 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
+    <Compile Include="Areas\Administrator\Controllers\PetAdminController.cs" />
+    <Compile Include="Areas\Administrator\Controllers\UserController.cs" />
+    <Compile Include="Areas\Administrator\Models\CreatePetAdminViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HealthRecordController.cs" />
@@ -504,6 +508,10 @@
     <Content Include="Content\kendo\HighContrast\Thumbs.db" />
     <Content Include="Content\kendo\images\kendoui.ttf" />
     <Content Include="Content\kendo\images\kendoui.woff" />
+    <Content Include="Areas\Administrator\Views\PetAdmin\ManagePets.cshtml" />
+    <Content Include="Areas\Administrator\Views\User\ManageUsers.cshtml" />
+    <Content Include="Areas\Administrator\Views\web.config" />
+    <Content Include="Areas\Administrator\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1026,7 +1034,9 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\VetVisit\ajaxGetVetHours.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1189,9 +1199,12 @@
     <Content Include="Views\VetBusyHour\VetAvailableHours.cshtml" />
     <Content Include="Views\HealthRecord\EditHealthRecord.cshtml" />
     <Content Include="Views\VetVisit\VetVisitDetails.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administrator\Views\Administrator\" />
+    <Folder Include="Areas\Administrator\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

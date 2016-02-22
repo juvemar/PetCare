@@ -25,7 +25,7 @@
     @Html.EditorFor(m => m.Picture)
     @Html.EditorFor(m => m.Email)
 
-    if (User.IsInRole("vet"))
+    if (User.IsInRole(PetCare.Common.GlobalConstants.VetRoleName))
     {
         @Html.EditorFor(m => m.SergeryLocation)
     }

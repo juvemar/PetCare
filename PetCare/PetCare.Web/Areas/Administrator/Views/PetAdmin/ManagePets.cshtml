@@ -1,5 +1,5 @@
 ﻿@using Kendo.Mvc.UI
-
+<br />
     @(Html.Kendo().Grid<PetCare.Web.Areas.Administrator.Models.CreatePetAdminViewModel>()
       .Name("grid")
       .Columns(columns =>
@@ -24,7 +24,7 @@
           sortable.SortMode(GridSortMode.SingleColumn);
       })
       .Filterable()
-      .Scrollable()
+      .Scrollable(s => s.Height(400))
       .DataSource(dataSource => dataSource
           .Ajax()
           .Model(model => model.Id(p => p.Id))

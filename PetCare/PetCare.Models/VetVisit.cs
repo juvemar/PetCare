@@ -3,8 +3,21 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class VetVisit
+    public class VetVisit : IDeletableEntity, IAuditInfo
     {
+        public VetVisit()
+        {
+            this.CreatedOn = DateTime.UtcNow;
+        }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
         public int Id { get; set; }
 
         [Required]

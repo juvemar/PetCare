@@ -31,7 +31,7 @@
                 @Html.LabelFor(m => m.PhoneNumber):
                 @Html.DisplayTextFor(m => m.PhoneNumber)
             </p>
-            @if (User.IsInRole("vet"))
+            @if (User.IsInRole(PetCare.Common.GlobalConstants.VetRoleName))
             {
                 <p>
                     @Html.LabelFor(m => m.SergeryLocation):

@@ -16,8 +16,6 @@
 
         public virtual IDbSet<Pet> Pets { get; set; }
 
-        public virtual IDbSet<Event> Events { get; set; }
-
         public virtual IDbSet<HealthRecord> HealthRecords { get; set; }
 
         public virtual IDbSet<VetVisit> VetVisits { get; set; }
@@ -39,14 +37,6 @@
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-    //        modelBuilder.Entity<Pet>()
-    //.HasMany(t => t.Events)
-    //.WithMany(t => t.Pets);
-
-    //        modelBuilder.Entity<Event>()
-    //.HasMany(t => t.Pets)
-    //.WithMany(t => t.Events);
-
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 

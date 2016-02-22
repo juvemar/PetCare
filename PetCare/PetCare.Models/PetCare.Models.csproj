@@ -57,8 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Event.cs" />
     <Compile Include="HealthRecord.cs" />
+    <Compile Include="IAuditInfo.cs" />
+    <Compile Include="IDeletableEntity.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="Room.cs" />

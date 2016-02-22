@@ -1,5 +1,6 @@
 ﻿namespace PetCare.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
@@ -10,7 +11,7 @@
 
     using Common;
 
-    public class User : IdentityUser
+    public class User : IdentityUser, IDeletableEntity, IAuditInfo
     {
         private ICollection<Pet> pets;
         private ICollection<VetVisit> vetVisits;
@@ -21,7 +22,16 @@
             this.pets = new HashSet<Pet>();
             this.vetVisits = new HashSet<VetVisit>();
             this.vetBusyHours = new HashSet<VetBusyHour>();
+            this.CreatedOn = DateTime.UtcNow;
         }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
 
         [Required]
         [StringLength(20, MinimumLength = 2)]

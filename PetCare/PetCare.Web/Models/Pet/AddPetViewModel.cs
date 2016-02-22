@@ -40,8 +40,6 @@
 
         public string OwnerId { get; set; }
 
-        public virtual ICollection<Event> Events { get; set; }
-
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<AddPetViewModel, Pet>("AddPet")
