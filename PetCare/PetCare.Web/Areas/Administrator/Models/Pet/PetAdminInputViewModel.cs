@@ -1,6 +1,5 @@
-﻿namespace PetCare.Web.Areas.Administrator.Models
+﻿namespace PetCare.Web.Areas.Administrator.Models.Pet
 {
-    using System;
     using System.ComponentModel.DataAnnotations;
 
     using PetCare.Models;

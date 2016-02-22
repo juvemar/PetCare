@@ -1,0 +1,28 @@
+﻿
+<br />
+@(Html.Kendo().Grid<PetCare.Web.Areas.Administrator.Models.HealthRecord.HealthRecordAdminInputViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+        columns.Bound(c => c.Weight);
+        columns.Bound(c => c.Height);
+        columns.Bound(c => c.FurColor);
+        columns.Bound(c => c.Coat);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Sortable(sortable => {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.PetId))
+          .Read(read => read.Action("HealthRecords_Read", "HealthRecordAdmin"))
+          .Update(update => update.Action("HealthRecords_Update", "HealthRecordAdmin"))
+          .Destroy(destroy => destroy.Action("HealthRecords_Destroy", "HealthRecordAdmin"))
+      )
+)

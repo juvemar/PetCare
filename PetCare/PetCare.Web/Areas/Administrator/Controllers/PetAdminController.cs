@@ -7,7 +7,7 @@
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
-    using Models;
+    using Models.Pet;
     using PetCare.Data.Repositories;
     using PetCare.Models;
     using Services.Contracts;
@@ -37,31 +37,6 @@
                 .ToDataSourceResult(request);
 
             return Json(result);
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Pets_Create([DataSourceRequest]DataSourceRequest request, PetAdminInputViewModel pet)
-        {
-            if (ModelState.IsValid)
-            {
-                var entity = new Pet
-                {
-                    Name = pet.Name,
-                    Gender = pet.Gender,
-                    BirthPlace = pet.BirthPlace,
-                    Species = pet.Species
-                };
-
-                this.pets.Add(entity);
-                this.pets.SaveChanges();
-                pet.Id = entity.Id;
-            }
-
-            var petToDisplay = this.pets.All()
-                .ProjectTo<PetAdminViewModel>()
-                .FirstOrDefault(x => x.Id == pet.Id);
-
-            return Json(new[] { petToDisplay }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]

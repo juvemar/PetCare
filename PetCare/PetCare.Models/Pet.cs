@@ -26,7 +26,8 @@
 
         public string Gender { get; set; }
         
-        public DateTime? DateOfBirth { get; set; }
+        [Required]
+        public DateTime DateOfBirth { get; set; }
 
         public string BirthPlace { get; set; }
 

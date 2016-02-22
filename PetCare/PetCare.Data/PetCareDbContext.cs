@@ -14,6 +14,11 @@
         {
         }
 
+        DbSet<TEntity> IPetCareDbContext.Set<TEntity>()
+        {
+            return base.Set<TEntity>();
+        }
+
         public virtual IDbSet<Pet> Pets { get; set; }
 
         public virtual IDbSet<HealthRecord> HealthRecords { get; set; }

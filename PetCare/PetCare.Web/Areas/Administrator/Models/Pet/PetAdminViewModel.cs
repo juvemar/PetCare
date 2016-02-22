@@ -1,4 +1,4 @@
-﻿namespace PetCare.Web.Areas.Administrator.Models
+﻿namespace PetCare.Web.Areas.Administrator.Models.Pet
 {
     using System;
 

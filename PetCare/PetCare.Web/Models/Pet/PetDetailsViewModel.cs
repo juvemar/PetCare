@@ -17,7 +17,7 @@
         public string Gender { get; set; }
 
         [Display (Name="Date of Birth")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0}dd/MM/yy")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0}dd/MM/yy")]
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Place of Birth")]
