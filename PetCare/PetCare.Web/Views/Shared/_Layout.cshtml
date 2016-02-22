@@ -32,12 +32,14 @@
                         <li>@Html.ActionLink("My Pets", "ListMyPets", "Pet", new { area = string.Empty }, null)</li>
                         if (this.User.IsInRole(PetCare.Common.GlobalConstants.AdministratorRoleName))
                         {
-                            <li style="color:white" class="dropdown">
-                                <a href="#" class="dropdown-toggle glyphicon glyphicon-education" data-toggle="dropdown" role="button" aria-expanded="false">Manage <span id="caret" class="caret"></span></a>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Manage <span id="caret" class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        @Html.ActionLink("Pets", "ManagePets", "PetAdmin", new { area = "Administrator" }, null);
-                                        @Html.ActionLink("Health Records", "ManageRecords", "HealthRecordsAdmin", new { area = "Administrator" }, null);
+                                        @Html.ActionLink("Pets", "ManagePets", "PetAdmin", new { area = "Administrator" }, null)
+                                    </li>
+                                    <li>
+                                        @Html.ActionLink("Health Records", "ManageRecords", "HealthRecordsAdmin", new { area = "Administrator" }, null)
                                     </li>
                                 </ul>
                             </li>

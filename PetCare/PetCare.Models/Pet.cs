@@ -9,7 +9,9 @@
         {
             this.CreatedOn = DateTime.UtcNow;
         }
-        
+
+        public int Id { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
@@ -18,19 +20,17 @@
 
         public DateTime? DeletedOn { get; set; }
 
-        public int Id { get; set; }
-
         [Required]
         [StringLength(30, MinimumLength = 2)]
         public string Name { get; set; }
 
         public string Gender { get; set; }
-
-        [Required]
-        public DateTime DateOfBirth { get; set; }
+        
+        public DateTime? DateOfBirth { get; set; }
 
         public string BirthPlace { get; set; }
 
+        [Required]
         public string Species { get; set; }
 
         public string OwnerId { get; set; }

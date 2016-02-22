@@ -237,7 +237,8 @@
     <Compile Include="Areas\Administrator\AdministratorAreaRegistration.cs" />
     <Compile Include="Areas\Administrator\Controllers\PetAdminController.cs" />
     <Compile Include="Areas\Administrator\Controllers\UserController.cs" />
-    <Compile Include="Areas\Administrator\Models\CreatePetAdminViewModel.cs" />
+    <Compile Include="Areas\Administrator\Models\PetAdminViewModel.cs" />
+    <Compile Include="Areas\Administrator\Models\PetAdminInputViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HealthRecordController.cs" />
@@ -1200,6 +1201,7 @@
     <Content Include="Views\HealthRecord\EditHealthRecord.cshtml" />
     <Content Include="Views\VetVisit\VetVisitDetails.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PetAdminInputViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

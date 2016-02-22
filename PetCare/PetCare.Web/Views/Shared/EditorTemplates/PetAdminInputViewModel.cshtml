@@ -1,0 +1,18 @@
+﻿@model PetCare.Web.Areas.Administrator.Models.PetAdminInputViewModel
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.ValidationMessageFor(m => m.Name, null, new { @class = "text-danger" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name" })
+    </div>
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.BirthPlace, new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.ValidationMessageFor(m => m.BirthPlace, null, new { @class = "text-danger" })
+        @Html.TextBoxFor(m => m.BirthPlace, new { @class = "form-control", placeholder = "Birth Place" })
+    </div>
+</div>
+@Html.EditorFor(m => m.Gender)
+@Html.EditorFor(m => m.Species)

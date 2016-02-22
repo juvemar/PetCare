@@ -1,5 +1,6 @@
 ﻿namespace PetCare.Web.Areas.Administrator.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
@@ -18,7 +19,7 @@
         private IUsersService users;
 
         public PetAdminController(IUsersService users, IRepository<Pet> pets)
-            :base(users)
+            : base(users)
         {
             this.pets = pets;
             this.users = users;
@@ -32,77 +33,65 @@
         public ActionResult Pets_Read([DataSourceRequest]DataSourceRequest request)
         {
             DataSourceResult result = this.pets.All()
-                .ProjectTo<CreatePetAdminViewModel>()
+                .ProjectTo<PetAdminViewModel>()
                 .ToDataSourceResult(request);
 
             return Json(result);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Pets_Create([DataSourceRequest]DataSourceRequest request, Pet pet)
+        public ActionResult Pets_Create([DataSourceRequest]DataSourceRequest request, PetAdminInputViewModel pet)
         {
             if (ModelState.IsValid)
             {
-                var petModel = new CreatePetAdminViewModel
-                {
-                    BirthPlace = pet.BirthPlace,
-                    Gender = pet.Gender
-                };
-
                 var entity = new Pet
                 {
                     Name = pet.Name,
                     Gender = pet.Gender,
-                    DateOfBirth = pet.DateOfBirth,
                     BirthPlace = pet.BirthPlace,
-                    Species = pet.Species,
-                    HealthRecordId = pet.HealthRecordId
+                    Species = pet.Species
                 };
 
                 this.pets.Add(entity);
+                this.pets.SaveChanges();
                 pet.Id = entity.Id;
             }
 
-            return Json(new[] { pet }.ToDataSourceResult(request, ModelState));
+            var petToDisplay = this.pets.All()
+                .ProjectTo<PetAdminViewModel>()
+                .FirstOrDefault(x => x.Id == pet.Id);
+
+            return Json(new[] { petToDisplay }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Pets_Update([DataSourceRequest]DataSourceRequest request, Pet pet)
+        public ActionResult Pets_Update([DataSourceRequest]DataSourceRequest request, PetAdminInputViewModel pet)
         {
             if (ModelState.IsValid)
             {
-                var entity = new Pet
-                {
-                    Id = pet.Id,
-                    Name = pet.Name,
-                    Gender = pet.Gender,
-                    DateOfBirth = pet.DateOfBirth,
-                    BirthPlace = pet.BirthPlace,
-                    Species = pet.Species,
-                    HealthRecordId = pet.HealthRecordId
-                };
+                var entity = this.pets.GetById(pet.Id);
+                entity.Name = pet.Name;
+                entity.BirthPlace = pet.BirthPlace;
+                entity.Gender = pet.Gender;
+                entity.Species = pet.Species;
 
                 this.pets.Update(entity);
+                this.pets.SaveChanges();
             }
 
-            return Json(new[] { pet }.ToDataSourceResult(request, ModelState));
+            var petToDisplay = this.pets.All()
+                .ProjectTo<PetAdminViewModel>()
+                .FirstOrDefault(x => x.Id == pet.Id);
+
+            return Json(new[] { petToDisplay }.ToDataSourceResult(request, ModelState));
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Pets_Destroy([DataSourceRequest]DataSourceRequest request, Pet pet)
+        public ActionResult Pets_Destroy([DataSourceRequest]DataSourceRequest request, PetAdminInputViewModel pet)
         {
-            var entity = new Pet
-            {
-                Id = pet.Id,
-                Name = pet.Name,
-                Gender = pet.Gender,
-                DateOfBirth = pet.DateOfBirth,
-                BirthPlace = pet.BirthPlace,
-                Species = pet.Species,
-                HealthRecordId = pet.HealthRecordId
-            };
-
-            this.pets.Delete(entity);
+            var entity = this.pets.GetById(pet.Id);
+            this.pets.MarkAsDeleted(entity);
+            this.pets.SaveChanges();
 
             return Json(new[] { pet }.ToDataSourceResult(request, ModelState));
         }

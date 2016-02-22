@@ -16,6 +16,8 @@
 
         void Update(T entity);
 
+        void MarkAsDeleted(T entity);
+
         void Delete(T entity);
 
         void Delete(object id);
