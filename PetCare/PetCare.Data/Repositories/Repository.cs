@@ -4,8 +4,10 @@
     using System.Data.Entity;
     using System.Linq;
 
+    using Models;
+
     public class Repository<T> : IRepository<T>
-       where T : class
+       where T : class, IDeletableEntity, IAuditInfo
     {
         public Repository(IPetCareDbContext context)
         {
@@ -24,12 +26,23 @@
 
         public virtual IQueryable<T> All()
         {
+            return this.DbSet.Where(x => !x.IsDeleted).AsQueryable();
+        }
+
+        public virtual IQueryable<T> AllWithDeleted()
+        {
             return this.DbSet.AsQueryable();
         }
 
         public virtual T GetById(object id)
         {
-            return this.DbSet.Find(id);
+            var result = this.DbSet.Find(id);
+
+            if (result.IsDeleted)
+            {
+                return null;
+            }
+            return result;
         }
 
         public virtual void Add(T entity)
@@ -47,6 +60,7 @@
 
         public virtual void Update(T entity)
         {
+            entity.ModifiedOn = DateTime.UtcNow;
             var entry = this.Context.Entry(entity);
             if (entry.State == EntityState.Detached)
             {
@@ -68,6 +82,15 @@
                 this.DbSet.Attach(entity);
                 this.DbSet.Remove(entity);
             }
+        }
+
+        public void MarkAsDeleted(T entity)
+        {
+            entity.IsDeleted = true;
+            entity.DeletedOn = DateTime.UtcNow;
+
+            var entry = this.Context.Entry(entity);
+            entry.State = EntityState.Modified;
         }
 
         public virtual void Delete(object id)

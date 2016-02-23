@@ -7,7 +7,7 @@
         <div class="col-md-2 text-center">
             @if (item.ImageId != null)
             {
-                <img src="@Url.Action("GetImage", "Image", new { id = item.ImageId })" alt="@item.Name" class="img-responsive img-rounded" style="height:150px; width:150px" />
+                <img src="@Url.Action("GetImage", "Image", new { id = item.ImageId, area = string.Empty })" alt="@item.Name" class="img-responsive img-rounded" style="height:150px; width:150px" />
             }
             else
             {
@@ -15,7 +15,7 @@
             }
         </div>
         <div class="col-md-2" style="padding-top:3%">
-            <h2>@Html.ActionLink(item.Name, "PetDetails", new { id = item.Id }, new { })</h2>
+            <h2>@Html.ActionLink(item.Name, "PetDetails", new { id = item.Id, area = string.Empty }, null)</h2>
         </div>
     </div>
     <br />

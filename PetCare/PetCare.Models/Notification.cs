@@ -4,8 +4,21 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Notification
+    public class Notification : IDeletableEntity, IAuditInfo
     {
+        public Notification()
+        {
+            this.CreatedOn = DateTime.UtcNow;
+        }
+        
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
+
         [Key, ForeignKey("VetVisit")]
         public int VetVisitId { get; set; }
 

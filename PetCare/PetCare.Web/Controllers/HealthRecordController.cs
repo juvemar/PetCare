@@ -24,12 +24,14 @@
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult CreateHealthRecord()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult CreateHealthRecord(int id, CreateHealthRecordViewModel model)
         {
             if (!this.ModelState.IsValid)
@@ -48,13 +50,16 @@
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult HealthRecordDetails(int id)
         {
             var record = this.records.GetById(id)
                 .ProjectTo<HealthRecordDetails>()
                 .FirstOrDefault();
-
-            //record.PetName = this.pets.GetById(id).FirstOrDefault().Name;
+            if (record == null)
+            {
+                return View(record);
+            }
 
             var getAllVisits = this.vetVisits.GetAll().Where(v => v.PetId == id);
             record.PassedVetVisits = getAllVisits.Where(v => v.DateTime < DateTime.UtcNow).ToList();
@@ -64,6 +69,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult EditHealthRecord(int id)
         {
             var model = new CreateHealthRecordViewModel();
@@ -73,6 +79,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult EditHealthRecord(CreateHealthRecordViewModel model)
         {
             if (!ModelState.IsValid)

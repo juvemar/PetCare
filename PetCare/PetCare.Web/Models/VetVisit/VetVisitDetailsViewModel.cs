@@ -28,7 +28,7 @@
         {
             configuration.CreateMap<VetVisit, VetVisitDetailsViewModel>("VetVisitDetails")
                    .ForMember(m => m.HealthRecordId, opts => opts.MapFrom(m => m.PetId))
-                   .ForMember(m => m.VetName, opts => opts.MapFrom(m => m.Vet.FirstName + m.Vet.LastName));
+                   .ForMember(m => m.VetName, opts => opts.MapFrom(m => m.Vet.FirstName + " " + m.Vet.LastName));
         }
     }
 }

@@ -23,7 +23,6 @@
             this.pets = pets;
         }
 
-        // GET: Pet/AddPet
         [Authorize]
         [HttpGet]
         public ActionResult AddPet()
@@ -31,7 +30,6 @@
             return View();
         }
 
-        // POST: Pet/AddPet
         [Authorize]
         [HttpPost]
         public ActionResult AddPet(AddPetViewModel model)
@@ -82,17 +80,17 @@
 
         [HttpGet]
         [Authorize]
-        public ActionResult ListMyPets()
+        public ActionResult ListPets()
         {
-            var currentUser = this.users.GetByUsername(User.Identity.Name).FirstOrDefault();
+            var currentUser = this.users.GetByUsername(this.User.Identity.Name).FirstOrDefault();
 
-            var myPets = this.pets.GetAll()
-                .Where(p => p.OwnerId == currentUser.Id)
+            var pets = this.pets.GetAll()
+                .Where(x => x.OwnerId == currentUser.Id)
                 .OrderBy(p => p.Name)
                 .ToList();
-            var myPetsModel = new List<ListPetsViewModel>();
 
-            foreach (var pet in myPets)
+            var petsModel = new List<ListPetsViewModel>();
+            foreach (var pet in pets)
             {
                 var newPet = new ListPetsViewModel()
                 {
@@ -101,10 +99,10 @@
                     ImageId = pet.ImageId
                 };
 
-                myPetsModel.Add(newPet);
+                petsModel.Add(newPet);
             }
 
-            return this.View(myPetsModel);
+            return this.View(petsModel);
         }
     }
 }

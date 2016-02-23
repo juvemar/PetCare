@@ -8,11 +8,15 @@
     {
         IQueryable<T> All();
 
+        IQueryable<T> AllWithDeleted();
+
         T GetById(object id);
 
         void Add(T entity);
 
         void Update(T entity);
+
+        void MarkAsDeleted(T entity);
 
         void Delete(T entity);
 

@@ -1,31 +1,37 @@
 ﻿namespace PetCare.Models
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Pet
+    public class Pet : IDeletableEntity, IAuditInfo
     {
-        private ICollection<Event> events;
-
         public Pet()
         {
-            this.events = new HashSet<Event>();
+            this.CreatedOn = DateTime.UtcNow;
         }
 
         public int Id { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
 
         [Required]
         [StringLength(30, MinimumLength = 2)]
         public string Name { get; set; }
 
         public string Gender { get; set; }
-
+        
         [Required]
         public DateTime DateOfBirth { get; set; }
 
         public string BirthPlace { get; set; }
 
+        [Required]
         public string Species { get; set; }
 
         public string OwnerId { get; set; }
@@ -39,11 +45,5 @@
         public int HealthRecordId { get; set; }
         
         public virtual HealthRecord HealthRecord { get; set; }
-
-        public virtual ICollection<Event> Events
-        {
-            get { return this.events; }
-            set { this.events = value; }
-        }
     }
 }

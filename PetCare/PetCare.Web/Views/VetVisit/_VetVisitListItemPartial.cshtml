@@ -1,0 +1,18 @@
+﻿@model PetCare.Models.VetVisit
+@{
+    Layout = null;
+}
+
+<div class="text-center">
+
+    <p>
+        <a class="btn btn-primary" data-toggle="collapse" href="#ProductSelect_@(Model.Id)" aria-expanded="false" aria-controls="ProductSelect_@(Model.Id)">
+            <strong>@Model.Description</strong> at <em>@Model.DateTime</em>
+        </a>
+    </p>
+    <div class="collapse" id="ProductSelect_@(Model.Id)">
+        <div class="card card-block">
+            @Html.Action("_VetVisitDetailsPartial", "VetVisit", new { id = Model.Id })
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿<br />
+@(Html.Kendo().Grid<PetCare.Web.Areas.Administrator.Models.User.UserInputViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.FirstName);
+          columns.Bound(c => c.LastName);
+          columns.Bound(c => c.SergeryLocation);
+          columns.Bound(c => c.IsVet);
+          columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Navigatable()
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Users_Read", "User"))
+          .Update(edit => edit.Action("Users_Update", "User"))
+          .Destroy(destroy => destroy.Action("Users_Destroy", "User"))
+      )
+)

@@ -1,7 +1,6 @@
 ﻿namespace PetCare.Web.Models.Pet
 {
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web;
 
@@ -23,11 +22,10 @@
 
         [Display(Name = "Gender")]
         [UIHint("GenderInputForm")]
-        public GenderType Gender { get; set; }
+        public string Gender { get; set; }
 
         [Required]
         [Display(Name = "Date of Birth")]
-        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Town of Birth")]
@@ -39,8 +37,6 @@
         public string Species { get; set; }
 
         public string OwnerId { get; set; }
-
-        public virtual ICollection<Event> Events { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
