@@ -37,7 +37,7 @@
 
         public string OwnerId { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<AddPetViewModel, Pet>("AddPet")
                 .ForMember(m => m.OwnerId, opts => opts.MapFrom(m => m.OwnerId));

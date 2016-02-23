@@ -2,8 +2,8 @@
 {
     using System.Web.Mvc;
 
-    using AutoMapper.QueryableExtensions;
     using Kendo.Mvc.Extensions;
+    using Infrastructure.Mapping;
     using Kendo.Mvc.UI;
 
     using PetCare.Data.Repositories;
@@ -31,7 +31,7 @@
         public ActionResult HealthRecords_Read([DataSourceRequest]DataSourceRequest request)
         {
             DataSourceResult result = this.records.All()
-                .ProjectTo<HealthRecordAdminViewModel>()
+                .To<HealthRecordAdminViewModel>()
                 .ToDataSourceResult(request);
 
             return Json(result);

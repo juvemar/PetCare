@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    using AutoMapper.QueryableExtensions;
+    using Infrastructure.Mapping;
 
     using Models.Pet;
     using PetCare.Models;
@@ -39,7 +39,8 @@
                 return this.View(model);
             }
 
-            var dataModel = AutoMapper.Mapper.Map<AddPetViewModel, PetCare.Models.Pet>(model);
+            var mapper = AutoMapperConfig.Configuration.CreateMapper();
+            var dataModel = mapper.Map<PetCare.Models.Pet>(model);
 
             Image image = null;
             if (model.ProfilePicture != null)
@@ -76,7 +77,7 @@
                 return this.RedirectToAction("NotFound", "Error");
             }
 
-            var model = pet.ProjectTo<PetDetailsViewModel>()
+            var model = pet.To<PetDetailsViewModel>()
                 .FirstOrDefault();
 
             return this.View(model);

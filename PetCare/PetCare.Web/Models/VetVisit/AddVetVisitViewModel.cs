@@ -31,7 +31,7 @@
         //[HiddenInput(DisplayValue = false)]
         public int HealthRecordId { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<AddVetVisitViewModel, VetVisit>("CreateHealthRecord")
                    .ForMember(m => m.PetId, opts => opts.MapFrom(m => m.HealthRecordId))

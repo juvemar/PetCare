@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    using AutoMapper.QueryableExtensions;
+    using Infrastructure.Mapping;
 
     using Models.VetVisit;
     using PetCare.Models;
@@ -58,7 +58,8 @@
                 HealthRecordId = healthRecordId
             };
 
-            var dataModel = AutoMapper.Mapper.Map<AddVetVisitViewModel, PetCare.Models.VetVisit>(model);
+            var mapper = AutoMapperConfig.Configuration.CreateMapper();
+            var dataModel = mapper.Map<PetCare.Models.VetVisit>(model);
 
             var busyHour = new VetBusyHour()
             {
@@ -78,7 +79,7 @@
         public ActionResult VetVisitDetailsPartial(int id)
         {
             var vetVisit = this.visits.GetById(id)
-                    .ProjectTo<VetVisitDetailsViewModel>()
+                    .To<VetVisitDetailsViewModel>()
                     .FirstOrDefault();
 
             return this.PartialView(vetVisit);
@@ -89,7 +90,7 @@
         public ActionResult VetVisitDetails(int id)
         {
             var vetVisit = this.visits.GetById(id)
-                    .ProjectTo<VetVisitDetailsViewModel>()
+                    .To<VetVisitDetailsViewModel>()
                     .FirstOrDefault();
 
             return this.View(vetVisit);

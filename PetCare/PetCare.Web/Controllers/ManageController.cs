@@ -102,7 +102,8 @@
                 }
             }
 
-            var dataModel = AutoMapper.Mapper.Map<EditUserProfileViewModel, PetCare.Models.User>(model);
+            var mapper = AutoMapperConfig.Configuration.CreateMapper();
+            var dataModel = mapper.Map<PetCare.Models.User>(model);
 
             string username = this.User.Identity.Name;
             User user = this.users.GetByUsername(username).FirstOrDefault();

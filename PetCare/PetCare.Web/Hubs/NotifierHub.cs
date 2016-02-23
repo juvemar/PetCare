@@ -6,8 +6,8 @@
     using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
-
-    using AutoMapper.QueryableExtensions;
+    
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.SignalR;
     using Microsoft.AspNet.SignalR.Hubs;
     using Newtonsoft.Json;
@@ -16,16 +16,11 @@
     using Data;
     using Models.Notification;
     using PetCare.Models;
-    
 
     public class NotifierHub : Hub
     {
-
-        private static System.Runtime.Caching.MemoryCache asd;
         public override Task OnConnected()
         {
-           
-
             if (!Context.User.Identity.IsAuthenticated)
             {
                 return base.OnConnected();
@@ -78,7 +73,8 @@
                         VetVisitId = visit.Id
                     };
 
-                    var notification = AutoMapper.Mapper.Map<NotificationViewModel, Notification>(viewModel);
+                    var mapper = AutoMapperConfig.Configuration.CreateMapper();
+                    var notification = mapper.Map<Notification>(viewModel);
 
                     if (visit.Notification == null)
                     {
@@ -95,7 +91,7 @@
                 recordedNotifications = notifications
                     .Where(x => x.User.Id == currentUser.Id && !x.IsSeen)
                     .AsQueryable()
-                    .ProjectTo<NotificationViewModel>().ToList();
+                    .To<NotificationViewModel>().ToList();
             }
 
             var anonymous = recordedNotifications.Select(x => new

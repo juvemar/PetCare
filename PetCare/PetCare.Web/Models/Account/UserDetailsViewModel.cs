@@ -33,7 +33,7 @@
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<User, UserDetailsViewModel>("UserDetails")
                  .ForMember(m => m.ProfilePictureId, opts => opts.MapFrom(m => m.ProfilePictureId))

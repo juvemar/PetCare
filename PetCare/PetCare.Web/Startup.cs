@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using System.Reflection;
 
 [assembly: OwinStartupAttribute(typeof(PetCare.Web.Startup))]
 namespace PetCare.Web

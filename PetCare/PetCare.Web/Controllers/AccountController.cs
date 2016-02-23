@@ -6,11 +6,11 @@
     using System.Web.Mvc;
     using System.Threading.Tasks;
 
+    using Infrastructure.Mapping;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-    using AutoMapper.QueryableExtensions;
-
+    
     using Models.Account;
     using PetCare.Models;
     using Services.Contracts;
@@ -69,7 +69,7 @@
 
             var userData = this.users
                 .GetByUsername(this.User.Identity.Name)
-                .ProjectTo<UserDetailsViewModel>()
+                .To<UserDetailsViewModel>()
                 .FirstOrDefault();
 
             userData.Gender = userData.Gender;

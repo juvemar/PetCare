@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    using AutoMapper.QueryableExtensions;
+    using Infrastructure.Mapping;
 
     using Models.HealthRecord;
     using PetCare.Services.Contracts;
@@ -39,7 +39,8 @@
                 return this.View(model);
             }
 
-            var dataModel = AutoMapper.Mapper.Map<CreateHealthRecordViewModel, PetCare.Models.HealthRecord>(model);
+            var mapper = AutoMapperConfig.Configuration.CreateMapper();
+            var dataModel = mapper.Map<PetCare.Models.HealthRecord>(model);
 
             dataModel.PetId = id;
 
@@ -58,7 +59,7 @@
             {
                 return this.RedirectToAction("NotFound", "Error");
             }
-            var model = record.ProjectTo<HealthRecordDetails>()
+            var model = record.To<HealthRecordDetails>()
                 .FirstOrDefault();
 
             var getAllVisits = this.vetVisits.GetAll().Where(v => v.PetId == id);
@@ -93,7 +94,8 @@
                 return View(model);
             }
 
-            var dataModel = AutoMapper.Mapper.Map<CreateHealthRecordViewModel, PetCare.Models.HealthRecord>(model);
+            var mapper = AutoMapperConfig.Configuration.CreateMapper();
+            var dataModel = mapper.Map<PetCare.Models.HealthRecord>(model);
 
             this.records.UpdateRecord(dataModel, model.PetId);
 

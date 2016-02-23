@@ -10,6 +10,7 @@
     using Data.Repositories;
     using Models;
     using Services;
+    using TestStack.FluentMVCTesting;
     using UserVoiceSystem.Web.Controllers;
 
     [TestClass]

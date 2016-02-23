@@ -12,7 +12,7 @@
 
         public int? ImageId { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<ListPetsViewModel, PetCare.Models.Pet>("CreateHealthRecord")
                    .ForMember(m => m.ImageId, opts => opts.MapFrom(m => m.ImageId));

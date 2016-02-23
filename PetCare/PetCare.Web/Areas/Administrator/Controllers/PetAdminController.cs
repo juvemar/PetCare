@@ -2,8 +2,8 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-
-    using AutoMapper.QueryableExtensions;
+    
+    using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
@@ -32,7 +32,7 @@
         public ActionResult Pets_Read([DataSourceRequest]DataSourceRequest request)
         {
             DataSourceResult result = this.pets.All()
-                .ProjectTo<PetAdminViewModel>()
+                .To<PetAdminViewModel>()
                 .ToDataSourceResult(request);
 
             return Json(result);
@@ -54,7 +54,7 @@
             }
 
             var petToDisplay = this.pets.All()
-                .ProjectTo<PetAdminViewModel>()
+                .To<PetAdminViewModel>()
                 .FirstOrDefault(x => x.Id == pet.Id);
 
             return Json(new[] { petToDisplay }.ToDataSourceResult(request, ModelState));

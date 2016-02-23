@@ -18,7 +18,7 @@
 
         public string VetId { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<PetCare.Models.VetBusyHour, VetFreeHourViewModel>("VetBusyHourDetails")
                  .ForMember(m => m.VetId, opts => opts.MapFrom(m => m.VetId));

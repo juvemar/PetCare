@@ -4,8 +4,8 @@
     using System.Linq;
     using System.Web.Mvc;
 
-    using AutoMapper.QueryableExtensions;
-
+    using Infrastructure.Mapping;
+    
     using Models.Home;
     using Models.Pet;
     using PetCare.Services.Contracts;
@@ -29,7 +29,7 @@
             };
 
             var allPets = this.pets.GetAll()
-                .ProjectTo<ListPetsViewModel>()
+                .To<ListPetsViewModel>()
                 .ToList();
             foreach (var pet in allPets)
             {

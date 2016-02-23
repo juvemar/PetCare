@@ -1,10 +1,9 @@
 ﻿namespace PetCare.Web.Areas.Administrator.Controllers
 {
     using System;
-    using System.Linq;
     using System.Web.Mvc;
 
-    using AutoMapper.QueryableExtensions;
+    using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
@@ -32,7 +31,7 @@
         public ActionResult Users_Read([DataSourceRequest]DataSourceRequest request)
         {
             DataSourceResult result = this.repoUsers.All()
-                .ProjectTo<UserInputViewModel>()
+                .To<UserInputViewModel>()
                 .ToDataSourceResult(request);
 
             return Json(result);

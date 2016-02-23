@@ -1,7 +1,6 @@
 ﻿namespace PetCare.Web
 {
-    using System.Configuration;
-    using System.Data.SqlClient;
+    using System.Reflection;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
@@ -10,8 +9,9 @@
     {
         protected void Application_Start()
         {
+            new AutoMapperConfig(Assembly.GetExecutingAssembly()).Execute();
+
             DatabaseConfig.Initialize();
-            AutoMapperConfig.Execute();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

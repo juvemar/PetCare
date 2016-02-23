@@ -31,7 +31,7 @@
 
         public int HealthRecordId { get; set; }
 
-        public void CreateMappings(IConfiguration configuration)
+        public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<PetDetailsViewModel, Pet>("PetDetails")
                 .ForMember(m => m.OwnerId, opts => opts.MapFrom(m => m.OwnerId))

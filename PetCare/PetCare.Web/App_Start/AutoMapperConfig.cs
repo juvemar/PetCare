@@ -6,20 +6,36 @@
     using System.Reflection;
 
     using AutoMapper;
-    using PetCare.Web.Infrastructure.Mapping;
+    using Infrastructure.Mapping;
 
-    public static class AutoMapperConfig
+    public class AutoMapperConfig
     {
-        public static void Execute()
+        public static MapperConfiguration Configuration { get; private set; }
+        private Assembly assembly;
+
+        public AutoMapperConfig(Assembly assembly)
         {
-            var types = Assembly.GetExecutingAssembly().GetExportedTypes();
-
-            LoadStandardMappings(types);
-
-            LoadCustomMappings(types);
+            this.assembly = assembly;
         }
 
-        private static void LoadStandardMappings(IEnumerable<Type> types)
+        public void Execute(Assembly assembly)
+        {
+            Configuration = new MapperConfiguration(
+                cfg =>
+                {
+                    var types = assembly.GetExportedTypes();
+                    LoadStandardMappings(types, cfg);
+                    LoadReverseMappings(types, cfg);
+                    LoadCustomMappings(types, cfg);
+                });
+        }
+
+        public void Execute()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void LoadStandardMappings(IEnumerable<Type> types, IMapperConfiguration mapperConfiguration)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -34,12 +50,30 @@
 
             foreach (var map in maps)
             {
-                Mapper.CreateMap(map.Source, map.Destination);
-                Mapper.CreateMap(map.Destination, map.Source);
+                mapperConfiguration.CreateMap(map.Source, map.Destination);
             }
         }
 
-        private static void LoadCustomMappings(IEnumerable<Type> types)
+        private static void LoadReverseMappings(IEnumerable<Type> types, IMapperConfiguration mapperConfiguration)
+        {
+            var maps = (from t in types
+                        from i in t.GetInterfaces()
+                        where i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMapTo<>) &&
+                              !t.IsAbstract &&
+                              !t.IsInterface
+                        select new
+                        {
+                            Destination = i.GetGenericArguments()[0],
+                            Source = t
+                        }).ToArray();
+
+            foreach (var map in maps)
+            {
+                mapperConfiguration.CreateMap(map.Source, map.Destination);
+            }
+        }
+
+        private static void LoadCustomMappings(IEnumerable<Type> types, IMapperConfiguration mapperConfiguration)
         {
             var maps = (from t in types
                         from i in t.GetInterfaces()
@@ -50,9 +84,8 @@
 
             foreach (var map in maps)
             {
-                map.CreateMappings(Mapper.Configuration);
+                map.CreateMappings(mapperConfiguration);
             }
         }
     }
 }
-
