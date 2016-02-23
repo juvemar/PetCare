@@ -22,37 +22,37 @@ textarea {
     max-width: 280px;
 }
 
-.btn-nextvisit{
-  color: black;
-  background-color: dodgerblue;
-  border-color: #cccccc;
+.btn-nextvisit {
+    color: black;
+    background-color: dodgerblue;
+    border-color: #cccccc;
 }
 
-.btn-nextvisit:hover,
-.btn-nextvisit:focus,
-.btn-nextvisit:active,
-.btn-nextvisit.active,
-.open .dropdown-toggle.btn-nextvisit {
-  color: white;
-  background-color: deepskyblue;
-  border-color: #adadad;
+    .btn-nextvisit:hover,
+    .btn-nextvisit:focus,
+    .btn-nextvisit:active,
+    .btn-nextvisit.active,
+    .open .dropdown-toggle.btn-nextvisit {
+        color: white;
+        background-color: deepskyblue;
+        border-color: #adadad;
+    }
+
+.btn-lastvisit {
+    color: black;
+    background-color: grey;
+    border-color: #cccccc;
 }
 
-.btn-lastvisit{
-  color: black;
-  background-color: grey;
-  border-color: #cccccc;
-}
-
-.btn-lastvisit:hover,
-.btn-lastvisit:focus,
-.btn-lastvisit:active,
-.btn-lastvisit.active,
-.open .dropdown-toggle.btn-lastvisit {
-  color: white;
-  background-color: darkgrey;
-  border-color: #adadad;
-}
+    .btn-lastvisit:hover,
+    .btn-lastvisit:focus,
+    .btn-lastvisit:active,
+    .btn-lastvisit.active,
+    .open .dropdown-toggle.btn-lastvisit {
+        color: white;
+        background-color: darkgrey;
+        border-color: #adadad;
+    }
 
 .coolLi ul li {
     list-style-type: none !important;
@@ -89,3 +89,7 @@ textarea {
         cursor: inherit;
         display: block;
     }
+
+.modal-dialog {
+    width: 60%;
+}

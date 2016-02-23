@@ -1,20 +1,42 @@
 ﻿namespace PetCare.Web.Controllers
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Mvc;
 
+    using AutoMapper.QueryableExtensions;
+
+    using Models.Home;
+    using Models.Pet;
     using PetCare.Services.Contracts;
 
     public class HomeController : BaseController
     {
-        public HomeController(IUsersService users)
+        private IPetsService pets;
+
+        public HomeController(IUsersService users, IPetsService pets)
             : base(users)
         {
-
+            this.pets = pets;
         }
 
         public ActionResult Index()
         {
-            return this.View();
+            var model = new HomePetMixViewModel()
+            {
+                AddPetViewModel = new AddPetViewModel(),
+                ListPetsViewModel = new List<ListPetsViewModel>()
+            };
+
+            var allPets = this.pets.GetAll()
+                .ProjectTo<ListPetsViewModel>()
+                .ToList();
+            foreach (var pet in allPets)
+            {
+                model.ListPetsViewModel.Add(pet);
+            }
+
+            return this.View(model);
         }
     }
 }

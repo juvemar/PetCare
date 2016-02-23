@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PetCare.Web.Models.Pet.ListPetsViewModel>
+﻿@model List<PetCare.Web.Models.Pet.ListPetsViewModel>
 
 <br />
 @foreach (var item in Model)
@@ -11,11 +11,11 @@
             }
             else
             {
-                <img src="https://image.freepik.com/free-icon/sea-lion-mammal-animal-shape_318-63131.jpg" class="img-responsive img-rounded" style="height:150px; width:150px"/>
+                <img src="https://image.freepik.com/free-icon/sea-lion-mammal-animal-shape_318-63131.jpg" class="img-responsive img-rounded" style="height:150px; width:150px" />
             }
         </div>
         <div class="col-md-2" style="padding-top:3%">
-            <h2>@Html.ActionLink(item.Name, "PetDetails", new { id = item.Id, area = string.Empty }, null)</h2>
+            <h2>@Html.ActionLink(item.Name, "PetDetails", "Pet", new { id = item.Id, area = string.Empty }, null)</h2>
         </div>
     </div>
     <br />

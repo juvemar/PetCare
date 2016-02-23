@@ -262,6 +262,7 @@
     <Compile Include="Infrastructure\Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Infrastructure\Mapping\IMapFrom.cs" />
     <Compile Include="Models\Account\UserDetailsViewModel.cs" />
+    <Compile Include="Models\Home\HomePetMixViewModel.cs" />
     <Compile Include="Models\Notification\NotificationViewModel.cs" />
     <Compile Include="Models\Pet\ListPetsViewModel.cs" />
     <Compile Include="Models\VetVisit\AddVetVisitViewModel.cs" />
@@ -1218,6 +1219,7 @@
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\VetVisit\_VetVisitListItemPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\UserInputViewModel.cshtml" />
+    <Content Include="Views\Pet\_AddPetPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

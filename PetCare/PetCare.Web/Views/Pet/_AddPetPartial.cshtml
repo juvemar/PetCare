@@ -1,0 +1,122 @@
+﻿@using PetCare.Common
+@model PetCare.Web.Models.Pet.AddPetViewModel
+
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("AddPet", "Pet", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+    <div>
+        <div class="row">
+            <div class="col-md-5">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                @{
+                    var list = LoadSpecies.ReadSpecies();
+
+                    var species = new string[8];
+                    for (int i = 0; i < 8; i++)
+                    {
+                        species[i] = list[i];
+                    }
+                }
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Species, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @(Html.Kendo().AutoCompleteFor(m => m.Species)
+                .Name("Species")
+                .HtmlAttributes(new { @class = "form-control" })
+                .Placeholder("Start writing..")
+                .BindTo(@species))
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5">
+                @{
+                    var genders = new List<SelectListItem>();
+
+                    genders.Add(new SelectListItem
+                    {
+                        Text = GenderType.Female.ToString(),
+                        Value = GenderType.Female.ToString()
+                    });
+                    genders.Add(new SelectListItem
+                    {
+                        Text = GenderType.Male.ToString(),
+                        Value = ((int)GenderType.Male).ToString()
+                    });
+                    genders.Add(new SelectListItem
+                    {
+                        Text = GenderType.Other.ToString(),
+                        Value = ((int)GenderType.Other).ToString()
+                    });
+                }
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Gender, new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(m => m.Gender, @genders, new { @class = "col-md-2 form-control", placeholder = "Gender" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-7">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BirthPlace, new { @class = "control-label col-md-4" })
+                    <div class="col-md-6">
+                        @Html.ValidationMessageFor(model => model.BirthPlace, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.BirthPlace, new { @class = "form-control", placeholder = "Place of Birth" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ProfilePicture, new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        <span class="btn btn-info btn-file">
+                            Browse Picture
+                            @Html.TextBoxFor(m => m.ProfilePicture, new { type = "file", @class = "form-control" })
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateOfBirth, new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
+              .Name("DateOfBirth")
+              .Value("")
+              .Max(DateTime.Today)
+              .Culture("US")
+              .Format("yyyy-MM-dd")
+              .HtmlAttributes(new { @class = "form-control" }))
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Add Pet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+                    }
