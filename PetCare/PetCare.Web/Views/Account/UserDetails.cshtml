@@ -10,14 +10,21 @@
     </div>
     <div class="row marginTopDiv">
         <div class="col-md-5 text-center img-thumbnail">
-            <img src="@Url.Action("GetImage", "Image", new { id = Model.ProfilePictureId })" alt="Model.UserName" class="img-responsive img-rounded" />
+            @if (Model.ProfilePictureId == null)
+            {
+                <img src="https://image.freepik.com/free-icon/sea-lion-mammal-animal-shape_318-63131.jpg" class="img-responsive img-rounded" />
+            }
+            else
+            {
+                <img src="@Url.Action("GetImage", "Image", new { area = string.Empty, id = Model.ProfilePictureId })" alt="Model.UserName" class="img-responsive img-rounded" />
+            }
         </div>
         <div class="col-md-1">
         </div>
         <div class="col-md-6 jumbotron">
             <div style="font-weight:bolder">
                 <strong>Name: </strong>
-                @Html.DisplayTextFor(m => m.FirstName) @Html.DisplayTextFor(m => m.LastName)</h2>
+                <h2>@Html.DisplayTextFor(m => m.FirstName) @Html.DisplayTextFor(m => m.LastName)</h2>
             </div>
             <p>
                 @Html.LabelFor(m => m.Gender):

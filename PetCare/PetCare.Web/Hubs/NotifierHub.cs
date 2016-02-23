@@ -3,25 +3,29 @@
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
-    using System.Web.Script.Serialization;
 
+    using AutoMapper.QueryableExtensions;
     using Microsoft.AspNet.SignalR;
     using Microsoft.AspNet.SignalR.Hubs;
+    using Newtonsoft.Json;
 
     using Common;
     using Data;
-    using PetCare.Models;
-    using Newtonsoft.Json;
     using Models.Notification;
-    using Models.HealthRecord;
-    using AutoMapper.QueryableExtensions;
-    using System.Data.Entity;
+    using PetCare.Models;
+    
+
     public class NotifierHub : Hub
     {
+
+        private static System.Runtime.Caching.MemoryCache asd;
         public override Task OnConnected()
         {
+           
+
             if (!Context.User.Identity.IsAuthenticated)
             {
                 return base.OnConnected();
@@ -59,12 +63,10 @@
                 }
 
                 var visits = pets
-                    .Select(x => x.HealthRecord)
-                    .FirstOrDefault()
-                    .VetVisits
-                    .Where(x => x.DateTime.Day > DateTime.UtcNow.Day && x.DateTime.Day <= DateTime.UtcNow.AddDays(2).Day)
+                    .SelectMany(x => x.HealthRecord.VetVisits)
+                    .Where(x => x.DateTime.Day > DateTime.UtcNow.Day && x.DateTime.Day <= DateTime.UtcNow.AddDays(1).Day)
                     .ToList();
-
+                
                 foreach (var visit in visits)
                 {
                     var viewModel = new NotificationViewModel()

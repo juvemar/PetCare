@@ -16,8 +16,14 @@
         
         public ActionResult GetImage(int id)
         {
-            var imageData = this.images.GetById(id).Content;
-            return File(imageData, "image/jpg");
+            var image = this.images.GetById(id);
+
+            if (image == null)
+            {
+                return this.RedirectToAction("NotFound", "Error");
+            }
+
+            return File(image.Content, "image/jpg");
         }
     }
 }

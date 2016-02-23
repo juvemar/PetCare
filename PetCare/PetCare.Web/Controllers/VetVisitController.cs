@@ -75,15 +75,24 @@
         [Authorize]
         [HttpGet]
         [ActionName("_VetVisitDetailsPartial")]
-        public ActionResult VetVisitDetails(int id)
+        public ActionResult VetVisitDetailsPartial(int id)
         {
-            var visit = this.visits.GetById(id).FirstOrDefault();
-
             var vetVisit = this.visits.GetById(id)
                     .ProjectTo<VetVisitDetailsViewModel>()
                     .FirstOrDefault();
 
             return this.PartialView(vetVisit);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult VetVisitDetails(int id)
+        {
+            var vetVisit = this.visits.GetById(id)
+                    .ProjectTo<VetVisitDetailsViewModel>()
+                    .FirstOrDefault();
+
+            return this.View(vetVisit);
         }
     }
 }

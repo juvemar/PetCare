@@ -53,25 +53,31 @@
         [Authorize]
         public ActionResult HealthRecordDetails(int id)
         {
-            var record = this.records.GetById(id)
-                .ProjectTo<HealthRecordDetails>()
-                .FirstOrDefault();
+            var record = this.records.GetById(id);
             if (record == null)
             {
-                return View(record);
+                return this.RedirectToAction("NotFound", "Error");
             }
+            var model = record.ProjectTo<HealthRecordDetails>()
+                .FirstOrDefault();
 
             var getAllVisits = this.vetVisits.GetAll().Where(v => v.PetId == id);
-            record.PassedVetVisits = getAllVisits.Where(v => v.DateTime < DateTime.UtcNow).ToList();
-            record.UpcomingVetVisits = getAllVisits.Where(v => v.DateTime > DateTime.UtcNow).OrderBy(v => v.DateTime).ToList();
+            model.PassedVetVisits = getAllVisits.Where(v => v.DateTime < DateTime.UtcNow).ToList();
+            model.UpcomingVetVisits = getAllVisits.Where(v => v.DateTime > DateTime.UtcNow).OrderBy(v => v.DateTime).ToList();
 
-            return View(record);
+            return View(model);
         }
 
         [HttpGet]
         [Authorize]
         public ActionResult EditHealthRecord(int id)
         {
+            var record = this.records.GetById(id).FirstOrDefault();
+            if (record == null)
+            {
+                return this.RedirectToAction("NotFound", "Error");
+            }
+
             var model = new CreateHealthRecordViewModel();
             model.PetId = id;
 

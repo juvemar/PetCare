@@ -70,12 +70,16 @@
         [HttpGet]
         public ActionResult PetDetails(int id)
         {
-            var pet = this.pets
-                .GetById(id)
-                .ProjectTo<PetDetailsViewModel>()
+            var pet = this.pets.GetById(id);
+            if (pet == null)
+            {
+                return this.RedirectToAction("NotFound", "Error");
+            }
+
+            var model = pet.ProjectTo<PetDetailsViewModel>()
                 .FirstOrDefault();
 
-            return this.View(pet);
+            return this.View(model);
         }
 
         [HttpGet]
@@ -90,6 +94,11 @@
                 .ToList();
 
             var petsModel = new List<ListPetsViewModel>();
+            if (pets.Count() == 0)
+            {
+                return this.View(petsModel);
+            }
+
             foreach (var pet in pets)
             {
                 var newPet = new ListPetsViewModel()
