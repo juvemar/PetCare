@@ -13,6 +13,7 @@
     using Services.Contracts;
     using Web.Controllers;
 
+    [Authorize(Roles = PetCare.Common.GlobalConstants.AdministratorRoleName)]
     public class PetAdminController : BaseController
     {
         private IRepository<Pet> pets;

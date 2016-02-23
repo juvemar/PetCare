@@ -21,7 +21,7 @@ $(document).on('change', '#pickDay', function (e) {
 
         $.ajax({
             type: "GET",
-            url: "/VetBusyHour/VetAvailableHours",
+            url: "/VetBusyHour/_VetAvailableHoursPartial",
             data: data,
             success: function (view) {
                 $("#LoadingImage").hide();

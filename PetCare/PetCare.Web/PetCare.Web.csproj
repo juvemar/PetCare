@@ -242,8 +242,10 @@
     <Compile Include="Areas\Administrator\Models\HealthRecord\HealthRecordAdminViewModel.cs" />
     <Compile Include="Areas\Administrator\Models\Pet\PetAdminViewModel.cs" />
     <Compile Include="Areas\Administrator\Models\Pet\PetAdminInputViewModel.cs" />
+    <Compile Include="Attributes\AuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HealthRecordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -1050,7 +1052,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -1200,19 +1201,25 @@
     <Content Include="Views\HealthRecord\CreateHealthRecord.cshtml" />
     <Content Include="Views\HealthRecord\HealthRecordDetails.cshtml" />
     <Content Include="Views\VetVisit\AddVetVisit.cshtml" />
-    <Content Include="Views\Pet\ListMyPets.cshtml" />
-    <Content Include="Views\VetBusyHour\VetAvailableHours.cshtml" />
+    <Content Include="Views\Pet\ListPets.cshtml" />
+    <Content Include="Views\VetBusyHour\_VetAvailableHoursPartial.cshtml" />
     <Content Include="Views\HealthRecord\EditHealthRecord.cshtml" />
-    <Content Include="Views\VetVisit\VetVisitDetails.cshtml" />
+    <Content Include="Views\VetVisit\_VetVisitDetailsPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\PetAdminInputViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\HealthRecordAdminInputViewModel.cshtml" />
+    <Content Include="Views\HealthRecord\_UpcomingVetVisitsPartial.cshtml" />
+    <Content Include="Views\HealthRecord\_PassedVetVisitsPartial.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\ServerError.cshtml" />
+    <Content Include="Views\Error\PageForbidden.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\VetVisit\_VetVisitListItemPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrator\Views\Administrator\" />
     <Folder Include="Areas\Administrator\Views\Shared\" />
-    <Folder Include="Views\HealthRecordAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

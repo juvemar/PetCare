@@ -33,7 +33,7 @@
                 <div class="col-md-10">
                     @(Html.Kendo().DatePickerFor(m => m.DateTime)
               .Name("pickDay")
-              .Value(DateTime.Today)
+              .Value("")
               .Min(DateTime.Today)
               .Culture("US")
               .Format("yyyy-MM-dd")
@@ -51,7 +51,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", new { area = string.Empty })
 </div>
 
 @section Scripts {

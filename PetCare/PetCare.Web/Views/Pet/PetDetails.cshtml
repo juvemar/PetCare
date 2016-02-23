@@ -1,13 +1,20 @@
 ﻿@model PetCare.Web.Models.Pet.PetDetailsViewModel
 
-
 <div class="container">
     <div class="text-center">
         <h1>@Html.DisplayTextFor(m => m.Name)'s Profile</h1>
     </div>
     <div class="row marginTopDiv">
+
         <div class="col-md-5 text-center img-thumbnail">
-            <img src="@Url.Action("GetImage", "Image", new { id = Model.ImageId })" alt="Model.UserName" class="img-responsive img-rounded" />
+            @if (Model.ImageId == null)
+            {
+                <img src="https://image.freepik.com/free-icon/sea-lion-mammal-animal-shape_318-63131.jpg" class="img-responsive img-rounded" />
+            }
+            else
+            {
+                <img src="@Url.Action("GetImage", "Image", new { id = Model.ImageId })" alt="Model.UserName" class="img-responsive img-rounded" />
+            }
         </div>
         <div class="col-md-1">
         </div>
@@ -30,16 +37,18 @@
             </p>
             <p>
                 @if (Model.HealthRecordId != 0)
-                {   
-                    @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId }, null)
+                {
+                    @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId, area = string.Empty }, null)
                 }
                 else
                 {
-                    @Html.ActionLink("Create Health Record", "CreateHealthRecord", "HealthRecord", new { id = Model.Id}, new { })
+                    @Html.ActionLink("Create Health Record", "CreateHealthRecord", "HealthRecord", new { id = Model.Id, area = string.Empty }, null)
                 }
             </p>
         </div>
     </div>
+</div>
+
 
     <p>
         @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })*@

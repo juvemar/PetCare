@@ -74,6 +74,7 @@
 
         [Authorize]
         [HttpGet]
+        [ActionName("_VetVisitDetailsPartial")]
         public ActionResult VetVisitDetails(int id)
         {
             var visit = this.visits.GetById(id).FirstOrDefault();
@@ -82,7 +83,7 @@
                     .ProjectTo<VetVisitDetailsViewModel>()
                     .FirstOrDefault();
 
-            return this.View(vetVisit);
+            return this.PartialView(vetVisit);
         }
     }
 }

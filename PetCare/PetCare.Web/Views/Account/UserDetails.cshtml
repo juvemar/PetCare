@@ -58,7 +58,7 @@
                 @foreach (var item in Model.Pets)
                 {
                     <h3>
-                        @Html.ActionLink(item.Name, "PetDetails", "Pet", new { id = item.Id }, new { style = "color:#009999" })
+                        @Html.ActionLink(item.Name, "PetDetails", "Pet", new { id = item.Id, area = string.Empty }, new { style = "color:#009999" })
                     </h3>
                 }
             </div>

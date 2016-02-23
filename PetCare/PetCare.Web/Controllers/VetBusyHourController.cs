@@ -22,7 +22,7 @@
         }
 
         [Authorize]
-        [ActionName("VetAvailableHours")]
+        [ActionName("_VetAvailableHoursPartial")]
         [HttpGet]
         public ActionResult GetVetAvailableHours(string vetId, DateTime date, string description, string healthRecordId)
         {

@@ -13,12 +13,7 @@
         {
             this.images = images;
         }
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+        
         public ActionResult GetImage(int id)
         {
             var imageData = this.images.GetById(id).Content;

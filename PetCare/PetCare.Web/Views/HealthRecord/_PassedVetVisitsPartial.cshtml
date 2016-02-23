@@ -1,0 +1,21 @@
+﻿@model PetCare.Web.Models.HealthRecord.HealthRecordDetails
+@{
+    Layout = null;
+}
+
+
+@if (Model.PassedVetVisits.Count() == 0)
+{
+    <div class="text-center">
+        <h5>No Passed Vet Visits</h5>
+    </div>
+}
+else
+{
+    <div class="col-md-6 text-center">
+        @foreach (var vetVisit in Model.PassedVetVisits)
+        {
+        @Html.Partial("~/Views/VetVisit/_VetVisitListItemPartial.cshtml", vetVisit)
+        }
+    </div>
+}

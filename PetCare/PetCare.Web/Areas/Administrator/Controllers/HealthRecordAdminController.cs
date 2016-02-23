@@ -12,6 +12,7 @@
     using PetCare.Web.Areas.Administrator.Models.HealthRecord;
     using PetCare.Web.Controllers;
 
+    [Authorize(Roles = PetCare.Common.GlobalConstants.AdministratorRoleName)]
     public class HealthRecordAdminController : BaseController
     {
         private IRepository<HealthRecord> records;

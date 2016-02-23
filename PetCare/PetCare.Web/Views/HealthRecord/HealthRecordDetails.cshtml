@@ -20,39 +20,46 @@
         <em>@Html.DisplayTextFor(model => model.Coat)</em>
     </h3>
 
-    <div class="row">
-        <div class="col-md-6">
-            <h3>@Model.PetName's Upcoming Vet Visits</h3>
-            @foreach (var vetVisit in Model.UpcomingVetVisits)
-            {
-                <div>
-                    @Html.ActionLink(@vetVisit.Description + " - " + @vetVisit.DateTime.ToString("yyyy-MM-dd HH:mm"), "VetVisitDetails", "VetVisit", new { id = Model.PetId }, new { @class = "btn btn-nextvisit", style = "width:70%" })
+    <div class="panel-group text-center" id="accordion">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                        @Model.PetName's Upcoming Vet Visits
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse in">
+                <div class="panel-body text-center">
+                    @Html.Partial("~/Views/HealthRecord/_UpcomingVetVisitsPartial.cshtml", Model)
                 </div>
-            }
+            </div>
         </div>
-
-        <div class="col-md-6">
-            <h3> @Model.PetName's Vet Visits History</h3>
-            @foreach (var vetVisit in Model.PassedVetVisits)
-            {
-                <div>
-                    @Html.ActionLink(@vetVisit.Description + " - " + @vetVisit.DateTime.ToString("yyyy-MM-dd HH:mm"), "VetVisitDetails", "VetVisit", new { id = Model.PetId }, new { @class = "btn btn-lastvisit", style = "width:70%" })
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                         @Model.PetName's Vet Visits History
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse2" class="panel-collapse collapse">
+                <div class="panel-body text-center">
+                    @Html.Partial("~/Views/HealthRecord/_PassedVetVisitsPartial.cshtml", Model)
                 </div>
-            }
+            </div>
         </div>
     </div>
-
-    <hr />
-    <br />
-
 </div>
+
+<br />
 
 <div class="row">
     <div class="col-md-6">
-        @Html.ActionLink("Add Vet Visit", "AddVetVisit", "VetVisit", new { id = Model.PetId }, new { @class = "btn btn-default" })
+        @Html.ActionLink("Add Vet Visit", "AddVetVisit", "VetVisit", new { id = Model.PetId, area = string.Empty }, new { @class = "btn btn-default" })
     </div>
     <div class="col-md-6 text-right">
-        @Html.ActionLink("Edit", "EditHealthRecord", new { id = Model.PetId }, new { @class = "btn btn-info" })
-        @Html.ActionLink("Back to Pet", "PetDetails", "Pet", new { id = Model.PetId }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Edit", "EditHealthRecord", new { id = Model.PetId, area = string.Empty }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Back to Pet", "PetDetails", "Pet", new { id = Model.PetId, area = string.Empty }, new { @class = "btn btn-warning" })
     </div>
 </div>
