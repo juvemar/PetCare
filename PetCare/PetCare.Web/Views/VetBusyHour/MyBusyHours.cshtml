@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PetCare.Web.Models.VetBusyHour.VetBusyHourViewModel>
+
+<div class="row">
+
+    <div class="col-md-8 col-md-offset-1">
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pet.Pet.Name)
+                </th>
+            </tr>
+            @{
+                var index = 0;
+            }
+            @foreach (var item in Model)
+            {
+                if (index % 2 == 0)
+                {
+                    <tr style="background-color:cadetblue">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pet.Pet.Name)
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr style="background-color:lightblue">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pet.Pet.Name)
+                        </td>
+                    </tr>
+                }
+
+                index++;
+            }
+
+        </table>
+
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>

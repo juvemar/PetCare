@@ -266,6 +266,7 @@
     <Compile Include="Models\Home\HomePetMixViewModel.cs" />
     <Compile Include="Models\Notification\NotificationViewModel.cs" />
     <Compile Include="Models\Pet\ListPetsViewModel.cs" />
+    <Compile Include="Models\VetBusyHour\VetBusyHourViewModel.cs" />
     <Compile Include="Models\VetVisit\AddVetVisitViewModel.cs" />
     <Compile Include="Models\HealthRecord\CreateHealthRecordViewModel.cs" />
     <Compile Include="Models\HealthRecord\HealthRecordDetails.cs" />
@@ -1222,6 +1223,7 @@
     <Content Include="Views\Shared\EditorTemplates\UserInputViewModel.cshtml" />
     <Content Include="Views\Pet\_AddPetPartial.cshtml" />
     <Content Include="Views\VetVisit\VetVisitDetails.cshtml" />
+    <Content Include="Views\VetBusyHour\MyBusyHours.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

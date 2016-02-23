@@ -1,4 +1,6 @@
-﻿@model PetCare.Web.Models.Pet.PetDetailsViewModel
+﻿@using System;
+@using System.Globalization;
+@model PetCare.Web.Models.Pet.PetDetailsViewModel
 
 <div class="container">
     <div class="text-center">
@@ -20,29 +22,35 @@
         </div>
         <div class="col-md-6 jumbotron">
             <p>
-                @Html.LabelFor(m => m.Gender):
+                Gender:
                 @Html.DisplayTextFor(m => m.Gender)
             </p>
             <p>
-                @Html.LabelFor(m => m.BirthPlace):
+                Place of Birth:
                 @Html.DisplayTextFor(m => m.BirthPlace)
             </p>
             <p>
-                @Html.LabelFor(m => m.DateOfBirth):
-                @String.Format("{0:dd/MM/yyyy}", Model.DateOfBirth)
+                Birthday:
+                @Model.DateOfBirth.ToString("MMMM dd, yyyy", new CultureInfo("en-US"))
             </p>
             <p>
-                @Html.LabelFor(m => m.Species):
+                Species:
                 @Html.DisplayTextFor(m => m.Species)
             </p>
             <p>
-                @if (Model.HealthRecordId != 0)
+                @if (this.User.Identity.IsAuthenticated)
                 {
-                    @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId, area = string.Empty }, null)
-                }
-                else
-                {
-                    @Html.ActionLink("Create Health Record", "CreateHealthRecord", "HealthRecord", new { id = Model.Id, area = string.Empty }, null)
+                    if (Model.Owner.UserName == this.User.Identity.Name)
+                    {
+                        if (Model.HealthRecordId != 0)
+                        {
+                            @Html.ActionLink(Model.Name + "'s Health Record", "HealthRecordDetails", "HealthRecord", new { id = Model.HealthRecordId, area = string.Empty }, null)
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Create Health Record", "CreateHealthRecord", "HealthRecord", new { id = Model.Id, area = string.Empty }, null)
+                        }
+                    }
                 }
             </p>
         </div>
@@ -50,6 +58,6 @@
 </div>
 
 
-    <p>
-        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })*@
-    </p>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ })*@
+</p>

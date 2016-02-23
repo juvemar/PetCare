@@ -5,20 +5,25 @@
     using System.Linq;
     using System.Web.Mvc;
 
+    using AutoMapper.QueryableExtensions;
+
     using Common;
-    using Services.Contracts;
-    using Models.VetVisit;
+    using Models.VetBusyHour;
     using Models.VetFreeHour;
+    using Services.Contracts;
+
     public class VetBusyHourController : BaseController
     {
         private IUsersService users;
         private IVetBusyHoursService hours;
+        private IVetVisitsService visits;
 
-        public VetBusyHourController(IUsersService users, IVetBusyHoursService hours)
+        public VetBusyHourController(IUsersService users, IVetBusyHoursService hours, IVetVisitsService visits)
             : base(users)
         {
             this.users = users;
             this.hours = hours;
+            this.visits = visits;
         }
 
         [Authorize]
@@ -54,6 +59,21 @@
             }
 
             return PartialView(availableHours);
+        }
+
+        [Authorize]
+        [Authorize(Roles = PetCare.Common.GlobalConstants.VetRoleName)]
+        public ActionResult MyBusyHours()
+        {
+            var currentUser = this.users.GetByUsername(this.User.Identity.Name).FirstOrDefault();
+
+            var visits = this.visits.GetAll()
+                .Where(x => x.VetId == currentUser.Id)
+                .OrderBy(x => x.DateTime)
+                .ProjectTo<VetBusyHourViewModel>()
+                .ToList();
+
+            return this.View(visits);
         }
     }
 }

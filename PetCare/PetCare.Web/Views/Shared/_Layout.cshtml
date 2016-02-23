@@ -28,8 +28,15 @@
                 <ul class="nav navbar-nav">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Add Your Pet", "AddPet", "Pet", new { area = string.Empty }, null)</li>
-                        <li>@Html.ActionLink("Check Out Your Pets", "ListPets", "Pet", new { area = string.Empty }, null)</li>
+                        if (!this.User.IsInRole("vet"))
+                        {
+                            <li>@Html.ActionLink("Add Your Pet", "AddPet", "Pet", new { area = string.Empty }, null)</li>
+                            <li>@Html.ActionLink("Check Out Your Pets", "ListPets", "Pet", new { area = string.Empty }, null)</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Check Your Schedule", "MyBusyHours", "VetBusyHour", new { area = string.Empty }, null)</li>
+                        }
                         if (this.User.IsInRole(PetCare.Common.GlobalConstants.AdministratorRoleName))
                         {
                             <li class="dropdown">

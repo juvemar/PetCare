@@ -95,7 +95,8 @@
                 recordedNotifications = notifications
                     .Where(x => x.User.Id == currentUser.Id && !x.IsSeen)
                     .AsQueryable()
-                    .ProjectTo<NotificationViewModel>().ToList();
+                    .ProjectTo<NotificationViewModel>()
+                    .ToList();
             }
 
             var anonymous = recordedNotifications.Select(x => new

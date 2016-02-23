@@ -1,3 +1,5 @@
-﻿@model DateTime
+﻿@using System;
+@using System.Globalization;
+@model DateTime
 
-@Model.ToString("MMMM dd, yyyy HH:mm")
+@Model.ToString("MMMM dd, yyyy HH:mm", new CultureInfo("en-US"))

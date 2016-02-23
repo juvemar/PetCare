@@ -27,6 +27,8 @@
 
         public string OwnerId { get; set; }
 
+        public virtual User Owner { get; set; }
+
         public int? ImageId { get; set; }
 
         public int HealthRecordId { get; set; }
@@ -36,7 +38,8 @@
             configuration.CreateMap<PetDetailsViewModel, Pet>("PetDetails")
                 .ForMember(m => m.OwnerId, opts => opts.MapFrom(m => m.OwnerId))
                 .ForMember(m => m.HealthRecordId, opts => opts.MapFrom(m => m.HealthRecordId))
-                 .ForMember(m => m.ImageId, opts => opts.MapFrom(m => m.ImageId));
+                 .ForMember(m => m.ImageId, opts => opts.MapFrom(m => m.ImageId))
+                 .ForMember(m => m.Owner, opts => opts.MapFrom(m => m.Owner));
         }
     }
 }

@@ -8,10 +8,13 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
+            @if (!this.User.IsInRole("vet"))
+            {
             <li style="color:white" class="dropdown">
                 <a href="#" class="dropdown-toggle glyphicon glyphicon-bell" data-toggle="dropdown" role="button" aria-expanded="false" id="notification-item"><span id="caret" class="hidden caret"></span></a>
                 <ul class="dropdown-menu" role="menu" id="notifications-list"></ul>
             </li>
+            }
             @{
                 var pictureExists = ((BaseController)this.ViewContext.Controller).GetUserPictureId(this.User.Identity.GetUserId());
             }
