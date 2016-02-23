@@ -242,6 +242,8 @@
     <Compile Include="Areas\Administrator\Models\HealthRecord\HealthRecordAdminViewModel.cs" />
     <Compile Include="Areas\Administrator\Models\Pet\PetAdminViewModel.cs" />
     <Compile Include="Areas\Administrator\Models\Pet\PetAdminInputViewModel.cs" />
+    <Compile Include="Areas\Administrator\Models\User\UserInputViewModel.cs" />
+    <Compile Include="Areas\Administrator\Models\User\UserViewModel.cs" />
     <Compile Include="Attributes\AuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -1215,6 +1217,7 @@
     <Content Include="Views\Error\PageForbidden.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
     <Content Include="Views\VetVisit\_VetVisitListItemPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\UserInputViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

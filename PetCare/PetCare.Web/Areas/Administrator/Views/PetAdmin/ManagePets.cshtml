@@ -9,10 +9,6 @@
           columns.Bound(c => c.Species);
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
       })
-      .ToolBar(toolbar =>
-      {
-          toolbar.Create();
-      })
       .ColumnMenu()
       .Editable(editable => editable.Mode(GridEditMode.PopUp))
       .Pageable()
@@ -26,7 +22,6 @@
           .Ajax()
           .Model(model => model.Id(p => p.Id))
           .Read(read => read.Action("Pets_Read", "PetAdmin"))
-          .Create(create => create.Action("Pets_Create", "PetAdmin"))
           .Update(update => update.Action("Pets_Update", "PetAdmin"))
           .Destroy(destroy => destroy.Action("Pets_Destroy", "PetAdmin"))
       )

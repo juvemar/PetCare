@@ -16,14 +16,13 @@
     public class HealthRecordAdminController : BaseController
     {
         private IRepository<HealthRecord> records;
-        private IUsersService users;
 
         public HealthRecordAdminController(IUsersService users, IRepository<HealthRecord> records)
             : base(users)
         {
             this.records = records;
-            this.users = users;
         }
+
         public ActionResult ManageHealthRecords()
         {
             return View();

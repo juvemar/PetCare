@@ -1,30 +1,13 @@
-﻿@using Kendo.Mvc.UI
-
-@(Html.Kendo().Grid<PetCare.Models.User>()
+﻿<br />
+@(Html.Kendo().Grid<PetCare.Web.Areas.Administrator.Models.User.UserInputViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
           columns.Bound(c => c.FirstName);
           columns.Bound(c => c.LastName);
-          columns.Bound(c => c.ForumPoints);
-          columns.Bound(c => c.Gender);
           columns.Bound(c => c.SergeryLocation);
-          columns.Bound(c => c.Email);
-          columns.Bound(c => c.EmailConfirmed);
-          columns.Bound(c => c.PasswordHash);
-          columns.Bound(c => c.SecurityStamp);
-          columns.Bound(c => c.PhoneNumber);
-          columns.Bound(c => c.PhoneNumberConfirmed);
-          columns.Bound(c => c.TwoFactorEnabled);
-          columns.Bound(c => c.LockoutEndDateUtc);
-          columns.Bound(c => c.LockoutEnabled);
-          columns.Bound(c => c.AccessFailedCount);
-          columns.Bound(c => c.UserName);
+          columns.Bound(c => c.IsVet);
           columns.Command(command => { command.Edit(); command.Destroy(); }).Width(180);
-      })
-      .ToolBar(toolbar =>
-      {
-          toolbar.Create();
       })
       .ColumnMenu()
       .Editable(editable => editable.Mode(GridEditMode.PopUp))
@@ -40,7 +23,6 @@
           .Ajax()
           .Model(model => model.Id(p => p.Id))
           .Read(read => read.Action("Users_Read", "User"))
-          .Create(create => create.Action("Users_Create", "User"))
           .Update(edit => edit.Action("Users_Update", "User"))
           .Destroy(destroy => destroy.Action("Users_Destroy", "User"))
       )

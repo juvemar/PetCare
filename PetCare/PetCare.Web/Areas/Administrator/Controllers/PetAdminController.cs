@@ -17,13 +17,11 @@
     public class PetAdminController : BaseController
     {
         private IRepository<Pet> pets;
-        private IUsersService users;
 
         public PetAdminController(IUsersService users, IRepository<Pet> pets)
             : base(users)
         {
             this.pets = pets;
-            this.users = users;
         }
 
         public ActionResult ManagePets()
