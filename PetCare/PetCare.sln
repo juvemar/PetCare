@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetCare.Services", "PetCare
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetCare.Common", "PetCare.Common\PetCare.Common.csproj", "{49719F5C-A9A3-478B-AF39-8C3D0061F250}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetCare.Tests", "PetCare.Tests\PetCare.Tests.csproj", "{EAABF5B2-E4F8-42AE-A845-7ED64EF2D3A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{49719F5C-A9A3-478B-AF39-8C3D0061F250}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49719F5C-A9A3-478B-AF39-8C3D0061F250}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49719F5C-A9A3-478B-AF39-8C3D0061F250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAABF5B2-E4F8-42AE-A845-7ED64EF2D3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAABF5B2-E4F8-42AE-A845-7ED64EF2D3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAABF5B2-E4F8-42AE-A845-7ED64EF2D3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAABF5B2-E4F8-42AE-A845-7ED64EF2D3A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

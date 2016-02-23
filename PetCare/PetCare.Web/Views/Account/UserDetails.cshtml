@@ -77,8 +77,8 @@
     @if (Model.UserName == User.Identity.Name)
     {
         <div class="text-right">
-            @Html.ActionLink("Edit Profile", "EditUserProfile", "Manage", null, new { @class = "btn btn-info" })
-            @Html.ActionLink("Change your password", "ChangePassword", "Manage", null, new { @class = "btn btn-default" })
+            @Html.ActionLink("Edit Profile", "EditUserProfile", "Manage", new { area = string.Empty }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Change your password", "ChangePassword", "Manage", new { area = string.Empty }, new { @class = "btn btn-default" })
         </div>
     }
 </div>
