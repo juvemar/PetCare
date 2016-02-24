@@ -1209,6 +1209,7 @@
     <Content Include="Views\Pet\_AddPetPartial.cshtml" />
     <Content Include="Views\VetVisit\VetVisitDetails.cshtml" />
     <Content Include="Views\VetBusyHour\MyBusyHours.cshtml" />
+    <Content Include="Views\Home\_HomeCachedDataPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

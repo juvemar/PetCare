@@ -21,8 +21,18 @@
         }
 
         [HttpGet]
-        [OutputCache(Duration = 60 * 60)]
         public ActionResult Index()
+        {
+            return this.View(new HomePetMixViewModel()
+            {
+                AddPetViewModel = new AddPetViewModel(),
+                ListPetsViewModel = new List<ListPetsViewModel>()
+            });
+        }
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 60 * 30)]
+        public ActionResult CachedData()
         {
             var model = new HomePetMixViewModel()
             {
@@ -38,7 +48,7 @@
                 model.ListPetsViewModel.Add(pet);
             }
 
-            return this.View(model);
+            return this.PartialView("_HomeCachedDataPartial", model);
         }
     }
 }
