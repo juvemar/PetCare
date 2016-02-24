@@ -63,17 +63,36 @@
 
         [Authorize]
         [Authorize(Roles = PetCare.Common.GlobalConstants.VetRoleName)]
-        public ActionResult MyBusyHours()
+        public ActionResult MyBusyHours(int id = 1)
         {
             var currentUser = this.users.GetByUsername(this.User.Identity.Name).FirstOrDefault();
 
-            var visits = this.visits.GetAll()
+            var visits = this.visits.GetAll();
+            var totalPages = (int)Math.Ceiling(visits.Count() / ((decimal)GlobalConstants.BusyHoursPerPage));
+
+            if (id - 1 >= totalPages)
+            {
+                id = totalPages;
+            }
+
+            var itemsToSkip = (id - 1) * GlobalConstants.BusyHoursPerPage;
+            
+            var pagedVisits = visits
                 .Where(x => x.VetId == currentUser.Id)
                 .OrderBy(x => x.DateTime)
+                .Skip(itemsToSkip)
+                .Take(GlobalConstants.BusyHoursPerPage)
                 .ProjectTo<VetBusyHourViewModel>()
                 .ToList();
 
-            return this.View(visits);
+            var model = new VetBusyHourPageableModel()
+            {
+                CurrentPage = id,
+                TotalPages = totalPages,
+                VetBusyHours = pagedVisits
+            };
+
+            return this.View(model);
         }
     }
 }

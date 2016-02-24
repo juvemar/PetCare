@@ -46,6 +46,7 @@
             this.records.Add(dataModel);
             this.pets.UpdatePet(id);
 
+            this.TempData["Notification"] = "Health record added successfully!";
             return RedirectToAction("PetDetails", "Pet", new { id = id });
         }
 

@@ -266,6 +266,7 @@
     <Compile Include="Models\Home\HomePetMixViewModel.cs" />
     <Compile Include="Models\Notification\NotificationViewModel.cs" />
     <Compile Include="Models\Pet\ListPetsViewModel.cs" />
+    <Compile Include="Models\VetBusyHour\VetBusyHourPageableModel.cs" />
     <Compile Include="Models\VetBusyHour\VetBusyHourViewModel.cs" />
     <Compile Include="Models\VetVisit\AddVetVisitViewModel.cs" />
     <Compile Include="Models\HealthRecord\CreateHealthRecordViewModel.cs" />

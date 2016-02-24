@@ -27,7 +27,7 @@
                 <ul class="nav navbar-nav">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        if (!this.User.IsInRole("vet"))
+                        if (!this.User.IsInRole(PetCare.Common.GlobalConstants.VetRoleName))
                         {
                             <li>@Html.ActionLink("Add Your Pet", "AddPet", "Pet", new { area = string.Empty }, null)</li>
                             <li>@Html.ActionLink("Check Out Your Pets", "ListPets", "Pet", new { area = string.Empty }, null)</li>
@@ -60,6 +60,14 @@
         </div>
     </div>
     <div class="container body-content">
+
+        @if (this.TempData["Notification"] != null)
+        {
+            <div id="nitificationSuccess" class="panel panel-success col-md-8 col-md-offset-2 text-center" style="margin-top:1%; background-color:lightgreen">
+                @this.TempData["Notification"]
+            </div>
+        }
+
         @RenderBody()
         <hr />
         <footer class="text-center">
@@ -73,6 +81,11 @@
     @Scripts.Render("~/bundles/kendo")
 
     <script src="~/Scripts/Hub/notifier.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#nitificationSuccess").fadeOut(2500, function () { });
+        });
+    </script>
 
     @RenderSection("scripts", required: false)
 

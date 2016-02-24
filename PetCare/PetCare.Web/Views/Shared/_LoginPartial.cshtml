@@ -3,17 +3,17 @@
 
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { area = string.Empty, id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            @if (!this.User.IsInRole("vet"))
+            @if (!this.User.IsInRole(PetCare.Common.GlobalConstants.VetRoleName))
             {
-            <li style="color:white" class="dropdown">
-                <a href="#" class="dropdown-toggle glyphicon glyphicon-bell" data-toggle="dropdown" role="button" aria-expanded="false" id="notification-item"><span id="caret" class="hidden caret"></span></a>
-                <ul class="dropdown-menu" role="menu" id="notifications-list"></ul>
-            </li>
+                <li style="color:white" class="dropdown">
+                    <a href="#" class="dropdown-toggle glyphicon glyphicon-bell" data-toggle="dropdown" role="button" aria-expanded="false" id="notification-item"><span id="caret" class="hidden caret"></span></a>
+                    <ul class="dropdown-menu" role="menu" id="notifications-list"></ul>
+                </li>
             }
             @{
                 var pictureExists = ((BaseController)this.ViewContext.Controller).GetUserPictureId(this.User.Identity.GetUserId());
@@ -24,11 +24,11 @@
             <li>
                 @if (pictureExists > 0)
                 {
-                    <img src="@Url.Action("GetImage", "Image", new { id = pictureExists })" alt="@this.User.Identity.GetUserName()" class="centered-profile-image img-circle" />
+                    <img src="@Url.Action("GetImage", "Image", new { area=string.Empty, id = pictureExists })" alt="@this.User.Identity.GetUserName()" class="centered-profile-image img-circle" />
                 }
                 else
                 {
-                    <img src="https://image.freepik.com/free-icon/sea-lion-mammal-animal-shape_318-63131.jpg" class="centered-profile-image" />
+                    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT6j9paf9VGanalIhDqy82hKuJSf4qYy2vPRYRn4qFBBE-P1aqK" class="centered-profile-image" />
                 }
             </li>
             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
@@ -38,7 +38,7 @@
                 else
                 {
                     <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink("Register", "Register", "Account", new { area=string.Empty}, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Register", "Register", "Account", new { area = string.Empty }, htmlAttributes: new { id = "registerLink" })</li>
                         <li>@Html.ActionLink("Log in", "Login", "Account", new { area = string.Empty }, htmlAttributes: new { id = "loginLink" })</li>
                     </ul>
                 }

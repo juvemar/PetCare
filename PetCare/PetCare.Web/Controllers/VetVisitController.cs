@@ -31,7 +31,7 @@
         {
             var model = new AddVetVisitViewModel();
             model.HealthRecordId = id;
-            
+
             var vets = this.users.GetAll().Where(x => x.IsVet).ToList();
             model.Vets = new List<SelectListItem>();
             foreach (var vet in vets)
@@ -69,6 +69,7 @@
             this.hours.Add(busyHour);
             this.visits.Add(dataModel);
 
+            this.TempData["Notification"] = "The vet visit was appointed successfully!";
             return RedirectToAction("HealthRecordDetails", "HealthRecord", new { id = healthRecordId });
         }
 

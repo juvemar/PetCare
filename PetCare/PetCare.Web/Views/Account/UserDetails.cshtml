@@ -12,7 +12,7 @@
         <div class="col-md-5 text-center img-thumbnail">
             @if (Model.ProfilePictureId == null)
             {
-                <img src="https://image.freepik.com/free-icon/sea-lion-mammal-animal-shape_318-63131.jpg" class="img-responsive img-rounded" />
+                <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT6j9paf9VGanalIhDqy82hKuJSf4qYy2vPRYRn4qFBBE-P1aqK" class="img-responsive img-rounded" />
             }
             else
             {
@@ -22,26 +22,25 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-6 jumbotron">
-            <div style="font-weight:bolder">
-                <strong>Name: </strong>
-                <h2>@Html.DisplayTextFor(m => m.FirstName) @Html.DisplayTextFor(m => m.LastName)</h2>
+            <div style="font-weight:bolder; margin-bottom:8%">
+                <h3><strong>@Model.FirstName @Model.LastName</strong></h3>
             </div>
             <p>
-                @Html.LabelFor(m => m.Gender):
+                Gender:
                 @Html.DisplayTextFor(m => m.Gender)
             </p>
             <p>
-                @Html.LabelFor(m => m.Email):
+               E-mail:
                 @Html.DisplayTextFor(m => m.Email)
             </p>
             <p>
-                @Html.LabelFor(m => m.PhoneNumber):
+                Phone Number:
                 @Html.DisplayTextFor(m => m.PhoneNumber)
             </p>
             @if (User.IsInRole(PetCare.Common.GlobalConstants.VetRoleName))
             {
                 <p>
-                    @Html.LabelFor(m => m.SergeryLocation):
+                    Sergery Location:
                     <a href="http://maps.google.com/?q=@Model.SergeryLocation" target="_blank">@Html.DisplayTextFor(m => m.SergeryLocation)</a>
                 </p>
             }

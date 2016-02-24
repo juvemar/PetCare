@@ -64,6 +64,7 @@
 
             this.pets.Add(dataModel);
 
+            this.TempData["Notification"] = model.Name + " added successfully!";
             return RedirectToAction("Index", "Home");
         }
 

@@ -93,3 +93,7 @@ textarea {
 .modal-dialog {
     width: 60%;
 }
+
+#notifications-list li{
+    background-color:#46B8DA;
+}

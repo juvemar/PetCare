@@ -46,7 +46,7 @@
 ![alt tag](http://puu.sh/njcVf/f7cd27223b.png)
 
 - ~/VetBusyHour/MyBusyHours
-![alt tag](http://puu.sh/njdNK/8770cb7426.png)
+![alt tag](http://puu.sh/njiXn/5e2dd4f012.png)
 
 ####Database Diagram:
 ![alt tag](http://puu.sh/njdEb/6e7479d578.png)
