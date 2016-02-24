@@ -21,6 +21,7 @@
         }
 
         [HttpGet]
+        [OutputCache(Duration = 60 * 60)]
         public ActionResult Index()
         {
             var model = new HomePetMixViewModel()
