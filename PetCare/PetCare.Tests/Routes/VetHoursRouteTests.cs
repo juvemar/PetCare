@@ -11,17 +11,16 @@
     [TestClass]
     public class VetHoursRouteTests
     {
-
         [TestMethod]
         public void TestUserDetails()
         {
             var routeCollection = new RouteCollection();
             RouteConfig.RegisterRoutes(routeCollection);
-            var urlForTest = "/VetBusyHour/MyBusyHours";
+            var urlForTest = "/VetBusyHour/MyBusyHours/1";
 
             routeCollection
                 .ShouldMap(urlForTest)
-                .To<VetBusyHourController>(x => x.MyBusyHours());
+                .To<VetBusyHourController>(x => x.MyBusyHours(1));
         }
     }
 }
