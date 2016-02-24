@@ -16,16 +16,11 @@
     using Data;
     using Models.Notification;
     using PetCare.Models;
-    
 
     public class NotifierHub : Hub
     {
-
-        private static System.Runtime.Caching.MemoryCache asd;
         public override Task OnConnected()
         {
-           
-
             if (!Context.User.Identity.IsAuthenticated)
             {
                 return base.OnConnected();
@@ -66,7 +61,7 @@
                     .SelectMany(x => x.HealthRecord.VetVisits)
                     .Where(x => x.DateTime.Day > DateTime.UtcNow.Day && x.DateTime.Day <= DateTime.UtcNow.AddDays(1).Day)
                     .ToList();
-                
+
                 foreach (var visit in visits)
                 {
                     var viewModel = new NotificationViewModel()
@@ -127,19 +122,6 @@
                     db.SaveChanges();
                 }
             }
-        }
-
-        [HubMethodName("sendMessage")]
-        public void SendMessage(string message)
-        {
-            var msg = string.Format("{0}: {1}", Context.ConnectionId, message);
-            Clients.All.addMessage(msg);
-        }
-
-        public void JoinRoom(string room)
-        {
-            Groups.Add(Context.ConnectionId, room);
-            Clients.Caller.joinRoom(room);
         }
     }
 }

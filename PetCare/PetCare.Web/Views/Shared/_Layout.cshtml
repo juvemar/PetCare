@@ -63,8 +63,12 @@
 
         @if (this.TempData["Notification"] != null)
         {
-            <div id="nitificationSuccess" class="panel panel-success col-md-8 col-md-offset-2 text-center" style="margin-top:1%; background-color:lightgreen">
-                @this.TempData["Notification"]
+            <div id="nitificationSuccess" class="panel panel-success col-md-8 col-md-offset-2 text-center" style="background-color: #43AC6A;">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        @this.TempData["Notification"]
+                    </div>
+                </div>
             </div>
         }
 
@@ -83,7 +87,7 @@
     <script src="~/Scripts/Hub/notifier.js"></script>
     <script>
         $(document).ready(function () {
-            $("#nitificationSuccess").fadeOut(2500, function () { });
+            $("#nitificationSuccess").fadeOut(2500, function(){ });
         });
     </script>
 

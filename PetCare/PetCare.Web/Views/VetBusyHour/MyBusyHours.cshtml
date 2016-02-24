@@ -4,7 +4,7 @@
 
         <div class="col-md-8 col-md-offset-1">
 
-            <table class="table">
+            <table class="table table-striped table-hover">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.VetBusyHours.FirstOrDefault().DateTime)
@@ -23,7 +23,7 @@
             {
                 if (index % 2 == 0)
                 {
-                        <tr style="background-color:cadetblue">
+                        <tr class="info">
                             <td>
                                 @Html.DisplayFor(modelItem => item.DateTime)
                             </td>
@@ -37,7 +37,7 @@
                     }
                     else
                     {
-                        <tr style="background-color:lightblue">
+                        <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.DateTime)
                             </td>

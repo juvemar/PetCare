@@ -34,18 +34,5 @@
                 .ShouldMap(urlForTest)
                 .To<AccountController>(x => x.Register());
         }
-
-        //[TestMethod]
-        //public void TestLogin()
-        //{
-        //    var routeCollection = new RouteCollection();
-        //    RouteConfig.RegisterRoutes(routeCollection);
-        //    var urlForTest = "/Account/Login";
-
-        //    var url = "/Account/Login";
-        //    routeCollection
-        //        .ShouldMap(urlForTest)
-        //        .To<AccountController>(x => x.Login(url));
-        //}
     }
 }
