@@ -17,11 +17,6 @@ namespace PetCare.Web
 
         private static void LoadScriptBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquerynoty").Include(
-                        "~/Scripts/noty/jquery.noty.js",
-                        "~/Scripts/noty/layouts/top.js",
-                        "~/Scripts/noty/themes/default.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                         "~/Scripts/kendo/kendo.web.min.js",
                         "~/Scripts/kendo/kendo.aspnetmvc.min.js"));

@@ -20,6 +20,7 @@
             this.pets = pets;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             var model = new HomePetMixViewModel()

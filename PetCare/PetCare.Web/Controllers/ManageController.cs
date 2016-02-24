@@ -69,13 +69,13 @@
             }
         }
 
-        // GET: /Account/EditUserProfile
+        // GET: /Manage/EditUserProfile
         public ActionResult EditUserProfile()
         {
             return View();
         }
 
-        // POST: /Account/EditUserProfile
+        // POST: /Manage/EditUserProfile
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditUserProfile(EditUserProfileViewModel model)
