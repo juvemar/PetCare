@@ -12,9 +12,9 @@
         }
 
         $('#caret').show();
-        $('#notification-item').css('color', 'lightgreen');
-        $('#notification-item').text(" " + notifications.length);
         notifications.forEach(appendNotificationItems);
+        
+        notifications.forEach(checkIfSeen);
     };
 
     var ids = [];
@@ -26,7 +26,6 @@
         $('#notification-item').css('color', 'white');
         $('#notification-item').text("");
         notifications.forEach(extractIds);
-        console.log(ids);
         notifier.server.setNotificationsSeen(ids);
     })
 
@@ -38,7 +37,12 @@
         ids.push(element.VetVisitId);
     }
 
-    //notifier.client.emptyItems = function () {
-    //    $('#notifications-list').empty();
-    //}
+    function checkIfSeen(element, index, array) {
+        if (element.IsSeen) {
+            return;
+        }
+
+        $('#notification-item').css('color', 'lightgreen');
+        $('#notification-item').text(" " + notifications.length);
+    }
 })

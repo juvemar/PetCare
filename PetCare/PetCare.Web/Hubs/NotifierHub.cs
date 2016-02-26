@@ -64,31 +64,30 @@
 
                 foreach (var visit in visits)
                 {
-                    var viewModel = new NotificationViewModel()
-                    {
-                        DateTime = DateTime.UtcNow,
-                        Message = string.Format(GlobalConstants.VetVisitNotificationInThreeDays, visit.Pet.Pet.Name, visit.Vet.FirstName, visit.Vet.LastName),
-                        User = currentUser,
-                        IsSeen = false,
-                        VetVisitId = visit.Id
-                    };
-
-                    var notification = AutoMapper.Mapper.Map<NotificationViewModel, Notification>(viewModel);
-
                     if (visit.Notification == null)
                     {
+                        var viewModel = new NotificationViewModel()
+                        {
+                            DateTime = DateTime.UtcNow,
+                            Message = string.Format(GlobalConstants.VetVisitNotificationInThreeDays, visit.Pet.Pet.Name, visit.Vet.FirstName, visit.Vet.LastName),
+                            User = currentUser,
+                            IsSeen = false,
+                            VetVisitId = visit.Id
+                        };
+
+                        var notification = AutoMapper.Mapper.Map<NotificationViewModel, Notification>(viewModel);
                         db.Notifications.Add(notification);
                     }
-
-                    if (!visit.Notification.IsSeen)
+                    else
                     {
-                        notifications.Add(notification);
+                        notifications.Add(visit.Notification);
                     }
+
                 }
                 db.SaveChanges();
 
                 recordedNotifications = notifications
-                    .Where(x => x.User.Id == currentUser.Id && !x.IsSeen)
+                    .Where(x => x.User.Id == currentUser.Id)
                     .AsQueryable()
                     .ProjectTo<NotificationViewModel>()
                     .ToList();
@@ -116,6 +115,11 @@
 
                 foreach (var item in notificationsToUpdate)
                 {
+                    if (item.IsSeen)
+                    {
+                        continue;
+                    }
+
                     item.IsSeen = true;
                     db.Notifications.Attach(item);
                     db.Entry(item).State = EntityState.Modified;
