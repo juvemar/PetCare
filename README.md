@@ -1,4 +1,4 @@
-# TriviaMag
+# PetCare
 
 ######This is a game web application which gives the chance of people having pets to reserve vet visits for their pets to all registered vets, choose from theirs available visit hours. They are able too to look other's people pets. All registered vets in the application are able to see their schedules for manage their time easily.
 
